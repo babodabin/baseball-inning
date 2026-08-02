@@ -123,6 +123,12 @@ footer{border-top-color:rgba(31,93,80,.12)}
 
 @media(max-width:640px){.probability-chart{padding:13px}.probability-table-panel{padding-top:13px}.metric-heading{align-items:flex-start;flex-direction:column;gap:5px}.metric-heading>p{text-align:left}.metric-table-heading{padding:0 12px 10px}.prob-row{grid-template-columns:102px 1fr 42px;gap:7px}.prob-row strong{font-size:8px}}
 
+/* Strong numeric contrast and single-exception emphasis */
+.prob-number{color:#355f56;font-size:11px;font-weight:950}.prob-row.standout-high .prob-number,.pitch-card.standout-high .primary-prob{color:#e45443}.prob-row.standout-low .prob-number,.pitch-card.standout-low .primary-prob{color:#247fae}.prob-row.standout-high .prob-number,.prob-row.standout-low .prob-number{font-size:12px}.pitch-card.standout-high{box-shadow:0 7px 20px rgba(228,84,67,.13)}.pitch-card.standout-low{box-shadow:0 7px 20px rgba(36,127,174,.13)}
+.zone-cell{color:#173a33;transition:background .18s ease,transform .18s ease}.zone-cell.zone-level-1,.zone-out.zone-level-1{background:#e8f7f4}.zone-cell.zone-level-2,.zone-out.zone-level-2{background:#bde9e2}.zone-cell.zone-level-3,.zone-out.zone-level-3{background:#73d2c6}.zone-cell.zone-level-4,.zone-out.zone-level-4{background:#21ae9f;color:#fff}.zone-cell.zone-level-5,.zone-out.zone-level-5{background:#08776f;color:#fff}.zone-number{display:inline-block;color:inherit;font-size:14px;font-weight:950;line-height:1.05;letter-spacing:-.03em}.zone-number.standout-high,.zone-number.standout-low{padding:3px 5px;border-radius:7px;background:#fff;box-shadow:0 2px 8px rgba(27,58,51,.15)}.zone-number.standout-high{color:#e45443}.zone-number.standout-low{color:#247fae}.zone-cell small{margin-top:3px;font-weight:850}.zone-out{min-width:64px;min-height:41px;padding:5px 7px;border:1px solid rgba(31,93,80,.13);border-radius:10px;display:grid;grid-template-columns:auto auto;place-items:center;gap:4px;color:#173a33;box-shadow:0 3px 10px rgba(31,78,67,.07)}.zone-out small{font-size:9px;font-weight:900}.zone-out .zone-number{font-size:11px}.zone-out.selected{color:inherit;outline:3px solid #ef7159;outline-offset:2px}.zone-cell.selected{outline:3px solid #ef7159;outline-offset:2px;transform:scale(.98)}
+
+@media(max-width:640px){.zone-number{font-size:13px}.zone-out{min-width:58px;min-height:38px;padding:4px 6px}.zone-out .zone-number{font-size:10px}.prob-number{font-size:10px}}
+
 </style>
   </head>
   <body>
@@ -286,6 +292,19 @@ window.CONTEXT_DATA = {"meta":{"seasons":"2022–2026","years":[2022,2023,2024,2
   const pp = (value) => value == null || Number.isNaN(value) ? "—" : `${value >= 0 ? "+" : ""}${(value * 100).toFixed(1)}%p`;
   const pitchName = (code) => data.pitchNames[code] || code;
   const cnt = () => `${state.balls}-${state.strikes}`;
+
+  function standalonePitchExtremes(rows, valueOf) {
+    const ranked = rows
+      .filter((row) => row.code !== "FF" && Number.isFinite(valueOf(row)))
+      .map((row) => ({ code: row.code, value: valueOf(row) }))
+      .sort((a, b) => b.value - a.value);
+    if (ranked.length < 2) return { high: null, low: null };
+    const top = ranked[0]; const runnerUp = ranked[1];
+    const bottom = ranked[ranked.length - 1]; const nextLow = ranked[ranked.length - 2];
+    const high = top.value >= .12 && top.value - runnerUp.value >= .06 && top.value >= runnerUp.value * 1.45 ? top.code : null;
+    const low = bottom.value <= .015 && nextLow.value - bottom.value >= .008 && bottom.value <= nextLow.value * .45 ? bottom.code : null;
+    return { high, low };
+  }
 
   $("stat-pitches").textContent = `${(data.meta.pitches / 1_000_000).toFixed(2)}M`;
   $("stat-pairs").textContent = fmt.format(data.meta.pairs);
@@ -712,7 +731,11 @@ window.CONTEXT_DATA = {"meta":{"seasons":"2022–2026","years":[2022,2023,2024,2
       return { code, base: calc.base[code], sequence: calc.sequence[code], current: calc.current[code], delta: calc.current[code] - calc.base[code], csw: metric?.csw, hit: metric?.hit, rv: metric?.rv, mph: metric?.mph, n: metric?.n || 0 };
     }).sort((a, b) => b.current - a.current);
     const max = Math.max(...rows.map((row) => row.current), 0.01);
-    $("probability-bars").innerHTML = rows.map((row) => `<div class="prob-row"><strong>${row.code} · ${pitchName(row.code)}</strong><div class="prob-track"><div class="prob-fill" style="width:${(row.current / max) * 100}%"></div></div><span>${pct(row.current)}</span></div>`).join("");
+    const standout = standalonePitchExtremes(rows, (row) => row.current);
+    $("probability-bars").innerHTML = rows.map((row) => {
+      const emphasis = row.code === standout.high ? "standout-high" : row.code === standout.low ? "standout-low" : "";
+      return `<div class="prob-row ${emphasis}"><strong>${row.code} · ${pitchName(row.code)}</strong><div class="prob-track"><div class="prob-fill" style="width:${(row.current / max) * 100}%"></div></div><span class="prob-number">${pct(row.current)}</span></div>`;
+    }).join("");
     $("probability-table").innerHTML = rows.map((row) => `<tr><td class="pitch-cell">${row.code}<small>· ${pitchName(row.code)}</small></td><td>${pct(row.base)}</td><td>${pct(row.sequence)}</td><td><strong>${pct(row.current)}</strong></td><td class="${row.delta > 0 ? "positive" : row.delta < 0 ? "negative" : ""}">${pp(row.delta)}</td><td>${pct(row.csw)}</td><td>${pct(row.hit)}</td><td>${row.rv == null ? "—" : Number(row.rv).toFixed(4)}</td><td>${row.mph == null ? "—" : `${Number(row.mph).toFixed(1)} mph`}</td><td>${fmt.format(row.n)}</td></tr>`).join("");
   }
 
@@ -721,9 +744,11 @@ window.CONTEXT_DATA = {"meta":{"seasons":"2022–2026","years":[2022,2023,2024,2
       const metric = calc.metrics.find((row) => row.code === code);
       return { code, p: calc.current[code], delta: calc.current[code] - calc.base[code], ...metric };
     }).sort((a, b) => b.p - a.p);
+    const standout = standalonePitchExtremes(rows, (row) => row.p);
     $("pitch-card-grid").innerHTML = rows.map((row) => {
       const support = row.n >= 1000 ? "충분" : row.n >= 250 ? "관찰" : row.n > 0 ? "희귀" : "없음";
-      return `<article class="pitch-card ${row.n < 250 ? "thin" : ""}"><header><div><strong>${row.code} · ${pitchName(row.code)}</strong></div><b>${pct(row.p)}</b></header><div class="pitch-card-stats"><span>변화 <b class="${row.delta > 0 ? "positive" : row.delta < 0 ? "negative" : ""}">${pp(row.delta)}</b></span><span>CSW <b>${pct(row.csw)}</b></span><span>안타 <b>${pct(row.hit)}</b></span><span>상황 RV <b>${row.rv == null ? "—" : Number(row.rv).toFixed(3)}</b></span><span>구속 <b>${row.mph == null ? "—" : Number(row.mph).toFixed(1)}</b></span><span>표본 <b>${fmt.format(row.n)}</b></span></div><small class="pitch-card-foot">${support}</small></article>`;
+      const emphasis = row.code === standout.high ? "standout-high" : row.code === standout.low ? "standout-low" : "";
+      return `<article class="pitch-card ${row.n < 250 ? "thin" : ""} ${emphasis}"><header><div><strong>${row.code} · ${pitchName(row.code)}</strong></div><b class="primary-prob">${pct(row.p)}</b></header><div class="pitch-card-stats"><span>변화 <b class="${row.delta > 0 ? "positive" : row.delta < 0 ? "negative" : ""}">${pp(row.delta)}</b></span><span>CSW <b>${pct(row.csw)}</b></span><span>안타 <b>${pct(row.hit)}</b></span><span>상황 RV <b>${row.rv == null ? "—" : Number(row.rv).toFixed(3)}</b></span><span>구속 <b>${row.mph == null ? "—" : Number(row.mph).toFixed(1)}</b></span><span>표본 <b>${fmt.format(row.n)}</b></span></div><small class="pitch-card-foot">${support}</small></article>`;
     }).join("");
   }
 
@@ -762,11 +787,17 @@ window.CONTEXT_DATA = {"meta":{"seasons":"2022–2026","years":[2022,2023,2024,2
     const rows = result.rows;
     const byZone = new Map(rows.map((row) => [Number(row.zone), row]));
     const max = Math.max(...rows.map((row) => row.p), 0.01);
+    const zoneRanked = rows.map((row) => ({ zone: Number(row.zone), p: Number(row.p || 0) })).sort((a, b) => b.p - a.p);
+    const highZone = zoneRanked.length > 1 && zoneRanked[0].p >= .18 && zoneRanked[0].p - zoneRanked[1].p >= .05 && zoneRanked[0].p >= zoneRanked[1].p * 1.35 ? zoneRanked[0].zone : null;
+    const zoneLowRanked = [...zoneRanked].sort((a, b) => a.p - b.p);
+    const lowZone = zoneLowRanked.length > 1 && zoneLowRanked[0].p <= .015 && zoneLowRanked[1].p - zoneLowRanked[0].p >= .006 && zoneLowRanked[0].p <= zoneLowRanked[1].p * .45 ? zoneLowRanked[0].zone : null;
+    const zoneLevel = (value) => { const strength = value / max; return strength >= .8 ? 5 : strength >= .55 ? 4 : strength >= .3 ? 3 : strength >= .12 ? 2 : 1; };
+    const numberClass = (zone) => zone === highZone ? "standout-high" : zone === lowZone ? "standout-low" : "";
     const inner = [1,2,3,4,5,6,7,8,9].map((zone) => {
-      const row = byZone.get(zone); const strength = (row?.p || 0) / max; const alpha = .08 + strength * .65;
-      return `<button class="zone-cell ${state.zoneSelected === zone ? "selected" : ""}" data-zone="${zone}" style="background:rgba(237,185,87,${alpha.toFixed(2)})">${pct(row?.p,0)}<small>${zone}</small></button>`;
+      const row = byZone.get(zone); const level = zoneLevel(row?.p || 0);
+      return `<button class="zone-cell zone-level-${level} ${state.zoneSelected === zone ? "selected" : ""}" data-zone="${zone}"><b class="zone-number ${numberClass(zone)}">${pct(row?.p,0)}</b><small>${zone}</small></button>`;
     }).join("");
-    const outside = [[11,"z11"],[12,"z12"],[13,"z13"],[14,"z14"]].map(([zone, cls]) => `<button class="zone-out ${cls} ${state.zoneSelected === zone ? "selected" : ""}" data-zone="${zone}">${zone} · ${pct(byZone.get(zone)?.p,0)}</button>`).join("");
+    const outside = [[11,"z11"],[12,"z12"],[13,"z13"],[14,"z14"]].map(([zone, cls]) => { const row = byZone.get(zone); const level = zoneLevel(row?.p || 0); return `<button class="zone-out ${cls} zone-level-${level} ${state.zoneSelected === zone ? "selected" : ""}" data-zone="${zone}"><small>${zone}</small><b class="zone-number ${numberClass(zone)}">${pct(row?.p,0)}</b></button>`; }).join("");
     $("zone-grid").innerHTML = `${outside}<div class="zone-inner">${inner}</div>`;
     $("zone-title").textContent = `${pitchName(state.zonePitch)} · ${state.zonePitch} · ${cnt()}`;
     $("zone-grid").querySelectorAll("button[data-zone]").forEach((button) => button.addEventListener("click", () => {
