@@ -102,19 +102,35 @@ footer{border-top-color:rgba(31,93,80,.12)}
   .selector-section{box-shadow:none}.answer-card{box-shadow:0 7px 17px rgba(31,78,67,.08)}
 }
 
+/* First-screen guide */
+.topbar{min-height:88px;height:auto;padding-block:14px}.brand{gap:14px}.brand-mark{width:46px;height:46px;font-size:22px}.brand-copy{display:grid;gap:1px}.brand-name{font-size:clamp(23px,3vw,31px);line-height:1;letter-spacing:-.055em}.brand-subtitle{color:#607c75;font-size:11px;font-weight:700;letter-spacing:-.01em}.topbar-meta{padding:8px 12px;border-radius:999px;background:rgba(255,255,255,.76);border:1px solid rgba(31,93,80,.10)}
+.board-nav{margin-top:10px;padding:7px;gap:7px}.board-nav button{min-height:62px;padding:8px 12px;display:grid;place-content:center;gap:2px}.board-nav button strong{font-size:13px}.board-nav button small{color:#78918b;font-size:9px;font-weight:750}.board-nav button.active small{color:rgba(255,255,255,.82)}
+#situation{scroll-margin-top:10px}
+
+@media(max-width:640px){
+  body{padding-bottom:18px}
+  .topbar{min-height:94px;height:auto;padding:calc(12px + env(safe-area-inset-top)) 14px 12px;justify-content:flex-start}
+  .brand{font-size:inherit}.brand-mark{width:43px;height:43px;font-size:20px}.brand-name{font-size:25px}.brand-subtitle{font-size:10px}
+  .board-nav{position:relative;left:auto;right:auto;bottom:auto;z-index:2;width:calc(100% - 16px);margin:8px auto 0;padding:6px;border:1px solid rgba(25,104,89,.13);border-radius:15px;box-shadow:0 10px 26px rgba(31,78,67,.09)}
+  .board-nav button{min-height:58px;padding:6px 4px;font-size:inherit}.board-nav button strong{font-size:11px}.board-nav button small{font-size:7px;line-height:1.25}
+  main{padding-top:11px}
+}
+
+@media(max-width:390px){.brand-name{font-size:23px}.brand-subtitle{font-size:9px}.board-nav button strong{font-size:10px}.board-nav button small{font-size:6.5px}}
+
 </style>
   </head>
   <body>
     <div class="glow glow-one"></div><div class="glow glow-two"></div>
     <header class="topbar">
-      <div class="brand" aria-label="피치 리더"><span class="brand-mark">⚾</span><span>피치 리더</span></div>
+      <div class="brand" aria-label="피치 리더"><span class="brand-mark">⚾</span><span class="brand-copy"><strong class="brand-name">피치 리더</strong><small class="brand-subtitle">상황과 직전 공으로 다음 선택을 읽습니다</small></span></div>
       <span class="topbar-meta">MLB STATCAST · 2022–2026.07.31</span>
     </header>
 
     <nav class="board-nav" aria-label="분석판 선택">
-      <button type="button" data-board-target="next" class="active">다음공판</button>
-      <button type="button" data-board-target="sequence">직전공판</button>
-      <button type="button" data-board-target="stats">통계판</button>
+      <button type="button" data-board-target="next" class="active"><strong>다음공판</strong><small>많은 공 · 상성 · 13개 위치</small></button>
+      <button type="button" data-board-target="sequence"><strong>직전공판</strong><small>직전 결과 · 확률 변화 · 위치</small></button>
+      <button type="button" data-board-target="stats"><strong>통계판</strong><small>보정 없는 실제 표본</small></button>
     </nav>
 
     <main id="top">
@@ -334,7 +350,7 @@ window.CONTEXT_DATA = {"meta":{"seasons":"2022–2026","years":[2022,2023,2024,2
     } else {
       locationModule.hidden = true;
     }
-    window.scrollTo({ top: 0, behavior: "auto" });
+    $("situation").scrollIntoView({ block: "start", behavior: "smooth" });
   }
   document.querySelectorAll(".board-nav button").forEach((button) => button.addEventListener("click", () => switchBoard(button.dataset.boardTarget)));
 
