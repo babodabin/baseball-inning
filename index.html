@@ -4,6 +4,12 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="theme-color" content="#f4faf7" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="피치 리더" />
+    <link rel="icon" type="image/png" href="./app-icon.png" />
+    <link rel="apple-touch-icon" href="./app-icon.png" />
+    <link rel="manifest" href="./manifest.webmanifest" />
     <title>피치 리더 — 상황과 직전 공으로 다음 구종 읽기</title>
     <meta name="description" content="2022–2026 MLB Statcast로 좌우 조합, 카운트, 선발·불펜, 경기 상황과 직전 공의 영향을 함께 봅니다. 2026년은 7월 31일까지입니다." />
     <meta property="og:title" content="피치 리더" />
@@ -44,7 +50,7 @@ button:focus-visible,select:focus-visible,a:focus-visible{outline:2px solid var(
 body{background:radial-gradient(circle at 95% 2%,#d9f8f3 0,transparent 27%),radial-gradient(circle at 0 46%,#fff1d5 0,transparent 25%),var(--bg);color:var(--text)}
 .glow{opacity:.18;filter:blur(90px)}
 .topbar{background:linear-gradient(100deg,#ffffff 0%,#effbf7 55%,#fff7e8 100%);border-bottom-color:rgba(25,104,89,.12);box-shadow:0 5px 20px rgba(35,91,78,.07)}
-.brand-mark{background:#fff0c9;border-color:#f0c65e;box-shadow:0 5px 14px rgba(233,165,42,.16)}
+.brand-mark{display:block;object-fit:cover;padding:0;border-radius:13px;background:#fff0c9;border-color:#f0c65e;box-shadow:0 5px 14px rgba(233,165,42,.16)}
 .board-nav{grid-template-columns:repeat(3,1fr);background:rgba(255,255,255,.94);border-color:rgba(25,104,89,.13);box-shadow:0 10px 28px rgba(35,91,78,.08)}
 .board-nav button{color:#648079}
 .board-nav button.active{color:#fff;background:linear-gradient(135deg,#08b5aa,#27c7b4);box-shadow:0 7px 18px rgba(16,175,164,.24)}
@@ -134,7 +140,7 @@ footer{border-top-color:rgba(31,93,80,.12)}
   <body>
     <div class="glow glow-one"></div><div class="glow glow-two"></div>
     <header class="topbar">
-      <div class="brand" aria-label="피치 리더"><span class="brand-mark">⚾</span><span class="brand-copy"><strong class="brand-name">피치 리더</strong><small class="brand-subtitle">상황과 직전 공으로 다음 선택을 읽습니다</small></span></div>
+      <div class="brand" aria-label="피치 리더"><img class="brand-mark" src="./app-icon.png" alt="" /><span class="brand-copy"><strong class="brand-name">피치 리더</strong><small class="brand-subtitle">상황과 직전 공으로 다음 선택을 읽습니다</small></span></div>
       <span class="topbar-meta">MLB STATCAST · 2022–2026.07.31</span>
     </header>
 
@@ -363,6 +369,8 @@ window.CONTEXT_DATA = {"meta":{"seasons":"2022–2026","years":[2022,2023,2024,2
   });
 
   function switchBoard(view) {
+    const scrollLeft = window.scrollX;
+    const scrollTop = window.scrollY;
     state.view = view;
     document.querySelectorAll("[data-board]").forEach((panel) => {
       const active = panel.dataset.board === view;
@@ -380,7 +388,7 @@ window.CONTEXT_DATA = {"meta":{"seasons":"2022–2026","years":[2022,2023,2024,2
     } else {
       locationModule.hidden = true;
     }
-    $("situation").scrollIntoView({ block: "start", behavior: "smooth" });
+    window.scrollTo({ left: scrollLeft, top: scrollTop, behavior: "auto" });
   }
   document.querySelectorAll(".board-nav button").forEach((button) => button.addEventListener("click", () => switchBoard(button.dataset.boardTarget)));
 

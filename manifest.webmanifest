@@ -1,0 +1,18 @@
+{
+  "name": "피치 리더",
+  "short_name": "피치 리더",
+  "description": "상황과 직전 공으로 MLB 다음 구종을 읽는 Statcast 앱",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f4faf7",
+  "theme_color": "#f4faf7",
+  "icons": [
+    {
+      "src": "./app-icon.png",
+      "sizes": "1024x1024",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
