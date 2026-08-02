@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <meta name="theme-color" content="#0e1f1c" />
+    <meta name="theme-color" content="#f4faf7" />
     <title>피치 리더 — 상황과 직전 공으로 다음 구종 읽기</title>
     <meta name="description" content="2022–2026 MLB Statcast로 좌우 조합, 카운트, 선발·불펜, 경기 상황과 직전 공의 영향을 함께 봅니다. 2026년은 7월 31일까지입니다." />
     <meta property="og:title" content="피치 리더" />
@@ -39,6 +39,69 @@ button:focus-visible,select:focus-visible,a:focus-visible{outline:2px solid var(
 @media(max-width:640px){body{padding-bottom:calc(68px + env(safe-area-inset-bottom))}.topbar{height:calc(52px + env(safe-area-inset-top));padding:env(safe-area-inset-top) 14px 0}.topbar-meta{display:none}.brand{font-size:15px}.board-nav{position:fixed;left:0;right:0;bottom:0;z-index:50;width:auto;margin:0;padding:6px 8px calc(6px + env(safe-area-inset-bottom));border-width:1px 0 0;border-radius:0;background:#0e1f1c;box-shadow:0 -10px 28px rgba(0,0,0,.28)}.board-nav button{min-height:42px;padding:3px;font-size:10px}main{width:calc(100% - 16px);padding-top:10px}.condition-heading,.board-heading{align-items:flex-start;margin-bottom:9px}.condition-heading h1,.board-heading h2{font-size:22px}.condition-heading>button{min-height:38px;padding-inline:13px}.board-heading>p{display:none}.controls-panel{padding:9px;gap:7px}.selector-section{padding:10px}.matchup-row,.selector-row.matchup-row{grid-template-columns:1fr 1fr}.role-control{grid-column:1/-1}.count-row{grid-template-columns:1fr 1fr}.game-row{grid-template-columns:1fr 1fr}.choice-row{height:46px}.choice-row button{font-size:12px}.lamp-row{height:46px}.lamp-row button{width:43px;height:43px}.quick-result{padding:11px}.quick-context strong{width:100%;font-size:12px}.quick-grid{grid-template-columns:repeat(2,1fr)}.answer-grid{grid-template-columns:repeat(2,1fr);gap:7px}.answer-card{min-height:125px;padding:13px}.answer-card strong{font-size:15px}.answer-card b{font-size:22px}.answer-card p{font-size:9px}.pitch-card-grid{grid-template-columns:repeat(2,1fr)}.pitch-grid{grid-template-columns:repeat(5,1fr);gap:5px}.pitch-grid button{min-height:48px;padding:6px 3px}.pitch-grid button small{font-size:7px}.evidence-card{padding:14px}.evidence-card h3{font-size:17px}.evidence-metrics{grid-template-columns:repeat(2,1fr)}.sequence-change-panel{padding:12px}.sequence-change-row{grid-template-columns:72px 1fr 55px;gap:7px}.sequence-change-row>small{grid-column:1/-1;text-align:left;padding-left:79px}.pitch-card-heading{display:block}.pitch-card-heading>p{margin-top:3px}.stats-overview div{padding:12px}.stats-overview strong{font-size:17px}.raw-stat-panel{padding:11px}.outcome-row{grid-template-columns:78px 1fr 45px}.stats-board .method{display:block;padding-top:22px}.stats-board .method-grid{margin-top:12px}body:not(.show-details) #sequence,body:not(.show-details) #sequence~section,body:not(.show-details) footer{display:block}.board-view[hidden]{display:none!important}footer{display:flex!important;padding-bottom:16px}}
 @media(max-width:390px){.choice-row button{font-size:11px;padding-inline:4px}.lamp-row button{width:39px;height:39px}.quick-grid strong{font-size:11px}.answer-grid{grid-template-columns:1fr 1fr}.pitch-card-stats{grid-template-columns:1fr}.sequence-change-row>small{padding-left:0}}
 
+/* Bright, close-to-the-action board design */
+:root{--bg:#f2f8f5;--bg2:#e7f3ee;--panel:#ffffff;--panel2:#f8fcfa;--line:rgba(30,79,68,.14);--text:#173a33;--muted:#607c75;--cyan:#10afa4;--amber:#e9a52a;--coral:#ef7159;--ice:#3f9fc4;--lime:#86b839;--shadow:0 14px 36px rgba(31,78,67,.10)}
+body{background:radial-gradient(circle at 95% 2%,#d9f8f3 0,transparent 27%),radial-gradient(circle at 0 46%,#fff1d5 0,transparent 25%),var(--bg);color:var(--text)}
+.glow{opacity:.18;filter:blur(90px)}
+.topbar{background:linear-gradient(100deg,#ffffff 0%,#effbf7 55%,#fff7e8 100%);border-bottom-color:rgba(25,104,89,.12);box-shadow:0 5px 20px rgba(35,91,78,.07)}
+.brand-mark{background:#fff0c9;border-color:#f0c65e;box-shadow:0 5px 14px rgba(233,165,42,.16)}
+.board-nav{grid-template-columns:repeat(3,1fr);background:rgba(255,255,255,.94);border-color:rgba(25,104,89,.13);box-shadow:0 10px 28px rgba(35,91,78,.08)}
+.board-nav button{color:#648079}
+.board-nav button.active{color:#fff;background:linear-gradient(135deg,#08b5aa,#27c7b4);box-shadow:0 7px 18px rgba(16,175,164,.24)}
+main{padding-top:13px}.condition-deck{margin-bottom:14px}.board-view{margin-bottom:18px}.board-heading{padding:0 3px}.board-heading h2{color:#173a33}.step,.eyebrow-small{color:#0c988f}
+.panel,.controls-panel{background:rgba(255,255,255,.96);border-color:var(--line);box-shadow:var(--shadow)}
+.controls-panel{position:relative;overflow:hidden}.controls-panel:before{content:"";position:absolute;inset:0 0 auto;height:4px;background:linear-gradient(90deg,var(--cyan),var(--amber),var(--coral),var(--ice))}
+.selector-section{background:#f7fbf9;border-color:rgba(31,93,80,.10)}
+.selector-section:nth-child(1){background:linear-gradient(140deg,#e8faf7,#f8fdfb)}
+.selector-section:nth-child(2){background:linear-gradient(140deg,#fff4dc,#fffaf0)}
+.selector-section:nth-child(3){background:linear-gradient(140deg,#eaf5fb,#f8fcfe)}
+.selector-title{color:#147d73}.control-group label{color:#536f68}
+.choice-row{background:rgba(255,255,255,.9);border:1px solid rgba(34,91,79,.09);box-shadow:inset 0 1px 3px rgba(32,79,69,.05)}
+.choice-row button,.pitch-grid button,.pitch-tabs button{color:#607c75}
+.choice-row button:hover,.pitch-grid button:hover,.pitch-tabs button:hover{color:#16443b;border-color:rgba(16,175,164,.28);background:#eefaf7}
+.choice-row button.active,.pitch-grid button.active,.pitch-tabs button.active{color:#fff;background:linear-gradient(135deg,#09aaa0,#2bc5b2);border-color:#10afa4;box-shadow:0 4px 12px rgba(16,175,164,.19)}
+.triple button.active{color:#4d3510;background:linear-gradient(135deg,#ffd573,#f5b940);border-color:#efb23a}
+.lamp-row button{background:#fff;border-color:rgba(31,93,80,.18);color:#5b766f}
+.lamp-row button.active{color:#fff;background:linear-gradient(135deg,#10afa4,#3dccb9);border-color:#10afa4;box-shadow:0 5px 13px rgba(16,175,164,.20)}
+select{color:#254b43;background:#fff;border-color:rgba(31,93,80,.16);box-shadow:0 3px 10px rgba(31,78,67,.05)}
+.condition-heading>button{color:#167f75;background:#e8faf7;border-color:#bde9e1}
+.quick-result{background:linear-gradient(125deg,#dff8f4 0%,#f4fcfa 48%,#fff3da 100%);border-color:rgba(16,175,164,.22);box-shadow:0 14px 34px rgba(29,109,94,.10)}
+.quick-context span{color:#078f86}.quick-grid div{background:#fff;border:1px solid rgba(33,90,78,.09);box-shadow:0 4px 12px rgba(31,78,67,.05)}
+.quick-grid div:nth-child(1){background:#e5faf7}.quick-grid div:nth-child(2){background:#f2f8df}.quick-grid div:nth-child(3){background:#fff3d8}.quick-grid div:nth-child(4){background:#ffede9}
+.quick-effects>span{color:#315c52;background:rgba(255,255,255,.84);border:1px solid rgba(33,90,78,.08)}
+.answer-card{border:0;border-top-width:0;box-shadow:0 10px 25px rgba(33,78,68,.09)}
+.answer-card.cyan{background:linear-gradient(145deg,#dff9f5,#f6fffd);border-left:5px solid var(--cyan)}
+.answer-card.lime{background:linear-gradient(145deg,#edf7d8,#fbfff4);border-left:5px solid var(--lime)}
+.answer-card.amber{background:linear-gradient(145deg,#fff0cf,#fffaf0);border-left:5px solid var(--amber)}
+.answer-card.red{background:linear-gradient(145deg,#ffe7e3,#fff7f5);border-left:5px solid #ef7e6b}
+.answer-card.coral{background:linear-gradient(145deg,#ffeadf,#fff8f4);border-left:5px solid var(--coral)}
+.answer-card.ice{background:linear-gradient(145deg,#e1f2fa,#f7fcff);border-left:5px solid var(--ice)}
+.answer-card.cyan b{color:#078f86}.answer-card.lime b{color:#658f24}.answer-card.amber b{color:#b7780d}.answer-card.red b{color:#c85845}.answer-card.coral b{color:#cf543d}.answer-card.ice b{color:#287fa1}
+.sequence-panel{background:linear-gradient(130deg,#e8faf7,#ffffff 56%,#fff4dc)}
+.pitch-grid button{background:#fff;border-color:rgba(31,93,80,.12)}
+.status-chip{color:#087f77;background:#dff7f2;border:1px solid #bde9e1}
+.toggle span{background:#bfd4ce}.evidence-card{background:linear-gradient(120deg,#ddf8f3,#fff 48%,#e9f5fb);border-color:rgba(16,175,164,.18);box-shadow:var(--shadow)}
+.evidence-metrics div{background:#fff;border:1px solid rgba(31,93,80,.09);box-shadow:0 4px 12px rgba(31,78,67,.05)}
+.sequence-change-row{background:#fff;border:1px solid rgba(31,93,80,.09);box-shadow:0 4px 12px rgba(31,78,67,.04)}
+.change-track,.prob-track,.outcome-track{background:#dfece8}
+.pitch-card{background:#fff;border-color:rgba(31,93,80,.11);box-shadow:0 5px 15px rgba(31,78,67,.05)}
+.pitch-card:nth-child(4n+1){border-top:3px solid var(--cyan)}.pitch-card:nth-child(4n+2){border-top:3px solid var(--amber)}.pitch-card:nth-child(4n+3){border-top:3px solid var(--ice)}.pitch-card:nth-child(4n){border-top:3px solid var(--coral)}
+.probability-bars,.table-wrap{background:#fff}.prob-fill{background:linear-gradient(90deg,#08a79d,#52d8c8)}
+th{background:#f2f8f5;color:#57726b}tbody tr:hover{background:#eefaf7}
+.location-module{margin:16px 0 30px;padding:18px;border-radius:22px;background:linear-gradient(135deg,#e6f9f5,#fff8e9);border:1px solid rgba(16,175,164,.15);box-shadow:0 16px 38px rgba(31,78,67,.08)}
+.zone-slot:empty{display:none}.location-only .zone-panel{background:#fff;box-shadow:0 12px 30px rgba(31,78,67,.08)}
+.zone-inner{border-color:#315e54}.zone-out{color:#507069}.zone-out.selected{color:#078f86}.zone-cell.selected{outline-color:#078f86}
+.stats-overview div{box-shadow:0 8px 20px rgba(31,78,67,.07)}.stats-overview div:nth-child(1){background:#e2f9f5}.stats-overview div:nth-child(2){background:#fff0d2}.stats-overview div:nth-child(3){background:#e6f3fa}
+.stats-overview strong{color:#087f77}.raw-stat-panel{background:#fff}.outcome-row{background:#f6faf8;border:1px solid rgba(31,93,80,.08)}.method-grid article{background:#fff;box-shadow:0 5px 15px rgba(31,78,67,.05)}
+footer{border-top-color:rgba(31,93,80,.12)}
+
+@media(max-width:640px){
+  .board-nav{background:rgba(255,255,255,.97);box-shadow:0 -10px 28px rgba(31,78,67,.12)}
+  .condition-deck{margin-bottom:10px}.board-view{margin-bottom:14px}
+  .location-module{margin:12px 0 20px;padding:11px;border-radius:16px}
+  .selector-section{box-shadow:none}.answer-card{box-shadow:0 7px 17px rgba(31,78,67,.08)}
+}
+
 </style>
   </head>
   <body>
@@ -51,7 +114,6 @@ button:focus-visible,select:focus-visible,a:focus-visible{outline:2px solid var(
     <nav class="board-nav" aria-label="분석판 선택">
       <button type="button" data-board-target="next" class="active">다음공판</button>
       <button type="button" data-board-target="sequence">직전공판</button>
-      <button type="button" data-board-target="location">위치판</button>
       <button type="button" data-board-target="stats">통계판</button>
     </nav>
 
@@ -115,6 +177,7 @@ button:focus-visible,select:focus-visible,a:focus-visible{outline:2px solid var(
           <div class="pitch-card-heading"><div><span class="eyebrow-small">직전 공 변화</span><h3>기본확률과 비교</h3></div><p>직전 공을 반영한 뒤 증가·감소한 구종입니다.</p></div>
           <div class="sequence-change-list" id="sequence-change-list"></div>
         </article>
+        <div class="zone-slot" data-zone-slot="sequence"></div>
       </section>
 
       <section class="board-view active" id="answer" data-board="next" aria-labelledby="next-detail-title">
@@ -140,12 +203,14 @@ button:focus-visible,select:focus-visible,a:focus-visible{outline:2px solid var(
         <p class="disclaimer">확률과 상성은 관측 자료의 비교이며, 인과관계나 특정 선수의 최적 선택을 뜻하지 않습니다.</p>
       </section>
 
-      <section class="board-view" id="location" data-board="location" aria-labelledby="location-title" hidden>
-        <div class="board-heading compact"><div><span class="step">위치판</span><h2 id="location-title">선택한 구종은 어디로 오는가</h2></div><div class="pitch-tabs" id="zone-pitch"></div></div>
-        <div class="location-layout location-only">
-          <article class="panel zone-panel"><div class="zone-caption"><span>포수 시점 · 13개 구역</span><strong id="zone-title">—</strong></div><div class="zone-wrap" id="zone-grid"></div><p id="zone-detail">구역을 누르면 확률과 표본을 보여줍니다.</p></article>
-        </div>
-      </section>
+      <div class="zone-slot" data-zone-slot="next">
+        <section class="location-module" id="location-module" aria-labelledby="location-title">
+          <div class="board-heading compact"><div><span class="step">구종 위치</span><h2 id="location-title">선택한 구종은 어디로 오는가</h2></div><div class="pitch-tabs" id="zone-pitch"></div></div>
+          <div class="location-layout location-only">
+            <article class="panel zone-panel"><div class="zone-caption"><span>포수 시점 · 13개 구역</span><strong id="zone-title">—</strong></div><div class="zone-wrap" id="zone-grid"></div><p id="zone-detail">구역을 누르면 확률과 표본을 보여줍니다.</p></article>
+          </div>
+        </section>
+      </div>
 
       <section class="board-view stats-board" id="stats" data-board="stats" aria-labelledby="stats-title" hidden>
         <div class="board-heading"><div><span class="step">통계판</span><h2 id="stats-title">추측하지 않은 실제 관측 통계</h2></div><p>자동 확장이나 상황 보정 없이 자료에 기록된 값만 표시합니다.</p></div>
@@ -259,6 +324,16 @@ window.CONTEXT_DATA = {"meta":{"seasons":"2022–2026","years":[2022,2023,2024,2
       panel.classList.toggle("active", active);
     });
     document.querySelectorAll(".board-nav button").forEach((button) => button.classList.toggle("active", button.dataset.boardTarget === view));
+    const firstPanel = document.querySelector(`[data-board="${view}"]`);
+    if (firstPanel) firstPanel.before($("situation"));
+    const locationModule = $("location-module");
+    const zoneSlot = document.querySelector(`[data-zone-slot="${view}"]`);
+    if (zoneSlot) {
+      zoneSlot.appendChild(locationModule);
+      locationModule.hidden = false;
+    } else {
+      locationModule.hidden = true;
+    }
     window.scrollTo({ top: 0, behavior: "auto" });
   }
   document.querySelectorAll(".board-nav button").forEach((button) => button.addEventListener("click", () => switchBoard(button.dataset.boardTarget)));
