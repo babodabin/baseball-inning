@@ -32,43 +32,64 @@ button:focus-visible,select:focus-visible,a:focus-visible{outline:2px solid var(
 @media(max-width:480px){body{padding-bottom:calc(62px + env(safe-area-inset-bottom))}.glow{display:none}.topbar{height:calc(50px + env(safe-area-inset-top));padding-top:env(safe-area-inset-top);justify-content:center}.topbar nav{display:none}.brand-mark{width:27px;height:27px}.brand{font-size:14px}main{width:calc(100% - 14px)}body:not(.show-details) #sequence,body:not(.show-details) #sequence~section,body:not(.show-details) footer{display:none}body:not(.show-details) #situation{margin:0;padding:7px 0 6px;min-height:calc(100svh - 112px - env(safe-area-inset-top) - env(safe-area-inset-bottom))}.section-heading{margin:0 0 6px}.section-heading h2{font-size:20px}.controls-panel{padding:8px;gap:6px}.control-group label{font-size:9px;margin-bottom:3px}.choice-row{padding:2px;gap:3px;border-radius:9px}.choice-row button{min-height:34px;padding:5px 4px;font-size:11px;border-radius:7px}.lamp-row{height:36px;gap:4px}.lamp-row button{width:34px;height:34px;font-size:12px}select{height:36px;padding:0 7px;border-radius:8px;font-size:11px}.live-sequence-control{display:block}.live-sequence-label{display:flex!important;align-items:center;gap:5px;height:14px;color:var(--text)!important}.live-sequence-label input{margin:0;accent-color:var(--cyan)}.live-sequence-selects{display:grid;grid-template-columns:1fr 1fr;gap:4px}.live-sequence-control:not(.enabled) .live-sequence-selects{opacity:.45}.quick-result{position:static;margin-top:6px;padding:8px;border-radius:12px}.quick-context{margin-bottom:6px;gap:6px}.quick-context>div{gap:2px 6px}.quick-context span{font-size:9px}.quick-context strong{font-size:11px}.quick-context small{font-size:8px}.quick-context button{padding:6px 8px;font-size:9px}.detail-toggle{display:block}.quick-grid{gap:4px}.quick-grid div{padding:6px 8px}.quick-grid span{font-size:8px}.quick-grid strong{font-size:12px}.quick-effects{font-size:8px;max-height:45px;overflow:auto}.show-details .app-section{margin-bottom:38px}.mobile-nav{position:fixed;display:grid;grid-template-columns:repeat(4,1fr);left:0;right:0;bottom:0;z-index:45;padding:6px 8px calc(6px + env(safe-area-inset-bottom));border-top:1px solid var(--line);background:rgba(14,31,28,.96);backdrop-filter:blur(18px)}.mobile-nav a{padding:8px 3px;border-radius:9px;color:var(--muted);text-align:center;text-decoration:none;font-size:9px;font-weight:900}.mobile-nav a.active{color:#09211e;background:var(--cyan)}}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
 
+/* Four independent boards */
+[hidden]{display:none!important}.topbar{position:relative;top:auto;height:60px;padding:0 clamp(16px,4vw,48px);background:#0e1f1c;backdrop-filter:none;-webkit-backdrop-filter:none}.topbar-meta{color:var(--muted);font-size:10px;font-weight:800;letter-spacing:.05em}.brand{pointer-events:none}.board-nav{width:min(1180px,calc(100% - 28px));margin:12px auto 0;padding:5px;display:grid;grid-template-columns:repeat(4,1fr);gap:5px;border:1px solid var(--line);border-radius:15px;background:#132824}.board-nav button{min-height:43px;border:0;border-radius:10px;background:transparent;color:var(--muted);font-size:12px;font-weight:900;cursor:pointer}.board-nav button.active{background:var(--cyan);color:#09211e;box-shadow:0 8px 22px rgba(88,214,207,.16)}main{padding-top:18px}.condition-deck{margin-bottom:24px}.condition-heading,.board-heading{display:flex;align-items:end;justify-content:space-between;gap:22px;margin-bottom:12px}.condition-heading h1,.board-heading h2{margin:3px 0 0;font-size:clamp(23px,3vw,34px);line-height:1.08;letter-spacing:-.04em}.condition-heading>button{min-height:42px;padding:0 18px;border:1px solid var(--line);border-radius:11px;background:var(--panel);color:var(--text);font-size:11px;font-weight:900;cursor:pointer}.board-heading>p{max-width:430px;margin:0;color:var(--muted);text-align:right;font-size:11px}.controls-panel{padding:14px;display:grid;grid-template-columns:1.05fr .72fr 1.25fr;gap:10px}.selector-section{padding:14px;border:1px solid var(--line);border-radius:14px;background:rgba(7,20,18,.28)}.selector-title{display:block;margin-bottom:10px;color:var(--cyan);font-size:10px;letter-spacing:.05em}.selector-row{display:grid;gap:9px}.matchup-row{grid-template-columns:1fr 1fr 1.25fr}.count-row{grid-template-columns:1fr 1fr}.game-row{grid-template-columns:repeat(2,1fr)}.control-group label{font-size:10px;margin-bottom:6px}.choice-row{height:48px;padding:4px}.choice-row button{min-height:38px;padding:6px 8px;font-size:13px}.lamp-row{height:48px;justify-content:flex-start}.lamp-row button{width:42px;height:42px;font-size:13px}select{height:48px;font-size:13px;padding-inline:12px}.board-view{margin-bottom:38px}.board-view.active{display:block}.quick-result{margin-top:0}.quick-context{margin-bottom:10px}.quick-context>div{width:100%}.quick-context strong{font-size:15px}.answer-grid{grid-template-columns:repeat(3,1fr)}.answer-card{min-height:155px}.answer-card strong{margin-top:10px;font-size:19px}.answer-card b{font-size:27px}.sequence-change-panel{margin-top:14px;padding:18px}.sequence-change-list{display:grid;gap:7px}.sequence-change-row{display:grid;grid-template-columns:110px minmax(100px,1fr) 66px 150px;align-items:center;gap:10px;padding:9px 11px;border-radius:10px;background:rgba(7,20,18,.32)}.sequence-change-row>div:first-child{display:flex;align-items:baseline;gap:7px}.sequence-change-row span,.sequence-change-row small{color:var(--muted);font-size:9px}.change-track{height:8px;border-radius:999px;background:rgba(255,255,255,.06);overflow:hidden}.change-track i{display:block;height:100%;border-radius:inherit}.change-track i.up{background:var(--coral)}.change-track i.down{background:var(--ice)}.sequence-change-row>b{text-align:right;font-size:11px}.sequence-change-row>small{text-align:right}.empty-board{padding:24px;text-align:center;color:var(--muted);font-size:12px}.location-layout.location-only{display:block}.location-only .zone-panel{width:min(620px,100%);margin:0 auto}.stats-overview{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-bottom:12px}.stats-overview div{padding:16px;border:1px solid var(--line);border-radius:13px;background:var(--panel)}.stats-overview strong{display:block;color:var(--cyan);font-size:22px}.stats-overview span{color:var(--muted);font-size:9px}.stats-layout{display:grid;grid-template-columns:1fr 1fr;gap:12px}.raw-stat-panel{padding:17px;min-width:0}.raw-stat-panel table{min-width:620px}.stats-board .outcome-panel{margin-top:12px;padding:18px}.stats-board .method{margin:24px 0 0}.stats-board footer{display:none}
+
+@media(max-width:980px){.controls-panel{grid-template-columns:1fr}.selector-row.matchup-row{grid-template-columns:1fr 1fr 1.2fr}.game-row{grid-template-columns:repeat(4,1fr)}.stats-layout{grid-template-columns:1fr}.sequence-change-row{grid-template-columns:95px 1fr 62px 130px}}
+@media(max-width:640px){body{padding-bottom:calc(68px + env(safe-area-inset-bottom))}.topbar{height:calc(52px + env(safe-area-inset-top));padding:env(safe-area-inset-top) 14px 0}.topbar-meta{display:none}.brand{font-size:15px}.board-nav{position:fixed;left:0;right:0;bottom:0;z-index:50;width:auto;margin:0;padding:6px 8px calc(6px + env(safe-area-inset-bottom));border-width:1px 0 0;border-radius:0;background:#0e1f1c;box-shadow:0 -10px 28px rgba(0,0,0,.28)}.board-nav button{min-height:42px;padding:3px;font-size:10px}main{width:calc(100% - 16px);padding-top:10px}.condition-heading,.board-heading{align-items:flex-start;margin-bottom:9px}.condition-heading h1,.board-heading h2{font-size:22px}.condition-heading>button{min-height:38px;padding-inline:13px}.board-heading>p{display:none}.controls-panel{padding:9px;gap:7px}.selector-section{padding:10px}.matchup-row,.selector-row.matchup-row{grid-template-columns:1fr 1fr}.role-control{grid-column:1/-1}.count-row{grid-template-columns:1fr 1fr}.game-row{grid-template-columns:1fr 1fr}.choice-row{height:46px}.choice-row button{font-size:12px}.lamp-row{height:46px}.lamp-row button{width:43px;height:43px}.quick-result{padding:11px}.quick-context strong{width:100%;font-size:12px}.quick-grid{grid-template-columns:repeat(2,1fr)}.answer-grid{grid-template-columns:repeat(2,1fr);gap:7px}.answer-card{min-height:125px;padding:13px}.answer-card strong{font-size:15px}.answer-card b{font-size:22px}.answer-card p{font-size:9px}.pitch-card-grid{grid-template-columns:repeat(2,1fr)}.pitch-grid{grid-template-columns:repeat(5,1fr);gap:5px}.pitch-grid button{min-height:48px;padding:6px 3px}.pitch-grid button small{font-size:7px}.evidence-card{padding:14px}.evidence-card h3{font-size:17px}.evidence-metrics{grid-template-columns:repeat(2,1fr)}.sequence-change-panel{padding:12px}.sequence-change-row{grid-template-columns:72px 1fr 55px;gap:7px}.sequence-change-row>small{grid-column:1/-1;text-align:left;padding-left:79px}.pitch-card-heading{display:block}.pitch-card-heading>p{margin-top:3px}.stats-overview div{padding:12px}.stats-overview strong{font-size:17px}.raw-stat-panel{padding:11px}.outcome-row{grid-template-columns:78px 1fr 45px}.stats-board .method{display:block;padding-top:22px}.stats-board .method-grid{margin-top:12px}body:not(.show-details) #sequence,body:not(.show-details) #sequence~section,body:not(.show-details) footer{display:block}.board-view[hidden]{display:none!important}footer{display:flex!important;padding-bottom:16px}}
+@media(max-width:390px){.choice-row button{font-size:11px;padding-inline:4px}.lamp-row button{width:39px;height:39px}.quick-grid strong{font-size:11px}.answer-grid{grid-template-columns:1fr 1fr}.pitch-card-stats{grid-template-columns:1fr}.sequence-change-row>small{padding-left:0}}
+
 </style>
   </head>
   <body>
     <div class="glow glow-one"></div><div class="glow glow-two"></div>
     <header class="topbar">
-      <a class="brand" href="#top" aria-label="피치 리더 홈"><span class="brand-mark">⚾</span><span>피치 리더</span></a>
-      <nav aria-label="주요 화면"><a href="#situation">상황</a><a href="#sequence">직전 공</a><a href="#location">위치</a><a href="#method">기준</a></nav>
+      <div class="brand" aria-label="피치 리더"><span class="brand-mark">⚾</span><span>피치 리더</span></div>
+      <span class="topbar-meta">MLB STATCAST · 2022–2026.07.31</span>
     </header>
 
+    <nav class="board-nav" aria-label="분석판 선택">
+      <button type="button" data-board-target="next" class="active">다음공판</button>
+      <button type="button" data-board-target="sequence">직전공판</button>
+      <button type="button" data-board-target="location">위치판</button>
+      <button type="button" data-board-target="stats">통계판</button>
+    </nav>
+
     <main id="top">
-      <section class="hero">
-        <div class="eyebrow"><span></span> MLB STATCAST · 2022–2026.07.31</div>
-        <h1>상황을 읽고,<br /><em>다음 공</em>을 본다</h1>
-        <p>최소한의 기본확률을 먼저 보여주고, 직전 구종·결과와 현재 경기 상황이 그 확률을 얼마나 바꾸는지 계산합니다.</p>
-        <div class="hero-stats" aria-label="분석 자료 요약">
-          <div><strong id="stat-pitches">—</strong><span>분석 투구</span></div>
-          <div><strong id="stat-pairs">—</strong><span>핵심 연속투구</span></div>
-          <div><strong id="stat-games">—</strong><span>정규시즌 경기</span></div>
+      <section class="condition-deck" id="situation" aria-labelledby="situation-title">
+        <div class="condition-heading"><div><span class="step">공통 조건</span><h1 id="situation-title">지금 상황을 고르세요</h1></div><button type="button" id="reset-live">새 타석</button></div>
+        <div class="panel controls-panel">
+          <div class="selector-section matchup-selector">
+            <strong class="selector-title">좌우 · 역할</strong>
+            <div class="selector-row matchup-row">
+              <div class="control-group"><label>투수</label><div class="choice-row" id="pitcher-hand"><button data-value="R" class="active">우투</button><button data-value="L">좌투</button></div></div>
+              <div class="control-group"><label>타자</label><div class="choice-row" id="batter-hand"><button data-value="R" class="active">우타</button><button data-value="L">좌타</button></div></div>
+              <div class="control-group role-control"><label>역할</label><div class="choice-row" id="pitcher-role"><button data-value="ALL" class="active">전체</button><button data-value="SP">선발</button><button data-value="RP">불펜</button></div></div>
+            </div>
+          </div>
+          <div class="selector-section count-selector">
+            <strong class="selector-title">현재 카운트</strong>
+            <div class="selector-row count-row">
+              <div class="control-group count-group"><label>볼</label><div class="lamp-row" id="balls" aria-label="현재 볼 카운트"></div></div>
+              <div class="control-group count-group"><label>스트라이크</label><div class="lamp-row strikes" id="strikes" aria-label="현재 스트라이크 카운트"></div></div>
+            </div>
+          </div>
+          <div class="selector-section game-selector">
+            <strong class="selector-title">경기 상황</strong>
+            <div class="selector-row game-row">
+              <div class="control-group"><label for="inning">이닝</label><select id="inning"><option value="ALL">전체</option><option value="1-3">1~3회</option><option value="4-6">4~6회</option><option value="7-8">7~8회</option><option value="9+">9회 이후</option></select></div>
+              <div class="control-group"><label for="outs">아웃</label><select id="outs"><option value="ALL">전체</option><option value="0">0아웃</option><option value="1">1아웃</option><option value="2">2아웃</option></select></div>
+              <div class="control-group"><label for="runners">주자</label><select id="runners"><option value="ALL">전체</option><option value="none">주자 없음</option><option value="first">1루 중심</option><option value="risp">득점권</option></select></div>
+              <div class="control-group"><label for="pitch-count">투구수</label><select id="pitch-count"><option value="ALL">전체</option><option value="1-30">1~30구</option><option value="31-60">31~60구</option><option value="61-90">61~90구</option><option value="91+">91구 이상</option></select></div>
+            </div>
+          </div>
         </div>
       </section>
 
-      <section class="app-section" id="situation" aria-labelledby="situation-title">
-        <div class="section-heading"><div><span class="step">01 · 기본 조건</span><h2 id="situation-title">지금의 승부를 고르세요</h2></div><p>좌우 조합과 카운트가 기본확률을 만듭니다. 선발·불펜은 실제 등판 순서로 구분했습니다.</p></div>
-        <div class="panel controls-panel">
-          <div class="control-group"><label>투수</label><div class="choice-row" id="pitcher-hand"><button data-value="R" class="active">우투</button><button data-value="L">좌투</button></div></div>
-          <div class="control-group"><label>타자</label><div class="choice-row" id="batter-hand"><button data-value="R" class="active">우타</button><button data-value="L">좌타</button></div></div>
-          <div class="control-group"><label>역할</label><div class="choice-row" id="pitcher-role"><button data-value="ALL" class="active">전체</button><button data-value="SP">선발</button><button data-value="RP">불펜</button></div></div>
-          <div class="control-group count-group"><label>현재 볼</label><div class="lamp-row" id="balls" aria-label="현재 볼 카운트"></div></div>
-          <div class="control-group count-group"><label>현재 스트라이크</label><div class="lamp-row strikes" id="strikes" aria-label="현재 스트라이크 카운트"></div></div>
-          <div class="control-group"><label for="inning">이닝</label><select id="inning"><option value="ALL">전체</option><option value="1-3">1~3회</option><option value="4-6">4~6회</option><option value="7-8">7~8회</option><option value="9+">9회 이후</option></select></div>
-          <div class="control-group"><label for="outs">아웃</label><select id="outs"><option value="ALL">전체</option><option value="0">0아웃</option><option value="1">1아웃</option><option value="2">2아웃</option></select></div>
-          <div class="control-group"><label for="runners">주자</label><select id="runners"><option value="ALL">전체</option><option value="none">주자 없음</option><option value="first">1루 중심</option><option value="risp">득점권</option></select></div>
-          <div class="control-group"><label for="pitch-count">투수 누적 투구수</label><select id="pitch-count"><option value="ALL">전체</option><option value="1-30">1~30구</option><option value="31-60">31~60구</option><option value="61-90">61~90구</option><option value="91+">91구 이상</option></select></div>
-          <div class="control-group live-sequence-control"><label class="live-sequence-label"><input type="checkbox" id="live-sequence-toggle" /> 직전 공</label><div class="live-sequence-selects"><select id="live-prev-pitch" aria-label="빠른 직전 구종"><option value="FF">포심</option><option value="SI">싱커</option><option value="FC">커터</option><option value="SL">슬라이더</option><option value="ST">스위퍼</option><option value="CU">커브</option><option value="KC">너클커브</option><option value="CH" selected>체인지업</option><option value="FS">스플리터</option><option value="SV">슬러브</option></select><select id="live-prev-outcome" aria-label="빠른 직전 결과"><option value="루킹">루킹</option><option value="헛스윙" selected>헛스윙</option><option value="파울">파울</option></select></div></div>
-        </div>
-        <aside class="quick-result" aria-live="polite" aria-label="실전 빠른 결과">
-          <div class="quick-context"><div><span>⚡ 실전 빠른 보기</span><strong id="quick-state">—</strong><small id="quick-sample">—</small></div><div class="quick-actions"><button type="button" id="reset-live">새 타석</button><button type="button" id="toggle-details" class="detail-toggle" aria-expanded="false">상세</button></div></div>
+      <section class="board-view active" id="next-board" data-board="next" aria-labelledby="answer-title">
+        <div class="board-heading"><div><span class="step">다음공판</span><h2 id="answer-title">지금 가장 가능성 높은 다음 공</h2></div><p>상황 보정과 직전 공 설정을 반영한 계산판입니다.</p></div>
+        <aside class="quick-result" aria-live="polite" aria-label="다음 공 빠른 결과">
+          <div class="quick-context"><div><span>⚡ 다음 공 요약</span><strong id="quick-state">—</strong><small id="quick-sample">—</small></div></div>
           <div class="quick-grid">
             <div><span>많은 공</span><strong id="quick-most">—</strong></div>
             <div><span>적은 공</span><strong id="quick-least">—</strong></div>
@@ -79,8 +100,8 @@ button:focus-visible,select:focus-visible,a:focus-visible{outline:2px solid var(
         </aside>
       </section>
 
-      <section class="app-section" id="sequence" aria-labelledby="sequence-title">
-        <div class="section-heading"><div><span class="step">02 · 직전 공</span><h2 id="sequence-title">무슨 공에 어떻게 반응했나요?</h2></div><p>지금 화면의 카운트가 된 직전 공과 결과를 입력합니다.</p></div>
+      <section class="board-view" id="sequence" data-board="sequence" aria-labelledby="sequence-title" hidden>
+        <div class="board-heading"><div><span class="step">직전공판</span><h2 id="sequence-title">방금 공이 다음 선택을 어떻게 바꿨나</h2></div><p>직전 결과의 정확 표본과 자동 확장 표본을 나눠서 봅니다.</p></div>
         <div class="panel sequence-panel">
           <div class="sequence-switch"><label class="toggle"><input type="checkbox" id="sequence-toggle" /><span></span>직전 공 반영</label><div class="status-chip" id="fallback-chip">상황 조건 사용</div></div>
           <div class="control-group"><label>직전 결과</label><div class="choice-row triple" id="previous-outcome"><button data-value="루킹">루킹</button><button data-value="헛스윙" class="active">헛스윙</button><button data-value="파울">파울</button></div></div>
@@ -90,10 +111,14 @@ button:focus-visible,select:focus-visible,a:focus-visible{outline:2px solid var(
           <div><span class="eyebrow-small">현재 계산</span><h3 id="state-title">우투수·우타자 0-1 · 체인지업 헛스윙 이후</h3><p id="state-note">기본확률과 직전 공을 비교합니다.</p></div>
           <div class="evidence-metrics"><div><span id="base-sample-label">현재 카운트 기본 표본</span><strong id="base-sample">—</strong></div><div><span>정확한 직전 결과</span><strong id="sequence-sample">—</strong></div><div><span>계산에 사용한 직전 표본</span><strong id="sequence-used-sample">—</strong></div><div><span>적용 단계</span><strong id="applied-level">—</strong></div></div>
         </article>
+        <article class="panel sequence-change-panel">
+          <div class="pitch-card-heading"><div><span class="eyebrow-small">직전 공 변화</span><h3>기본확률과 비교</h3></div><p>직전 공을 반영한 뒤 증가·감소한 구종입니다.</p></div>
+          <div class="sequence-change-list" id="sequence-change-list"></div>
+        </article>
       </section>
 
-      <section class="app-section" id="answer" aria-labelledby="answer-title">
-        <div class="section-heading compact"><div><span class="step">03 · 다음 수</span><h2 id="answer-title">많고 적은 공, 좋고 나쁜 공</h2></div><p>선택한 상황의 구종 빈도와 관측 득점가치를 따로 표시합니다.</p></div>
+      <section class="board-view active" id="answer" data-board="next" aria-labelledby="next-detail-title">
+        <div class="board-heading compact"><div><span class="step">다음 공 세부</span><h2 id="next-detail-title">많고 적은 공, 좋고 나쁜 공</h2></div><p>선택한 상황의 구종 빈도와 관측 득점가치를 표시합니다.</p></div>
         <div class="answer-grid">
           <article class="answer-card cyan"><span>가장 많이 나온 공</span><strong id="most-pitch">—</strong><b id="most-value">—</b><p id="most-note">현재 조건에서의 다음 구종 점유율</p></article>
           <article class="answer-card lime"><span>가장 적게 나온 공</span><strong id="least-pitch">—</strong><b id="least-value">—</b><p id="least-note">현재 조건에서의 다음 구종 점유율</p></article>
@@ -115,27 +140,38 @@ button:focus-visible,select:focus-visible,a:focus-visible{outline:2px solid var(
         <p class="disclaimer">확률과 상성은 관측 자료의 비교이며, 인과관계나 특정 선수의 최적 선택을 뜻하지 않습니다.</p>
       </section>
 
-      <section class="app-section" id="location" aria-labelledby="location-title">
-        <div class="section-heading compact"><div><span class="step">04 · 위치</span><h2 id="location-title">그 공은 어디로 왔나요?</h2></div><div class="pitch-tabs" id="zone-pitch"></div></div>
-        <div class="location-layout">
+      <section class="board-view" id="location" data-board="location" aria-labelledby="location-title" hidden>
+        <div class="board-heading compact"><div><span class="step">위치판</span><h2 id="location-title">선택한 구종은 어디로 오는가</h2></div><div class="pitch-tabs" id="zone-pitch"></div></div>
+        <div class="location-layout location-only">
           <article class="panel zone-panel"><div class="zone-caption"><span>포수 시점 · 13개 구역</span><strong id="zone-title">—</strong></div><div class="zone-wrap" id="zone-grid"></div><p id="zone-detail">구역을 누르면 확률과 표본을 보여줍니다.</p></article>
-          <article class="panel outcome-panel"><div class="zone-caption"><span>리그 전체 결과 지도</span><strong>어떤 구종이 그 결과를 만들었나</strong></div><div class="choice-row outcome-tabs" id="outcome-tabs"><button data-value="루킹">루킹</button><button data-value="헛스윙" class="active">헛스윙</button><button data-value="파울">파울</button><button data-value="안타">안타</button></div><div class="outcome-list" id="outcome-list"></div></article>
         </div>
       </section>
 
-      <section class="method" id="method">
-        <div><span class="step">계산 기준</span><h2>표본이 부족해도 기본확률은 남깁니다</h2></div>
-        <div class="method-grid"><article><strong>정확 결과</strong><span>루킹·헛스윙·파울을 먼저 따로 계산</span></article><article><strong>스트라이크 묶음</strong><span>정확 표본이 적을 때만 자동 확장</span></article><article><strong>직전 구종 전체</strong><span>그래도 적으면 결과만 내려놓고 계산</span></article><article><strong>기본확률</strong><span>희귀 상황도 숨기지 않고 넓은 표본으로 보정</span></article></div>
-        <p>3년 동안 거의 없고 경기 중요도도 낮은 조합을 채우기 위해 수집 기간을 억지로 늘리지 않습니다. 점수 차와 승리확률에 따른 ‘이미 기운 경기 제외’는 현재 저장 자료에 점수 열이 없어 다음 자료 갱신에서 추가합니다.</p>
+      <section class="board-view stats-board" id="stats" data-board="stats" aria-labelledby="stats-title" hidden>
+        <div class="board-heading"><div><span class="step">통계판</span><h2 id="stats-title">추측하지 않은 실제 관측 통계</h2></div><p>자동 확장이나 상황 보정 없이 자료에 기록된 값만 표시합니다.</p></div>
+        <div class="stats-overview" aria-label="분석 자료 요약">
+          <div><strong id="stat-pitches">—</strong><span>분석 투구</span></div>
+          <div><strong id="stat-pairs">—</strong><span>연속투구</span></div>
+          <div><strong id="stat-games">—</strong><span>정규시즌 경기</span></div>
+        </div>
+        <div class="stats-layout">
+          <article class="panel raw-stat-panel">
+            <div class="pitch-card-heading"><div><span class="eyebrow-small">기본 실측</span><h3 id="raw-baseline-title">현재 조건의 구종 통계</h3></div><p id="raw-baseline-note">보정하지 않은 실제 표본입니다.</p></div>
+            <div class="table-wrap"><table><thead><tr><th>구종</th><th>구수</th><th>비율</th><th>CSW</th><th>안타</th><th>RV</th><th>구속</th></tr></thead><tbody id="raw-baseline-table"></tbody></table></div>
+          </article>
+          <article class="panel raw-stat-panel">
+            <div class="pitch-card-heading"><div><span class="eyebrow-small">직전 공 정확 실측</span><h3 id="raw-sequence-title">직전 공 미적용</h3></div><p id="raw-sequence-note">루킹·헛스윙·파울을 합치지 않은 통계입니다.</p></div>
+            <div class="table-wrap"><table><thead><tr><th>다음 구종</th><th>구수</th><th>비율</th><th>CSW</th><th>안타</th><th>RV</th><th>구속</th></tr></thead><tbody id="raw-sequence-table"></tbody></table></div>
+          </article>
+        </div>
+        <article class="panel outcome-panel"><div class="zone-caption"><span>리그 전체 결과 통계</span><strong>그 결과는 어떤 구종에서 나왔나</strong></div><div class="choice-row outcome-tabs" id="outcome-tabs"><button data-value="루킹">루킹</button><button data-value="헛스윙" class="active">헛스윙</button><button data-value="파울">파울</button><button data-value="안타">안타</button></div><div class="outcome-list" id="outcome-list"></div></article>
+        <div class="method" id="method">
+          <div><span class="step">계산판의 기준</span><h2>표본이 부족해도 기본확률은 남깁니다</h2></div>
+          <div class="method-grid"><article><strong>정확 결과</strong><span>루킹·헛스윙·파울을 먼저 따로 계산</span></article><article><strong>스트라이크 묶음</strong><span>정확 표본이 적을 때만 자동 확장</span></article><article><strong>직전 구종 전체</strong><span>그래도 적으면 결과만 내려놓고 계산</span></article><article><strong>기본확률</strong><span>희귀 상황도 숨기지 않고 넓은 표본으로 보정</span></article></div>
+          <p>통계판은 이 보정을 적용하지 않습니다. 점수 차와 승리확률에 따른 ‘이미 기운 경기 제외’는 현재 저장 자료에 점수 열이 없어 다음 자료 갱신에서 추가합니다.</p>
+        </div>
       </section>
     </main>
-
-    <nav class="mobile-nav" aria-label="빠른 화면 이동">
-      <a href="#situation" data-view="quick" class="active">빠른판</a>
-      <a href="#answer" data-view="detail">다음 공</a>
-      <a href="#sequence" data-view="detail">직전 공</a>
-      <a href="#location" data-view="detail">위치</a>
-    </nav>
 
     <footer><span>피치 리더</span><span>2022–2026.07.31 MLB Statcast · 2026 시즌 진행 중</span></footer>
     <script>
@@ -150,7 +186,7 @@ window.CONTEXT_DATA = {"meta":{"seasons":"2022–2026","years":[2022,2023,2024,2
     p_throws: "R", stand: "R", role: "ALL", balls: 0, strikes: 0,
     inning: "ALL", outs: "ALL", base: "ALL", pitchCount: "ALL",
     useSequence: false, prevPitch: "CH", prevOutcome: "헛스윙",
-    zonePitch: "CH", zoneSelected: null, outcome: "헛스윙",
+    zonePitch: "CH", zoneSelected: null, outcome: "헛스윙", view: "next",
   };
   const $ = (id) => document.getElementById(id);
   const fmt = new Intl.NumberFormat("ko-KR");
@@ -169,6 +205,11 @@ window.CONTEXT_DATA = {"meta":{"seasons":"2022–2026","years":[2022,2023,2024,2
       const button = event.target.closest("button[data-value]");
       if (!button) return;
       state[key] = button.dataset.value;
+      if (key === "prevOutcome") {
+        state.useSequence = true;
+        $("sequence-toggle").checked = true;
+        $("previous-outcome").closest(".sequence-panel").classList.remove("sequence-off");
+      }
       root.querySelectorAll("button").forEach((item) => item.classList.toggle("active", item === button));
       state.zoneSelected = null;
       render();
@@ -207,48 +248,20 @@ window.CONTEXT_DATA = {"meta":{"seasons":"2022–2026","years":[2022,2023,2024,2
   $("sequence-toggle").addEventListener("change", (event) => {
     state.useSequence = event.target.checked;
     $("previous-outcome").closest(".sequence-panel").classList.toggle("sequence-off", !state.useSequence);
-    syncLiveSequenceUi();
     render();
   });
 
-  function syncLiveSequenceUi() {
-    $("live-sequence-toggle").checked = state.useSequence;
-    $("live-prev-pitch").value = state.prevPitch;
-    $("live-prev-outcome").value = state.prevOutcome;
-    $("live-prev-pitch").disabled = !state.useSequence;
-    $("live-prev-outcome").disabled = !state.useSequence;
-    $("live-sequence-toggle").closest(".live-sequence-control").classList.toggle("enabled", state.useSequence);
+  function switchBoard(view) {
+    state.view = view;
+    document.querySelectorAll("[data-board]").forEach((panel) => {
+      const active = panel.dataset.board === view;
+      panel.hidden = !active;
+      panel.classList.toggle("active", active);
+    });
+    document.querySelectorAll(".board-nav button").forEach((button) => button.classList.toggle("active", button.dataset.boardTarget === view));
+    window.scrollTo({ top: 0, behavior: "auto" });
   }
-
-  $("live-sequence-toggle").addEventListener("change", (event) => {
-    state.useSequence = event.target.checked;
-    $("sequence-toggle").checked = state.useSequence;
-    $("previous-outcome").closest(".sequence-panel").classList.toggle("sequence-off", !state.useSequence);
-    syncLiveSequenceUi();
-    render();
-  });
-  $("live-prev-pitch").addEventListener("change", (event) => {
-    state.prevPitch = event.target.value;
-    $("previous-pitch").querySelectorAll("button[data-value]").forEach((button) => button.classList.toggle("active", button.dataset.value === state.prevPitch));
-    render();
-  });
-  $("live-prev-outcome").addEventListener("change", (event) => {
-    state.prevOutcome = event.target.value;
-    $("previous-outcome").querySelectorAll("button[data-value]").forEach((button) => button.classList.toggle("active", button.dataset.value === state.prevOutcome));
-    render();
-  });
-  $("toggle-details").addEventListener("click", () => {
-    const expanded = document.body.classList.toggle("show-details");
-    $("toggle-details").setAttribute("aria-expanded", String(expanded));
-    $("toggle-details").textContent = expanded ? "간단" : "상세";
-  });
-  document.querySelectorAll(".mobile-nav a").forEach((link) => link.addEventListener("click", () => {
-    const detailed = link.dataset.view === "detail";
-    document.body.classList.toggle("show-details", detailed);
-    $("toggle-details").setAttribute("aria-expanded", String(detailed));
-    $("toggle-details").textContent = detailed ? "간단" : "상세";
-    document.querySelectorAll(".mobile-nav a").forEach((item) => item.classList.toggle("active", item === link));
-  }));
+  document.querySelectorAll(".board-nav button").forEach((button) => button.addEventListener("click", () => switchBoard(button.dataset.boardTarget)));
 
   function syncControls() {
     [["pitcher-hand", state.p_throws], ["batter-hand", state.stand], ["pitcher-role", state.role], ["previous-outcome", state.prevOutcome], ["outcome-tabs", state.outcome]].forEach(([id, value]) => {
@@ -262,7 +275,6 @@ window.CONTEXT_DATA = {"meta":{"seasons":"2022–2026","years":[2022,2023,2024,2
     $("runners").value = state.base;
     $("pitch-count").value = state.pitchCount;
     $("sequence-toggle").checked = state.useSequence;
-    syncLiveSequenceUi();
     $("previous-pitch").querySelectorAll("button[data-value]").forEach((button) => button.classList.toggle("active", button.dataset.value === state.prevPitch));
     $("zone-pitch").querySelectorAll("button[data-value]").forEach((button) => button.classList.toggle("active", button.dataset.value === state.zonePitch));
   }
@@ -272,9 +284,10 @@ window.CONTEXT_DATA = {"meta":{"seasons":"2022–2026","years":[2022,2023,2024,2
       p_throws: "R", stand: "R", role: "ALL", balls: 0, strikes: 0,
       inning: "ALL", outs: "ALL", base: "ALL", pitchCount: "ALL",
       useSequence: false, prevPitch: "CH", prevOutcome: "헛스윙",
-      zonePitch: "CH", zoneSelected: null,
+      zonePitch: "CH", zoneSelected: null, view: "next",
     });
     syncControls();
+    switchBoard("next");
     render();
   });
 
@@ -288,6 +301,9 @@ window.CONTEXT_DATA = {"meta":{"seasons":"2022–2026","years":[2022,2023,2024,2
     previousButton.innerHTML = `<strong>${code}</strong><small>${pitchName(code)}</small>`;
     previousButton.addEventListener("click", () => {
       state.prevPitch = code;
+      state.useSequence = true;
+      $("sequence-toggle").checked = true;
+      $("previous-outcome").closest(".sequence-panel").classList.remove("sequence-off");
       previousPitch.querySelectorAll("button").forEach((item) => item.classList.toggle("active", item === previousButton));
       render();
     });
@@ -514,7 +530,6 @@ window.CONTEXT_DATA = {"meta":{"seasons":"2022–2026","years":[2022,2023,2024,2
   }
 
   function render() {
-    syncLiveSequenceUi();
     const calc = calculation();
     const hand = `${state.p_throws === "R" ? "우투" : "좌투"}수·${state.stand === "R" ? "우타" : "좌타"}자`;
     const role = state.role === "SP" ? "선발" : state.role === "RP" ? "불펜" : "전체 역할";
@@ -583,8 +598,10 @@ window.CONTEXT_DATA = {"meta":{"seasons":"2022–2026","years":[2022,2023,2024,2
 
     renderProbability(calc);
     renderPitchCards(calc);
+    renderSequenceBoard(calc);
     renderZone();
     renderOutcome();
+    renderRawStats();
   }
 
   function renderProbability(calc) {
@@ -606,6 +623,36 @@ window.CONTEXT_DATA = {"meta":{"seasons":"2022–2026","years":[2022,2023,2024,2
       const support = row.n >= 1000 ? "충분" : row.n >= 250 ? "관찰" : row.n > 0 ? "희귀" : "없음";
       return `<article class="pitch-card ${row.n < 250 ? "thin" : ""}"><header><div><strong>${row.code}</strong><span>${pitchName(row.code)}</span></div><b>${pct(row.p)}</b></header><div class="pitch-card-stats"><span>변화 <b class="${row.delta > 0 ? "positive" : row.delta < 0 ? "negative" : ""}">${pp(row.delta)}</b></span><span>CSW <b>${pct(row.csw)}</b></span><span>안타 <b>${pct(row.hit)}</b></span><span>RV <b>${row.rv == null ? "—" : Number(row.rv).toFixed(3)}</b></span><span>구속 <b>${row.mph == null ? "—" : Number(row.mph).toFixed(1)}</b></span><span>표본 <b>${fmt.format(row.n)}</b></span></div><small class="pitch-card-foot">${support}</small></article>`;
     }).join("");
+  }
+
+  function renderSequenceBoard(calc) {
+    if (!state.useSequence || !calc.sequenceN) {
+      $("sequence-change-list").innerHTML = '<div class="empty-board">직전 구종이나 결과를 누르면 자동으로 반영됩니다.</div>';
+      return;
+    }
+    const rows = data.pitchOrder.map((code) => {
+      const exact = calc.sequenceExactRows.find((row) => row.pitch === code);
+      const used = calc.sequenceRows.find((row) => row.pitch === code);
+      return { code, base: calc.base[code], after: calc.sequence[code], delta: calc.sequence[code] - calc.base[code], exactN: Number(exact?.n || 0), usedN: Number(used?.n || 0) };
+    }).sort((a, b) => Math.abs(b.delta) - Math.abs(a.delta));
+    const max = Math.max(...rows.map((row) => Math.abs(row.delta)), 0.01);
+    $("sequence-change-list").innerHTML = rows.map((row) => `<div class="sequence-change-row"><div><strong>${row.code}</strong><span>${pitchName(row.code)}</span></div><div class="change-track"><i class="${row.delta >= 0 ? "up" : "down"}" style="width:${Math.max(3, Math.abs(row.delta) / max * 100)}%"></i></div><b class="${row.delta > 0 ? "positive" : row.delta < 0 ? "negative" : ""}">${pp(row.delta)}</b><small>정확 ${fmt.format(row.exactN)} · 계산 ${fmt.format(row.usedN)}</small></div>`).join("");
+  }
+
+  function renderRawStats() {
+    const hand = `${state.p_throws === "R" ? "우투" : "좌투"}·${state.stand === "R" ? "우타" : "좌타"}`;
+    const role = state.role === "SP" ? "선발" : state.role === "RP" ? "불펜" : "전체 역할";
+    const baseline = data.baseline.filter((row) => coreMatch(row, state.role)).sort((a, b) => b.n - a.n);
+    const baselineN = baseline.reduce((sum, row) => sum + Number(row.n || 0), 0);
+    $("raw-baseline-title").textContent = `${hand} · ${role} · ${cnt()}`;
+    $("raw-baseline-note").textContent = `${fmt.format(baselineN)}구 · 상황 보정 없는 실측`;
+    $("raw-baseline-table").innerHTML = baseline.length ? baseline.map((row) => `<tr><td class="pitch-cell">${row.pitch}<small>${pitchName(row.pitch)}</small></td><td>${fmt.format(row.n)}</td><td>${pct(row.p)}</td><td>${pct(row.csw)}</td><td>${pct(row.hit)}</td><td>${row.rv == null ? "—" : Number(row.rv).toFixed(4)}</td><td>${row.mph == null ? "—" : Number(row.mph).toFixed(1)}</td></tr>`).join("") : '<tr><td colspan="7">정확 조건의 표본이 없습니다.</td></tr>';
+
+    const exact = aggregateFor(data.sequence, { prev_pitch: state.prevPitch, prev_outcome: state.prevOutcome }, state.role).sort((a, b) => b.n - a.n);
+    const exactN = exact[0]?.state_n || 0;
+    $("raw-sequence-title").textContent = `${pitchName(state.prevPitch)} ${state.prevOutcome} 이후`;
+    $("raw-sequence-note").textContent = `${fmt.format(exactN)}구 · 묶음·보정 없는 정확 실측`;
+    $("raw-sequence-table").innerHTML = exact.length ? exact.map((row) => `<tr><td class="pitch-cell">${row.pitch}<small>${pitchName(row.pitch)}</small></td><td>${fmt.format(row.n)}</td><td>${pct(row.p)}</td><td>${pct(row.csw)}</td><td>${pct(row.hit)}</td><td>${row.rv == null ? "—" : Number(row.rv).toFixed(4)}</td><td>${row.mph == null ? "—" : Number(row.mph).toFixed(1)}</td></tr>`).join("") : '<tr><td colspan="7">정확한 직전 공 표본이 없습니다.</td></tr>';
   }
 
   function renderZone() {
