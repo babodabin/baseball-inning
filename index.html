@@ -118,6 +118,11 @@ footer{border-top-color:rgba(31,93,80,.12)}
 
 @media(max-width:390px){.brand-name{font-size:23px}.brand-subtitle{font-size:9px}.board-nav button strong{font-size:10px}.board-nav button small{font-size:6.5px}}
 
+/* Clear chart and metric titles */
+.probability-chart,.probability-table-panel{overflow:hidden}.probability-chart{padding:18px}.probability-table-panel{padding:18px 0 0}.metric-heading{display:flex;align-items:end;justify-content:space-between;gap:18px}.metric-heading h3{margin:3px 0 0;font-size:19px;letter-spacing:-.035em}.metric-heading>p{max-width:320px;margin:0;color:var(--muted);text-align:right;font-size:9px}.metric-table-heading{padding:0 18px 13px;border-bottom:1px solid var(--line)}.metric-key{display:flex;justify-content:flex-end;gap:6px;flex-wrap:wrap}.metric-key span{padding:6px 8px;border-radius:8px;background:#eef8f5;color:#58746d;font-size:8px}.metric-key b{color:#087f77}.probability-chart .probability-bars{padding:13px 0 0;background:transparent;box-shadow:none}.prob-row{grid-template-columns:112px 1fr 48px}.prob-row strong{display:flex;align-items:baseline;gap:4px}.prob-row strong small{color:var(--muted);font-size:8px;font-weight:700}.pitch-card header>div{display:flex;align-items:baseline;gap:4px}.pitch-card header span{white-space:nowrap}.probability-table-panel .table-wrap{border-radius:0}.probability-table-panel th{top:0}.pitch-cell small{font-weight:650}
+
+@media(max-width:640px){.probability-chart{padding:13px}.probability-table-panel{padding-top:13px}.metric-heading{align-items:flex-start;flex-direction:column;gap:5px}.metric-heading>p{text-align:left}.metric-table-heading{padding:0 12px 10px}.metric-key{justify-content:flex-start}.prob-row{grid-template-columns:88px 1fr 42px;gap:7px}.prob-row strong{font-size:10px}.prob-row strong small{font-size:7px}}
+
 </style>
   </head>
   <body>
@@ -208,13 +213,19 @@ footer{border-top-color:rgba(31,93,80,.12)}
         </div>
 
         <article class="panel pitch-card-panel" aria-labelledby="pitch-card-title">
-          <div class="pitch-card-heading"><div><span class="eyebrow-small">빠른 구종 카드</span><h3 id="pitch-card-title">현재 상황의 모든 구종</h3></div><p>확률·CSW·안타·득점가치·구속과 실제 표본을 함께 봅니다.</p></div>
+          <div class="pitch-card-heading"><div><span class="eyebrow-small">빠른 구종 카드</span><h3 id="pitch-card-title">현재 상황의 모든 구종</h3></div><p>CSW는 루킹+헛스윙 비율, 상황 RV는 투수 관점의 관측 득점가치입니다.</p></div>
           <div class="pitch-card-grid" id="pitch-card-grid"></div>
         </article>
 
         <div class="probability-layout">
-          <div class="panel probability-bars" id="probability-bars" aria-label="다음 구종 확률 막대그래프"></div>
-          <div class="panel table-wrap"><table><thead><tr><th>다음 구종</th><th>기본확률</th><th>직전 공 반영</th><th>현재 상황</th><th>변화</th><th>CSW</th><th>안타</th><th>상황 RV</th><th>평균 구속</th><th>표본</th></tr></thead><tbody id="probability-table"></tbody></table></div>
+          <article class="panel probability-chart" aria-labelledby="current-probability-title">
+            <div class="metric-heading"><div><span class="eyebrow-small">최종 확률</span><h3 id="current-probability-title">현재 다음 공 확률</h3></div><p>상황과 직전 공을 모두 반영한 뒤의 확률이며, 전체 합계는 100%입니다.</p></div>
+            <div class="probability-bars" id="probability-bars" aria-label="현재 다음 구종 확률 막대그래프"></div>
+          </article>
+          <article class="panel probability-table-panel" aria-labelledby="metric-table-title">
+            <div class="metric-heading metric-table-heading"><div><span class="eyebrow-small">세부 지표</span><h3 id="metric-table-title">구종별 확률과 결과</h3></div><div class="metric-key"><span><b>CSW</b> 루킹+헛스윙 비율</span><span><b>상황 RV</b> 투수 관점 득점가치 · 낮을수록 좋음</span></div></div>
+            <div class="table-wrap"><table><thead><tr><th>다음 구종</th><th>기본확률</th><th>직전 공 반영</th><th>현재 상황</th><th>변화</th><th>CSW</th><th>안타</th><th>상황 RV</th><th>평균 구속</th><th>표본</th></tr></thead><tbody id="probability-table"></tbody></table></div>
+          </article>
         </div>
         <p class="disclaimer">확률과 상성은 관측 자료의 비교이며, 인과관계나 특정 선수의 최적 선택을 뜻하지 않습니다.</p>
       </section>
@@ -701,8 +712,8 @@ window.CONTEXT_DATA = {"meta":{"seasons":"2022–2026","years":[2022,2023,2024,2
       return { code, base: calc.base[code], sequence: calc.sequence[code], current: calc.current[code], delta: calc.current[code] - calc.base[code], csw: metric?.csw, hit: metric?.hit, rv: metric?.rv, mph: metric?.mph, n: metric?.n || 0 };
     }).sort((a, b) => b.current - a.current);
     const max = Math.max(...rows.map((row) => row.current), 0.01);
-    $("probability-bars").innerHTML = rows.map((row) => `<div class="prob-row"><strong>${row.code}</strong><div class="prob-track"><div class="prob-fill" style="width:${(row.current / max) * 100}%"></div></div><span>${pct(row.current)}</span></div>`).join("");
-    $("probability-table").innerHTML = rows.map((row) => `<tr><td class="pitch-cell">${row.code}<small>${pitchName(row.code)}</small></td><td>${pct(row.base)}</td><td>${pct(row.sequence)}</td><td><strong>${pct(row.current)}</strong></td><td class="${row.delta > 0 ? "positive" : row.delta < 0 ? "negative" : ""}">${pp(row.delta)}</td><td>${pct(row.csw)}</td><td>${pct(row.hit)}</td><td>${row.rv == null ? "—" : Number(row.rv).toFixed(4)}</td><td>${row.mph == null ? "—" : `${Number(row.mph).toFixed(1)} mph`}</td><td>${fmt.format(row.n)}</td></tr>`).join("");
+    $("probability-bars").innerHTML = rows.map((row) => `<div class="prob-row"><strong>${row.code}<small>· ${pitchName(row.code)}</small></strong><div class="prob-track"><div class="prob-fill" style="width:${(row.current / max) * 100}%"></div></div><span>${pct(row.current)}</span></div>`).join("");
+    $("probability-table").innerHTML = rows.map((row) => `<tr><td class="pitch-cell">${row.code}<small>· ${pitchName(row.code)}</small></td><td>${pct(row.base)}</td><td>${pct(row.sequence)}</td><td><strong>${pct(row.current)}</strong></td><td class="${row.delta > 0 ? "positive" : row.delta < 0 ? "negative" : ""}">${pp(row.delta)}</td><td>${pct(row.csw)}</td><td>${pct(row.hit)}</td><td>${row.rv == null ? "—" : Number(row.rv).toFixed(4)}</td><td>${row.mph == null ? "—" : `${Number(row.mph).toFixed(1)} mph`}</td><td>${fmt.format(row.n)}</td></tr>`).join("");
   }
 
   function renderPitchCards(calc) {
@@ -712,7 +723,7 @@ window.CONTEXT_DATA = {"meta":{"seasons":"2022–2026","years":[2022,2023,2024,2
     }).sort((a, b) => b.p - a.p);
     $("pitch-card-grid").innerHTML = rows.map((row) => {
       const support = row.n >= 1000 ? "충분" : row.n >= 250 ? "관찰" : row.n > 0 ? "희귀" : "없음";
-      return `<article class="pitch-card ${row.n < 250 ? "thin" : ""}"><header><div><strong>${row.code}</strong><span>${pitchName(row.code)}</span></div><b>${pct(row.p)}</b></header><div class="pitch-card-stats"><span>변화 <b class="${row.delta > 0 ? "positive" : row.delta < 0 ? "negative" : ""}">${pp(row.delta)}</b></span><span>CSW <b>${pct(row.csw)}</b></span><span>안타 <b>${pct(row.hit)}</b></span><span>RV <b>${row.rv == null ? "—" : Number(row.rv).toFixed(3)}</b></span><span>구속 <b>${row.mph == null ? "—" : Number(row.mph).toFixed(1)}</b></span><span>표본 <b>${fmt.format(row.n)}</b></span></div><small class="pitch-card-foot">${support}</small></article>`;
+      return `<article class="pitch-card ${row.n < 250 ? "thin" : ""}"><header><div><strong>${row.code}</strong><span>· ${pitchName(row.code)}</span></div><b>${pct(row.p)}</b></header><div class="pitch-card-stats"><span>변화 <b class="${row.delta > 0 ? "positive" : row.delta < 0 ? "negative" : ""}">${pp(row.delta)}</b></span><span>CSW <b>${pct(row.csw)}</b></span><span>안타 <b>${pct(row.hit)}</b></span><span>상황 RV <b>${row.rv == null ? "—" : Number(row.rv).toFixed(3)}</b></span><span>구속 <b>${row.mph == null ? "—" : Number(row.mph).toFixed(1)}</b></span><span>표본 <b>${fmt.format(row.n)}</b></span></div><small class="pitch-card-foot">${support}</small></article>`;
     }).join("");
   }
 
@@ -727,7 +738,7 @@ window.CONTEXT_DATA = {"meta":{"seasons":"2022–2026","years":[2022,2023,2024,2
       return { code, base: calc.base[code], after: calc.sequence[code], delta: calc.sequence[code] - calc.base[code], exactN: Number(exact?.n || 0), usedN: Number(used?.n || 0) };
     }).sort((a, b) => Math.abs(b.delta) - Math.abs(a.delta));
     const max = Math.max(...rows.map((row) => Math.abs(row.delta)), 0.01);
-    $("sequence-change-list").innerHTML = rows.map((row) => `<div class="sequence-change-row"><div><strong>${row.code}</strong><span>${pitchName(row.code)}</span></div><div class="change-track"><i class="${row.delta >= 0 ? "up" : "down"}" style="width:${Math.max(3, Math.abs(row.delta) / max * 100)}%"></i></div><b class="${row.delta > 0 ? "positive" : row.delta < 0 ? "negative" : ""}">${pp(row.delta)}</b><small>정확 ${fmt.format(row.exactN)} · 계산 ${fmt.format(row.usedN)}</small></div>`).join("");
+    $("sequence-change-list").innerHTML = rows.map((row) => `<div class="sequence-change-row"><div><strong>${row.code}</strong><span>· ${pitchName(row.code)}</span></div><div class="change-track"><i class="${row.delta >= 0 ? "up" : "down"}" style="width:${Math.max(3, Math.abs(row.delta) / max * 100)}%"></i></div><b class="${row.delta > 0 ? "positive" : row.delta < 0 ? "negative" : ""}">${pp(row.delta)}</b><small>정확 ${fmt.format(row.exactN)} · 계산 ${fmt.format(row.usedN)}</small></div>`).join("");
   }
 
   function renderRawStats() {
@@ -737,13 +748,13 @@ window.CONTEXT_DATA = {"meta":{"seasons":"2022–2026","years":[2022,2023,2024,2
     const baselineN = baseline.reduce((sum, row) => sum + Number(row.n || 0), 0);
     $("raw-baseline-title").textContent = `${hand} · ${role} · ${cnt()}`;
     $("raw-baseline-note").textContent = `${fmt.format(baselineN)}구 · 상황 보정 없는 실측`;
-    $("raw-baseline-table").innerHTML = baseline.length ? baseline.map((row) => `<tr><td class="pitch-cell">${row.pitch}<small>${pitchName(row.pitch)}</small></td><td>${fmt.format(row.n)}</td><td>${pct(row.p)}</td><td>${pct(row.csw)}</td><td>${pct(row.hit)}</td><td>${row.rv == null ? "—" : Number(row.rv).toFixed(4)}</td><td>${row.mph == null ? "—" : Number(row.mph).toFixed(1)}</td></tr>`).join("") : '<tr><td colspan="7">정확 조건의 표본이 없습니다.</td></tr>';
+    $("raw-baseline-table").innerHTML = baseline.length ? baseline.map((row) => `<tr><td class="pitch-cell">${row.pitch}<small>· ${pitchName(row.pitch)}</small></td><td>${fmt.format(row.n)}</td><td>${pct(row.p)}</td><td>${pct(row.csw)}</td><td>${pct(row.hit)}</td><td>${row.rv == null ? "—" : Number(row.rv).toFixed(4)}</td><td>${row.mph == null ? "—" : Number(row.mph).toFixed(1)}</td></tr>`).join("") : '<tr><td colspan="7">정확 조건의 표본이 없습니다.</td></tr>';
 
     const exact = aggregateFor(data.sequence, { prev_pitch: state.prevPitch, prev_outcome: state.prevOutcome }, state.role).sort((a, b) => b.n - a.n);
     const exactN = exact[0]?.state_n || 0;
     $("raw-sequence-title").textContent = `${pitchName(state.prevPitch)} ${state.prevOutcome} 이후`;
     $("raw-sequence-note").textContent = `${fmt.format(exactN)}구 · 묶음·보정 없는 정확 실측`;
-    $("raw-sequence-table").innerHTML = exact.length ? exact.map((row) => `<tr><td class="pitch-cell">${row.pitch}<small>${pitchName(row.pitch)}</small></td><td>${fmt.format(row.n)}</td><td>${pct(row.p)}</td><td>${pct(row.csw)}</td><td>${pct(row.hit)}</td><td>${row.rv == null ? "—" : Number(row.rv).toFixed(4)}</td><td>${row.mph == null ? "—" : Number(row.mph).toFixed(1)}</td></tr>`).join("") : '<tr><td colspan="7">정확한 직전 공 표본이 없습니다.</td></tr>';
+    $("raw-sequence-table").innerHTML = exact.length ? exact.map((row) => `<tr><td class="pitch-cell">${row.pitch}<small>· ${pitchName(row.pitch)}</small></td><td>${fmt.format(row.n)}</td><td>${pct(row.p)}</td><td>${pct(row.csw)}</td><td>${pct(row.hit)}</td><td>${row.rv == null ? "—" : Number(row.rv).toFixed(4)}</td><td>${row.mph == null ? "—" : Number(row.mph).toFixed(1)}</td></tr>`).join("") : '<tr><td colspan="7">정확한 직전 공 표본이 없습니다.</td></tr>';
   }
 
   function renderZone() {
