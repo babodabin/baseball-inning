@@ -195,7 +195,7 @@ footer{border-top-color:rgba(31,93,80,.12)}
 
 /* Clear next-pitch hierarchy and full game classroom */
 .next-answer-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin-top:10px}.next-answer-grid .answer-card{min-height:142px}.elevated-zone-slot{margin-top:14px}.elevated-zone-slot .location-module{margin-bottom:14px}.sequence-change-row{grid-template-columns:110px 76px minmax(100px,1fr) 66px 150px}.sequence-after{display:grid;gap:1px;text-align:right}.sequence-after small{color:var(--muted);font-size:7px}.sequence-after b{font-size:12px}
-.game-classroom{margin-bottom:12px;padding:20px;background:linear-gradient(135deg,#fff 0%,#edf9f6 100%)}.game-classroom-heading{display:flex;align-items:flex-end;justify-content:space-between;gap:20px}.game-classroom-heading h2{margin:4px 0 0;font-size:24px;letter-spacing:-.045em}.game-classroom-heading>p{max-width:480px;margin:0;color:var(--muted);font-size:10px;text-align:right}.education-situation-controls{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:7px;margin-top:14px}.education-situation-controls label{display:grid;gap:5px;color:#54766e;font-size:9px;font-weight:900}.education-situation-controls select,.education-situation-controls input{width:100%;height:43px;padding:0 9px;border:1px solid rgba(31,93,80,.13);border-radius:10px;background:#fff;color:#173a33;font:800 11px/1 inherit;outline:none}.education-situation-controls select:focus,.education-situation-controls input:focus{border-color:#10afa4;box-shadow:0 0 0 3px rgba(16,175,164,.12)}.situation-lesson-summary{margin-top:12px;padding:14px 16px;border-left:4px solid #10afa4;border-radius:12px;background:#fff}.situation-lesson-summary>span{color:#087f77;font-size:9px;font-weight:950}.situation-lesson-summary h3{margin:3px 0 5px;font-size:17px}.situation-lesson-summary p{margin:0;color:#456a61;font-size:11px;line-height:1.55}.situation-lesson-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:8px}.situation-lesson-grid>div{padding:14px;border:1px solid rgba(31,93,80,.09);border-radius:12px;background:rgba(255,255,255,.9)}.situation-lesson-grid span{color:#087f77;font-size:9px;font-weight:950}.situation-lesson-grid p{margin:5px 0 0;color:#456a61;font-size:11px;line-height:1.6}
+.game-classroom{margin-bottom:12px;padding:20px;background:linear-gradient(135deg,#fff 0%,#edf9f6 100%)}.game-classroom-heading{display:flex;align-items:flex-end;justify-content:space-between;gap:20px}.game-classroom-heading h2{margin:4px 0 0;font-size:24px;letter-spacing:-.045em}.game-classroom-heading>p{max-width:480px;margin:0;color:var(--muted);font-size:10px;text-align:right}.education-situation-controls{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:7px;margin-top:14px}.education-situation-controls label{display:grid;gap:5px;color:#54766e;font-size:9px;font-weight:900}.education-situation-controls select,.education-situation-controls input{box-sizing:border-box;min-width:0;width:100%;height:43px;padding:0 9px;border:1px solid rgba(31,93,80,.13);border-radius:10px;background:#fff;color:#173a33;font-family:inherit;font-size:16px;font-weight:800;line-height:1;outline:none}.education-situation-controls select:focus,.education-situation-controls input:focus{border-color:#10afa4;box-shadow:0 0 0 3px rgba(16,175,164,.12)}.situation-lesson-summary{margin-top:12px;padding:14px 16px;border-left:4px solid #10afa4;border-radius:12px;background:#fff}.situation-lesson-summary>span{color:#087f77;font-size:9px;font-weight:950}.situation-lesson-summary h3{margin:3px 0 5px;font-size:17px}.situation-lesson-summary p{margin:0;color:#456a61;font-size:11px;line-height:1.55}.situation-lesson-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:8px}.situation-lesson-grid>div{padding:14px;border:1px solid rgba(31,93,80,.09);border-radius:12px;background:rgba(255,255,255,.9)}.situation-lesson-grid span{color:#087f77;font-size:9px;font-weight:950}.situation-lesson-grid p{margin:5px 0 0;color:#456a61;font-size:11px;line-height:1.6}.sequence-rank{color:#087f77}.sequence-evidence-bottom{margin-top:14px}
 
 @media(max-width:980px){.education-situation-controls{grid-template-columns:repeat(4,minmax(0,1fr))}}
 @media(max-width:640px) and (orientation:portrait){
@@ -286,21 +286,21 @@ footer{border-top-color:rgba(31,93,80,.12)}
       </section>
 
       <section class="board-view" id="sequence" data-board="sequence" aria-labelledby="sequence-title" hidden>
-        <div class="board-heading"><div><span class="step">직전 공</span><h2 id="sequence-title">방금 공이 다음 선택을 어떻게 바꿨나</h2></div><p>직전 결과의 정확 표본과 자동 확장 표본을 나눠서 봅니다.</p></div>
+        <div class="board-heading"><div><span class="step">직전 공</span><h2 id="sequence-title">방금 공 다음에 무엇을 던졌나</h2></div><p>선택한 직전 구종과 결과 뒤에 바로 이어진 다음 공의 확률입니다.</p></div>
         <div class="panel sequence-panel">
           <div class="sequence-switch"><label class="toggle"><input type="checkbox" id="sequence-toggle" /><span></span>직전 공 반영</label><div class="status-chip" id="fallback-chip">상황 조건 사용</div></div>
           <div class="control-group"><label>직전 결과</label><div class="choice-row triple" id="previous-outcome"><button data-value="루킹">루킹</button><button data-value="헛스윙" class="active">헛스윙</button><button data-value="파울">파울</button></div></div>
           <div class="control-group"><label>직전 구종</label><div class="pitch-grid" id="previous-pitch"></div></div>
         </div>
-        <article class="evidence-card" aria-live="polite">
-          <div><span class="eyebrow-small">현재 계산</span><h3 id="state-title">우투수·우타자 0-1 · 체인지업 헛스윙 이후</h3><p id="state-note">기본확률과 직전 공을 비교합니다.</p></div>
-          <div class="evidence-metrics"><div><span id="base-sample-label">현재 카운트 기본 표본</span><strong id="base-sample">—</strong></div><div><span>같은 직전 구종 전체</span><strong id="sequence-reference-sample">—</strong></div><div><span>정확한 직전 결과</span><strong id="sequence-sample">—</strong></div><div><span>계산에 사용한 직전 표본</span><strong id="sequence-used-sample">—</strong></div><div><span>적용 단계</span><strong id="applied-level">—</strong></div></div>
-        </article>
         <article class="panel sequence-change-panel">
-          <div class="pitch-card-heading"><div><span class="eyebrow-small">직전 결과의 영향</span><h3>같은 직전 구종의 전체 평균과 비교</h3></div><p>구종을 던질 수 있는 투수의 성향을 먼저 맞춘 뒤 결과가 만든 변화만 봅니다. 증가한 공부터 표시합니다.</p></div>
+          <div class="pitch-card-heading"><div><span class="eyebrow-small">다음 공 확률</span><h3>직전 공 다음에 던진 구종 10개</h3></div><p>바로 다음 투구로 실제 선택된 비율이 높은 순서입니다. 전체 합계는 100%입니다.</p></div>
           <div class="sequence-change-list" id="sequence-change-list"></div>
         </article>
         <div class="zone-slot" data-zone-slot="sequence"></div>
+        <article class="evidence-card sequence-evidence-bottom" aria-live="polite">
+          <div><span class="eyebrow-small">현재 계산</span><h3 id="state-title">우투수·우타자 0-1 · 체인지업 헛스윙 이후</h3><p id="state-note">선택한 직전 공 뒤의 다음 투구를 계산합니다.</p></div>
+          <div class="evidence-metrics"><div><span id="base-sample-label">현재 카운트 기본 표본</span><strong id="base-sample">—</strong></div><div><span>같은 직전 구종 전체</span><strong id="sequence-reference-sample">—</strong></div><div><span>정확한 직전 결과</span><strong id="sequence-sample">—</strong></div><div><span>계산에 사용한 직전 표본</span><strong id="sequence-used-sample">—</strong></div><div><span>적용 단계</span><strong id="applied-level">—</strong></div></div>
+        </article>
       </section>
 
       <section class="board-view active" id="answer" data-board="next" aria-labelledby="next-detail-title">
@@ -1081,10 +1081,10 @@ window.CONTEXT_DATA = {"meta":{"seasons":"2022–2026","years":[2022,2023,2024,2
     const rows = data.pitchOrder.map((code) => {
       const exact = calc.sequenceExactRows.find((row) => row.pitch === code);
       const used = calc.sequenceRows.find((row) => row.pitch === code);
-      return { code, base: calc.sequenceReference[code], after: calc.sequence[code], delta: calc.sequence[code] - calc.sequenceReference[code], exactN: Number(exact?.n || 0), usedN: Number(used?.n || 0) };
-    }).sort((a, b) => b.delta - a.delta);
-    const max = Math.max(...rows.map((row) => Math.abs(row.delta)), 0.01);
-    $("sequence-change-list").innerHTML = rows.map((row) => `<div class="sequence-change-row"><div><strong>${row.code} · ${pitchName(row.code)}</strong></div><span class="sequence-after"><small>이후 확률</small><b>${pct(row.after)}</b></span><div class="change-track"><i class="${row.delta >= 0 ? "up" : "down"}" style="width:${Math.max(3, Math.abs(row.delta) / max * 100)}%"></i></div><b class="${row.delta > 0 ? "positive" : row.delta < 0 ? "negative" : ""}">${pp(row.delta)}</b><small>정확 ${fmt.format(row.exactN)} · 계산 ${fmt.format(row.usedN)}</small></div>`).join("");
+      return { code, after: calc.current[code], exactN: Number(exact?.n || 0), usedN: Number(used?.n || 0) };
+    }).sort((a, b) => b.after - a.after);
+    const max = Math.max(...rows.map((row) => row.after), 0.01);
+    $("sequence-change-list").innerHTML = rows.map((row, index) => `<div class="sequence-change-row"><div><strong>${row.code} · ${pitchName(row.code)}</strong></div><span class="sequence-after"><small>다음 공 확률</small><b>${pct(row.after)}</b></span><div class="change-track"><i class="up" style="width:${Math.max(3, row.after / max * 100)}%"></i></div><b class="sequence-rank">${index + 1}위</b><small>정확 ${fmt.format(row.exactN)} · 계산 ${fmt.format(row.usedN)}</small></div>`).join("");
   }
 
   function renderRawStats() {
