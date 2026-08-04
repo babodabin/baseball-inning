@@ -227,7 +227,7 @@ footer{border-top-color:rgba(31,93,80,.12)}
 .metric-glossary>div{padding:12px;border:1px solid rgba(31,93,80,.09);border-radius:11px;background:rgba(255,255,255,.9)}
 .metric-glossary strong{display:block;color:#087f77;font-size:11px}.metric-glossary p{margin:5px 0 0;color:#54766e;font-size:9px;line-height:1.5}
 .tv-pitch-reader{margin:0 0 12px;padding:20px;background:linear-gradient(135deg,#fff 0%,#eefaf7 58%,#fff5df 100%)}
-.tv-reader-controls{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:14px}
+.tv-reader-controls{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-top:14px}
 .tv-reader-controls label{display:grid;gap:5px;color:#54766e;font-size:9px;font-weight:950}
 .tv-reader-controls select{box-sizing:border-box;min-width:0;width:100%;height:44px;padding:0 10px;border:1px solid rgba(31,93,80,.13);border-radius:10px;background:#fff;color:#173a33;font-family:inherit;font-size:16px;font-weight:850;outline:none}
 .tv-reader-controls select:focus{border-color:#10afa4;box-shadow:0 0 0 3px rgba(16,175,164,.12)}
@@ -237,9 +237,11 @@ footer{border-top-color:rgba(31,93,80,.12)}
 .education-nine-zone span{display:grid;place-items:center;border:1px solid rgba(31,93,80,.16);color:#54766e;font-size:13px;font-weight:950}
 .education-zone-guide [data-edu-zone]{transition:.15s}.education-zone-guide [data-edu-zone].active{background:#e76752;color:#fff;box-shadow:inset 0 0 0 3px #fff,0 3px 9px rgba(109,44,32,.18)}
 .edu-out-zone{position:absolute;display:grid;place-items:center;width:38px;height:38px;border:1px solid rgba(31,93,80,.14);border-radius:9px;background:#eaf5f2;color:#54766e;font-size:11px;font-weight:950}
+.education-zone-guide .edu-out-zone{position:absolute}
 .edu-z11{left:9px;top:12px}.edu-z12{right:9px;top:12px}.edu-z13{left:9px;bottom:35px}.edu-z14{right:9px;bottom:35px}
 .education-zone-guide>small{display:block;margin-top:12px;color:#78918b;text-align:center;font-size:8px;line-height:1.35}
 .tv-reader-answer{padding:17px;border:1px solid rgba(31,93,80,.09);border-radius:15px;background:rgba(255,255,255,.92)}
+.book-basis{display:block;margin-bottom:8px;padding:6px 8px;border-radius:8px;background:#fff3d8;color:#8d611c;font-size:8px;font-weight:900;line-height:1.4}
 .tv-reader-answer>span{color:#e0614d;font-size:9px;font-weight:950}.tv-reader-answer>h3{margin:4px 0 7px;font-size:21px;letter-spacing:-.04em}
 .tv-reader-answer>p{margin:0;color:#365f56;font-size:11px;line-height:1.65}.tv-reader-answer>div{margin-top:10px;padding:10px 11px;border-radius:10px;background:#f2f9f7}
 .tv-reader-answer>div strong{color:#087f77;font-size:9px}.tv-reader-answer>div p{margin:4px 0 0;color:#54766e;font-size:10px;line-height:1.55}
@@ -251,7 +253,7 @@ footer{border-top-color:rgba(31,93,80,.12)}
 @media(max-width:640px) and (orientation:portrait){
   .sequence-family-summary{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;margin-top:10px}.sequence-family-card{padding:10px}.sequence-family-card strong{font-size:19px}.sequence-family-card span{font-size:7px}
   .metric-glossary{grid-template-columns:1fr 1fr;padding:8px;gap:6px}.metric-glossary>div{padding:9px}.metric-glossary p{font-size:8px}
-  .tv-pitch-reader{padding:12px}.tv-reader-controls{grid-template-columns:1fr 1fr;gap:6px}.tv-reader-controls label:first-child{grid-column:1/-1}.tv-reader-layout{grid-template-columns:1fr;gap:8px}.education-zone-guide{min-height:294px;padding:38px 46px 29px}.education-nine-zone{width:min(220px,78%)}
+  .tv-pitch-reader{padding:12px}.tv-reader-controls{grid-template-columns:1fr 1fr;gap:6px}.tv-reader-layout{grid-template-columns:1fr;gap:8px}.education-zone-guide{min-height:294px;padding:38px 46px 29px}.education-nine-zone{width:min(220px,78%)}
   .tv-reader-answer{padding:13px}.tv-reader-answer>h3{font-size:19px}.tv-reader-answer>p{font-size:10px}.pitch-family-lessons{grid-template-columns:1fr}.pitch-family-lessons>div{padding:10px}.pitch-family-lessons p{font-size:10px}
 }
 
@@ -465,9 +467,10 @@ footer{border-top-color:rgba(31,93,80,.12)}
         </article>
 
         <article class="panel tv-pitch-reader" aria-labelledby="tv-pitch-reader-title">
-          <div class="game-classroom-heading"><div><span class="eyebrow-small">TV를 지금 켰을 때</span><h2 id="tv-pitch-reader-title">직전 공 하나로 다음 공 읽기</h2></div><p>직전 구종·결과·13개 구역과 현재 카운트를 차례로 연결합니다.</p></div>
+          <div class="game-classroom-heading"><div><span class="eyebrow-small">TV를 지금 켰을 때</span><h2 id="tv-pitch-reader-title">직전 공 하나로 다음 공 읽기</h2></div><p>10개 직전 구종·결과·좌우 조합·13개 구역·카운트를 볼배합 원칙으로 연결합니다.</p></div>
           <div class="tv-reader-controls">
-            <label>직전 공 계열<select id="edu-prev-family"><option value="breaking" selected>브레이킹</option><option value="fast">빠른 공</option><option value="offspeed">오프스피드</option></select></label>
+            <label>직전 구종<select id="edu-prev-pitch"><option value="FF">FF · 포심</option><option value="SI">SI · 싱커</option><option value="FC">FC · 커터</option><option value="SL" selected>SL · 슬라이더</option><option value="ST">ST · 스위퍼</option><option value="CU">CU · 커브</option><option value="KC">KC · 너클커브</option><option value="CH">CH · 체인지업</option><option value="FS">FS · 스플리터</option><option value="SV">SV · 슬러브</option></select></label>
+            <label>좌우 조합<select id="edu-matchup"><option value="RR" selected>우투수 · 우타자</option><option value="RL">우투수 · 좌타자</option><option value="LR">좌투수 · 우타자</option><option value="LL">좌투수 · 좌타자</option></select></label>
             <label>직전 공 구역<select id="edu-prev-zone"><option value="1">1 · 높은 왼쪽</option><option value="2">2 · 높은 가운데</option><option value="3">3 · 높은 오른쪽</option><option value="4">4 · 가운데 왼쪽</option><option value="5">5 · 한가운데</option><option value="6">6 · 가운데 오른쪽</option><option value="7" selected>7 · 낮은 왼쪽</option><option value="8">8 · 낮은 가운데</option><option value="9">9 · 낮은 오른쪽</option><option value="11">11 · 높은 왼쪽 바깥</option><option value="12">12 · 높은 오른쪽 바깥</option><option value="13">13 · 낮은 왼쪽 바깥</option><option value="14">14 · 낮은 오른쪽 바깥</option></select></label>
             <label>직전 결과<select id="edu-prev-result"><option value="whiff" selected>헛스윙</option><option value="looking">루킹</option><option value="foul">파울</option><option value="ball">볼</option></select></label>
           </div>
@@ -479,9 +482,10 @@ footer{border-top-color:rgba(31,93,80,.12)}
               <small>포수 시점 · 1~9는 존, 11~14는 존 가까운 바깥 구역</small>
             </div>
             <div class="tv-reader-answer" aria-live="polite">
-              <span>첫 번째 예상</span><h3 id="edu-next-guess">낮은 브레이킹 반복 또는 높은 빠른 공</h3>
-              <div class="next-pitch-target"><strong>구역판에 표시한 다음 공</strong><p id="edu-next-target">포심 · 2번 높은 가운데</p></div>
-              <p id="edu-next-reason">7번 낮은 구역의 브레이킹에 헛스윙했다면 타자가 같은 궤도를 다시 구별해야 합니다. 배터리는 조금 더 낮게 반복하거나 눈높이를 바꾸는 높은 빠른 공을 생각할 수 있습니다.</p>
+              <small class="book-basis">《타자를 몰아붙이는 야구 볼 배합 A to Z》 교과서 원칙판 · 실제 데이터 계산과 별도</small>
+              <span>교과서적 첫 선택</span><h3 id="edu-next-guess">포심 · 1번 높은 왼쪽</h3>
+              <div class="next-pitch-target"><strong>구역판에 표시한 다음 공</strong><p id="edu-next-target">포심 · 1번 높은 왼쪽</p></div>
+              <p id="edu-next-reason">슬라이더에 헛스윙한 반응을 확인한 뒤 눈높이와 속도를 바꾸는 빠른 공을 먼저 읽습니다.</p>
               <div><strong>다른 선택</strong><p id="edu-next-alternative">반대쪽 빠른 공으로 시선과 배트 길을 바꾸는 선택도 함께 봅니다.</p></div>
               <div><strong>좋은 공의 조건</strong><p id="edu-good-pitch">같은 팔 스피드와 출발 궤도를 유지하고, 가운데에 남지 않으며, 현재 카운트의 목적에 맞아야 좋은 공입니다.</p></div>
             </div>
@@ -826,46 +830,78 @@ window.CONTEXT_DATA = {"meta":{"seasons":"2022–2026","years":[2022,2023,2024,2
   const chaseExtension = { 1: 11, 2: 1, 3: 12, 4: 11, 5: 8, 6: 12, 7: 13, 8: 8, 9: 14, 11: 11, 12: 12, 13: 13, 14: 14 };
   const strikeEdge = { 1: 1, 2: 2, 3: 3, 4: 4, 5: 4, 6: 6, 7: 7, 8: 8, 9: 9, 11: 1, 12: 3, 13: 7, 14: 9 };
 
+  const educationPitchProfiles = {
+    FF: { name: "포심", family: "fast", whiff: "CH", finish: "FF", looking: "FC", foul: "CH", ball: "FC" },
+    SI: { name: "싱커", family: "fast", whiff: "CH", finish: "CH", looking: "SL", foul: "SL", ball: "FF" },
+    FC: { name: "커터", family: "fast", whiff: "SL", finish: "SL", looking: "FF", foul: "CH", ball: "FF" },
+    SL: { name: "슬라이더", family: "breaking", whiff: "FF", finish: "SL", looking: "FF", foul: "CH", ball: "FF" },
+    ST: { name: "스위퍼", family: "breaking", whiff: "SI", finish: "ST", looking: "SI", foul: "CH", ball: "FF" },
+    CU: { name: "커브", family: "breaking", whiff: "FF", finish: "CU", looking: "FF", foul: "SI", ball: "FF" },
+    KC: { name: "너클커브", family: "breaking", whiff: "FF", finish: "KC", looking: "FF", foul: "FC", ball: "SI" },
+    CH: { name: "체인지업", family: "offspeed", whiff: "FF", finish: "CH", looking: "SI", foul: "FF", ball: "SI" },
+    FS: { name: "스플리터", family: "offspeed", whiff: "FF", finish: "FS", looking: "FF", foul: "FC", ball: "FF" },
+    SV: { name: "슬러브", family: "breaking", whiff: "SI", finish: "SV", looking: "SI", foul: "FF", ball: "FF" },
+  };
+  const educationFamilyNames = { fast: "빠른 공", breaking: "브레이킹", offspeed: "오프스피드" };
+  const objectMarker = (word) => {
+    const syllable = word.charCodeAt(word.length - 1) - 0xac00;
+    return syllable >= 0 && syllable <= 11171 && syllable % 28 ? "을" : "를";
+  };
+
   function renderEduPitchReader() {
-    const family = $("edu-prev-family").value;
+    const previousPitch = $("edu-prev-pitch").value;
+    const previousProfile = educationPitchProfiles[previousPitch];
+    const matchup = $("edu-matchup").value;
     const zone = Number($("edu-prev-zone").value);
     const result = $("edu-prev-result").value;
     const [balls, strikes] = $("edu-count").value.split("-").map(Number);
     const low = [7, 8, 9, 13, 14].includes(zone);
-    const high = [1, 2, 3, 11, 12].includes(zone);
     const outside = zone >= 11;
+    const sameSide = matchup[0] === matchup[1];
+    const matchupName = { RR: "우투수·우타자", RL: "우투수·좌타자", LR: "좌투수·우타자", LL: "좌투수·좌타자" }[matchup];
     const resultName = { whiff: "헛스윙", looking: "루킹", foul: "파울", ball: "볼" }[result];
 
-    let guess;
-    let reason;
-    let alternative;
-    let nextPitch;
+    let nextPitch = result === "whiff" && strikes === 2 ? previousProfile.finish : previousProfile[result];
+    if (!sameSide && ["SL", "ST", "SV"].includes(nextPitch) && result !== "whiff") nextPitch = "CH";
+    if (sameSide && previousProfile.family === "breaking" && result === "foul") nextPitch = "FF";
+    if (balls === 3) nextPitch = previousProfile.ball;
+
+    const nextProfile = educationPitchProfiles[nextPitch];
     let nextZone;
-    if (family === "breaking") {
-      nextPitch = result === "whiff" ? "슬라이더" : "포심";
-      nextZone = result === "whiff" ? chaseExtension[zone] : highLowOpposite[zone];
-      reason = `${educationZoneNames[zone]}의 브레이킹에 ${resultName}했다면 타자가 꺾임과 속도에 보인 반응이 단서입니다. ${result === "whiff" ? "배터리는 같은 궤도를 조금 더 멀리 반복하거나" : "같은 공을 무조건 반복하기보다"} 눈높이를 바꾸는 빠른 공을 연결해 볼 수 있습니다.`;
-      alternative = `슬라이더·스위퍼처럼 옆으로 움직였으면 반대쪽 빠른 공, 커브·KC처럼 아래로 떨어졌으면 위쪽 빠른 공을 먼저 함께 봅니다.`;
-    } else if (family === "fast") {
-      nextPitch = result === "looking" ? "포심" : result === "ball" ? "커터" : "체인지업";
-      nextZone = result === "looking" ? horizontalOpposite[zone] : result === "ball" ? strikeEdge[zone] : lowSameColumn[zone];
-      reason = `${educationZoneNames[zone]}의 빠른 공에 ${resultName}한 뒤에는 같은 반응 시간을 주지 않는 선택이 자연스럽습니다. 빠른 공과 비슷하게 출발해 늦게 갈라지는 공을 살핍니다.`;
-      alternative = result === "looking" ? "타자가 빠른 공을 지켜봤다면 같은 공 반복도 살아 있습니다. 다만 가운데보다 가장자리 제구가 먼저입니다." : "타자가 빠른 공을 따라갔다면 체인지업·스플리터로 타이밍을 늦추는 길도 있습니다.";
+    if (balls === 3 || result === "ball") {
+      nextZone = strikeEdge[zone];
+    } else if (result === "whiff" && strikes === 2 && nextPitch === previousPitch) {
+      nextZone = chaseExtension[zone];
+    } else if (nextProfile.family === "fast") {
+      nextZone = low ? highSameColumn[zone] : highLowOpposite[zone];
+    } else if (nextProfile.family === "offspeed") {
+      nextZone = lowSameColumn[zone];
     } else {
-      nextPitch = result === "whiff" ? "체인지업" : "포심";
-      nextZone = result === "whiff" ? chaseExtension[zone] : highSameColumn[zone];
-      reason = `${educationZoneNames[zone]}의 오프스피드에 ${resultName}했다면 타자의 중심이 앞에 남았는지 봅니다. 앞에 쏠렸다면 한 번 더 느리게, 기다렸다면 빠른 공으로 반응 시간을 줄일 수 있습니다.`;
-      alternative = "체인지업 뒤 싱커, 스플리터 뒤 포심처럼 비슷한 출발 궤도와 다른 끝 움직임을 연결하는 선택을 봅니다.";
+      nextZone = result === "looking" ? lowSameColumn[horizontalOpposite[zone]] : chaseExtension[horizontalOpposite[zone]];
     }
 
-    if (balls === 3) {
-      nextPitch = "포심";
-      nextZone = strikeEdge[zone];
-      alternative = "3볼에서는 변화가 큰 공보다 실제로 스트라이크를 만들 수 있는 주무기와 가장자리 제구를 먼저 봅니다.";
-    }
-    guess = `${nextPitch} · ${nextZone}번 ${educationZoneNames[nextZone]}`;
-    if (result === "ball") reason += " 직전 공이 볼이었으므로 다음 공은 구종보다 스트라이크를 만들 수 있는 제구가 우선입니다.";
-    if (outside) reason += " 존 밖 공이므로 타자가 실제로 속았는지, 처음부터 버렸는지를 구분해야 합니다.";
+    let principle;
+    if (balls === 3) principle = "볼넷을 피할 수 있는 제구 가능한 구종";
+    else if (result === "whiff" && strikes === 2 && nextPitch === previousPitch) principle = "성공한 궤도를 존 끝까지 확장하는 반복";
+    else if (result === "whiff") principle = "헛스윙 뒤 눈높이·속도 대비";
+    else if (result === "looking") principle = "타자가 지켜본 코스와 다른 축 제시";
+    else if (result === "foul") principle = "파울로 맞춘 타이밍을 다시 흔들기";
+    else principle = "볼 뒤 스트라이크 회복";
+
+    const nextPitchName = nextProfile.name;
+    const previousPitchName = previousProfile.name;
+    const guess = `${nextPitchName} · ${nextZone}번 ${educationZoneNames[nextZone]}`;
+    let reason = `${matchupName}에서 ${zone}번 ${educationZoneNames[zone]}의 ${previousPitchName}에 ${resultName}한 반응을 봅니다. 《타자를 몰아붙이는 야구 볼 배합 A to Z》의 기본 관점처럼 투수의 강점, 타자의 반응, 카운트 목적을 연결하면 첫 선택은 ‘${principle}’입니다.`;
+    if (sameSide) reason += " 같은 손 조합에서는 몸쪽과 바깥쪽의 각도 차를 더 크게 만들 수 있는 공을 먼저 봅니다.";
+    else reason += " 반대 손 조합에서는 타자에게서 멀어지는 움직임과 속도 차를 함께 봅니다.";
+    if (outside) reason += " 직전 공이 존 밖이므로 타자가 실제로 따라갔는지, 처음부터 버렸는지를 구분해야 합니다.";
+
+    const repeatZone = result === "whiff" ? chaseExtension[zone] : strikeEdge[zone];
+    let alternative = nextPitch === previousPitch
+      ? `${previousPitchName}${objectMarker(previousPitchName)} 이미 읽었다고 보면 ${educationPitchProfiles[previousProfile.whiff].name}으로 속도나 눈높이를 바꾸는 선택도 있습니다.`
+      : `${previousPitchName}${objectMarker(previousPitchName)} 다시 쓴다면 ${repeatZone}번 ${educationZoneNames[repeatZone]}처럼 직전 코스보다 더 분명한 목적이 있어야 합니다.`;
+    if (balls === 3) alternative = "3볼에서는 멋진 움직임보다 실제로 스트라이크를 만들 수 있는 투수의 주무기를 우선합니다.";
+
     let countNote = "서로 유리하지 않은 카운트라면 위치·높이·속도 중 한 축을 바꾸는 공이 좋습니다.";
     if (strikes === 2) countNote = "2스트라이크에서는 스트라이크처럼 출발해 끝에서 벗어나는 공이 좋은 공입니다.";
     else if (balls === 3) countNote = "3볼에서는 멋진 움직임보다 볼넷을 피할 수 있는 제구와 믿을 수 있는 구종이 좋은 공입니다.";
@@ -873,10 +909,10 @@ window.CONTEXT_DATA = {"meta":{"seasons":"2022–2026","years":[2022,2023,2024,2
     else if (balls > strikes) countNote = "타자가 앞선 카운트라 한가운데 실투를 피하면서도 스트라이크를 만들 수 있어야 합니다.";
 
     $("edu-next-guess").textContent = guess;
-    $("edu-next-target").textContent = `${nextPitch} · ${nextZone}번 ${educationZoneNames[nextZone]}`;
+    $("edu-next-target").textContent = guess;
     $("edu-next-reason").textContent = reason;
     $("edu-next-alternative").textContent = alternative;
-    $("edu-good-pitch").textContent = `${countNote} 같은 팔 스피드와 출발 궤도를 유지하고 가운데에 남지 않아야 합니다.`;
+    $("edu-good-pitch").textContent = `${countNote} 추천한 ${nextPitchName}도 투수가 실제로 제구할 수 없으면 정답이 아니며, 같은 팔 스피드와 출발 궤도를 유지하고 가운데에 남지 않아야 합니다.`;
     const zoneCells = document.querySelectorAll("[data-edu-zone]");
     zoneCells.forEach((cell) => {
       cell.classList.remove("active", "previous-zone", "next-zone");
@@ -894,13 +930,13 @@ window.CONTEXT_DATA = {"meta":{"seasons":"2022–2026","years":[2022,2023,2024,2
       cell.appendChild(marker);
       cell.setAttribute("aria-label", `${cell.getAttribute("aria-label")} · ${label}`);
     };
-    addZoneMarker(zone, "previous", `${resultName}한 직전 ${family === "fast" ? "빠른 공" : family === "breaking" ? "브레이킹" : "오프스피드"}`);
-    addZoneMarker(nextZone, "next", `예상 다음 공 ${nextPitch}`);
+    addZoneMarker(zone, "previous", `${resultName}한 직전 ${previousPitchName} · ${educationFamilyNames[previousProfile.family]}`);
+    addZoneMarker(nextZone, "next", `예상 다음 공 ${nextPitchName}`);
   }
 
   const renderEducationSituation = () => { renderGameClassroom(); renderEduPitchReader(); };
   ["edu-inning", "edu-half", "edu-outs", "edu-bases", "edu-count"].forEach((id) => $(id).addEventListener("change", renderEducationSituation));
-  ["edu-prev-family", "edu-prev-zone", "edu-prev-result"].forEach((id) => $(id).addEventListener("change", renderEduPitchReader));
+  ["edu-prev-pitch", "edu-matchup", "edu-prev-zone", "edu-prev-result"].forEach((id) => $(id).addEventListener("change", renderEduPitchReader));
   ["edu-offense-score", "edu-defense-score"].forEach((id) => $(id).addEventListener("input", renderGameClassroom));
 
   function syncControls() {
