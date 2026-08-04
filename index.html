@@ -182,6 +182,38 @@ footer{border-top-color:rgba(31,93,80,.12)}
   .raw-stat-panel td:nth-child(2)::before{content:"구수"}.raw-stat-panel td:nth-child(3)::before{content:"비율"}.raw-stat-panel td:nth-child(4)::before{content:"CSW"}.raw-stat-panel td:nth-child(5)::before{content:"안타"}.raw-stat-panel td:nth-child(6)::before{content:"RV"}.raw-stat-panel td:nth-child(7)::before{content:"구속"}
 }
 
+/* Education: previous/next pitch markers, richer game lesson, on-demand topics */
+.situation-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:9px}
+.situation-tags span{padding:5px 8px;border:1px solid rgba(16,175,164,.16);border-radius:999px;background:#fff;color:#087f77;font-size:8px;font-weight:900}
+.game-pitch-plan{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:9px}
+.game-pitch-plan>div{padding:14px;border:1px solid rgba(31,93,80,.10);border-radius:13px;background:linear-gradient(145deg,#fff,#f5fbf9)}
+.game-pitch-plan span{display:block;color:#e0614d;font-size:8px;font-weight:950}.game-pitch-plan strong{display:block;margin-top:4px;color:#173a33;font-size:12px;line-height:1.35}
+.game-pitch-plan p{margin:5px 0 0;color:#54766e;font-size:9px;line-height:1.55}
+.education-zone-guide [data-edu-zone]{position:relative;overflow:visible}
+.education-zone-guide [data-edu-zone].previous-zone{background:#fff1ec;color:#8d4c40;box-shadow:inset 0 0 0 2px rgba(231,103,82,.34)}
+.education-zone-guide [data-edu-zone].next-zone{outline:3px solid #10afa4;outline-offset:-4px}
+.education-zone-guide [data-edu-zone].previous-zone.next-zone{background:linear-gradient(135deg,#fff1ec 0 50%,#eafbf8 50% 100%)}
+.pitch-zone-marker{position:absolute;z-index:4;width:14px;height:14px;border:3px solid #fff;border-radius:50%;box-shadow:0 2px 6px rgba(24,65,56,.28);font-size:0;font-style:normal;pointer-events:none}
+.previous-marker{left:5px;top:5px;background:#e76752}.next-marker{right:5px;bottom:5px;background:#10afa4}
+.pitch-marker-legend{display:flex;justify-content:center;gap:14px;margin-top:10px;color:#54766e;font-size:8px;font-weight:900}
+.pitch-marker-legend span{display:flex;align-items:center;gap:5px}.pitch-marker-legend i{width:10px;height:10px;border:2px solid #fff;border-radius:50%;box-shadow:0 1px 4px rgba(24,65,56,.22)}
+.previous-swatch{background:#e76752}.next-swatch{background:#10afa4}
+.next-pitch-target{border:1px solid rgba(16,175,164,.20)!important;background:#eafbf8!important}.next-pitch-target strong{color:#087f77!important}.next-pitch-target p{color:#173a33!important;font-size:15px!important;font-weight:950!important;letter-spacing:-.03em}
+.education-menu-intro{grid-column:1/-1;margin:0 2px;color:#78918b;font-size:9px}
+.education-topic-group{min-width:0}.education-group-toggle{display:flex;width:100%;min-height:48px;align-items:center;justify-content:space-between;gap:12px;padding:0;border:0;background:transparent;color:#173a33;text-align:left;cursor:pointer}
+.education-group-toggle span{min-width:0}.education-group-toggle strong{margin:0;color:#087f77;font-size:12px}.education-group-toggle small{display:block;margin-top:3px;color:#78918b;font-size:8px;font-weight:750}
+.education-group-toggle>b{flex:0 0 auto;padding:6px 9px;border-radius:999px;background:#e7f6f2;color:#087f77;font-size:8px}
+.education-group-toggle[aria-expanded="true"]>b{background:#10afa4;color:#fff}.education-topic-group .education-topic-row{padding-top:8px;border-top:1px solid rgba(31,93,80,.09)}
+.lesson-heading-actions{display:flex;align-items:center;gap:7px}.lesson-heading-actions>b{padding:8px 11px;border-radius:999px;background:#fff0cf;color:#9b6512;font-size:10px}
+.lesson-heading-actions button{padding:8px 11px;border:1px solid rgba(31,93,80,.13);border-radius:999px;background:#fff;color:#54766e;font-size:9px;font-weight:900;cursor:pointer}
+
+@media(max-width:640px) and (orientation:portrait){
+  .game-pitch-plan{grid-template-columns:1fr}.game-pitch-plan>div{padding:12px}.game-pitch-plan strong{font-size:13px}.game-pitch-plan p{font-size:10px}
+  .pitch-marker-legend{margin-top:8px}.next-pitch-target p{font-size:14px!important}
+  .education-menu{grid-template-columns:1fr}.education-group-toggle{min-height:50px}.education-group-toggle strong{font-size:13px}.education-group-toggle small{font-size:9px}
+  .lesson-heading-actions{justify-content:space-between;margin-top:8px}.lesson-heading-actions>b{font-size:9px}
+}
+
 /* Four-way previous-pitch reading, metric glossary, and TV pitch lesson */
 .sequence-family-summary{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:14px 0 7px}
 .sequence-family-card{min-width:0;padding:13px;border:1px solid rgba(31,93,80,.11);border-radius:13px;background:linear-gradient(145deg,#fff,#f2faf8);box-shadow:0 5px 14px rgba(31,78,67,.05)}
@@ -245,6 +277,9 @@ footer{border-top-color:rgba(31,93,80,.12)}
   .sequence-change-row{grid-template-columns:minmax(0,1fr) 72px 55px;gap:6px}.sequence-change-row .change-track{grid-column:1/-1}.sequence-change-row>small{grid-column:1/-1;padding-left:0;text-align:left}.sequence-after{text-align:right}
   .game-classroom{padding:12px}.game-classroom-heading{display:block}.game-classroom-heading h2{font-size:21px}.game-classroom-heading>p{margin-top:5px;text-align:left}.education-situation-controls{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}.education-situation-controls label:last-child{grid-column:1/-1}.situation-lesson-summary{padding:12px}.situation-lesson-summary h3{font-size:15px}.situation-lesson-grid{grid-template-columns:1fr}.situation-lesson-grid>div{padding:12px}
 }
+
+/* Late overrides for the collapsible education menu. */
+.education-group-toggle strong{margin:0}
 
 </style>
   </head>
@@ -415,11 +450,17 @@ footer{border-top-color:rgba(31,93,80,.12)}
             <label>카운트<select id="edu-count"><option>0-0</option><option>0-1</option><option>0-2</option><option>1-0</option><option>1-1</option><option>1-2</option><option>2-0</option><option>2-1</option><option>2-2</option><option>3-0</option><option>3-1</option><option>3-2</option></select></label>
           </div>
           <div class="situation-lesson-summary"><span>현재 수업</span><h3 id="edu-situation-title">1회 초 · 0대0 · 0아웃 · 주자 없음 · 0-0</h3><p id="edu-situation-priority">초반에는 한 타석에 과하게 반응하기보다 스트라이크와 출루의 기본을 지킵니다.</p></div>
+          <div class="situation-tags" id="edu-situation-tags" aria-label="이 장면에서 볼 것"></div>
           <div class="situation-lesson-grid">
             <div><span>공격의 생각</span><p id="edu-offense-lesson">출루와 좋은 타구를 우선하며 불필요하게 아웃을 소비하지 않습니다.</p></div>
             <div><span>수비·배터리의 생각</span><p id="edu-defense-lesson">선두타자 출루를 막고 공격적인 스트라이크로 타석의 주도권을 잡습니다.</p></div>
             <div><span>규칙 확인</span><p id="edu-rule-lesson">현재는 포스·태그나 특별 주루 규칙보다 타자와 투수의 기본 승부가 먼저입니다.</p></div>
             <div><span>볼배합 초점</span><p id="edu-pitch-lesson">첫 공은 스트라이크를 잡을 수 있는 주무기로 시작하되 한가운데 실투는 피합니다.</p></div>
+          </div>
+          <div class="game-pitch-plan" aria-label="상황별 세 공 읽기">
+            <div><span>① 먼저 노릴 것</span><strong id="edu-plan-first">주무기로 스트라이크 선점</strong><p id="edu-plan-first-note">투수가 가장 자신 있게 제구할 수 있는 공을 먼저 생각합니다.</p></div>
+            <div><span>② 타자 반응 뒤</span><strong id="edu-plan-second">위치·속도·궤도 중 하나 변경</strong><p id="edu-plan-second-note">첫 공에 타자가 보인 시선과 배트 움직임을 다음 선택에 연결합니다.</p></div>
+            <div><span>③ 피해야 할 공</span><strong id="edu-plan-danger">목적 없는 한가운데 공</strong><p id="edu-plan-danger-note">구종이 좋아도 제구와 상황의 목적이 맞지 않으면 좋은 볼배합이 아닙니다.</p></div>
           </div>
         </article>
 
@@ -434,10 +475,12 @@ footer{border-top-color:rgba(31,93,80,.12)}
             <div class="education-zone-guide" aria-label="포수 시점 9+4 구역">
               <span class="edu-out-zone edu-z11" data-edu-zone="11">11</span><span class="edu-out-zone edu-z12" data-edu-zone="12">12</span><span class="edu-out-zone edu-z13" data-edu-zone="13">13</span><span class="edu-out-zone edu-z14" data-edu-zone="14">14</span>
               <div class="education-nine-zone"><span data-edu-zone="1">1</span><span data-edu-zone="2">2</span><span data-edu-zone="3">3</span><span data-edu-zone="4">4</span><span data-edu-zone="5">5</span><span data-edu-zone="6">6</span><span data-edu-zone="7" class="active">7</span><span data-edu-zone="8">8</span><span data-edu-zone="9">9</span></div>
+              <div class="pitch-marker-legend"><span><i class="previous-swatch"></i>직전 공</span><span><i class="next-swatch"></i>예상 다음 공</span></div>
               <small>포수 시점 · 1~9는 존, 11~14는 존 가까운 바깥 구역</small>
             </div>
             <div class="tv-reader-answer" aria-live="polite">
               <span>첫 번째 예상</span><h3 id="edu-next-guess">낮은 브레이킹 반복 또는 높은 빠른 공</h3>
+              <div class="next-pitch-target"><strong>구역판에 표시한 다음 공</strong><p id="edu-next-target">포심 · 2번 높은 가운데</p></div>
               <p id="edu-next-reason">7번 낮은 구역의 브레이킹에 헛스윙했다면 타자가 같은 궤도를 다시 구별해야 합니다. 배터리는 조금 더 낮게 반복하거나 눈높이를 바꾸는 높은 빠른 공을 생각할 수 있습니다.</p>
               <div><strong>다른 선택</strong><p id="edu-next-alternative">반대쪽 빠른 공으로 시선과 배트 길을 바꾸는 선택도 함께 봅니다.</p></div>
               <div><strong>좋은 공의 조건</strong><p id="edu-good-pitch">같은 팔 스피드와 출발 궤도를 유지하고, 가운데에 남지 않으며, 현재 카운트의 목적에 맞아야 좋은 공입니다.</p></div>
@@ -451,14 +494,15 @@ footer{border-top-color:rgba(31,93,80,.12)}
           </div>
         </article>
 
-        <div class="panel education-menu" aria-label="교육 주제 선택">
-          <div><strong>볼배합 기본</strong><div class="education-topic-row"><button type="button" data-lesson="horizontal" class="active">좌우 대비</button><button type="button" data-lesson="vertical">높낮이</button><button type="button" data-lesson="speed">속도 차</button><button type="button" data-lesson="tunnel">터널링</button><button type="button" data-lesson="eye-level">눈높이</button></div></div>
-          <div><strong>카운트·심리</strong><div class="education-topic-row"><button type="button" data-lesson="double-up">같은 공 반복</button><button type="button" data-lesson="count-plan">카운트 설계</button><button type="button" data-lesson="reaction">타자 반응 읽기</button><button type="button" data-lesson="handedness">좌우 상성</button></div></div>
-          <div><strong>주자·규칙</strong><div class="education-topic-row"><button type="button" data-lesson="runner-third">3루 주자</button><button type="button" data-lesson="open-first">1루가 비었을 때</button><button type="button" data-lesson="force-tag">포스·태그</button><button type="button" data-lesson="special-rules">특별 규칙</button></div></div>
+        <div class="panel education-menu" aria-label="필요할 때 여는 야구 상식">
+          <p class="education-menu-intro">게임을 보다가 필요한 내용만 터치해서 펼쳐보세요.</p>
+          <div class="education-topic-group"><button type="button" class="education-group-toggle" aria-expanded="false"><span><strong>볼배합 기본</strong><small>좌우·높낮이·속도·궤도</small></span><b>열기</b></button><div class="education-topic-row" hidden><button type="button" data-lesson="horizontal">좌우 대비</button><button type="button" data-lesson="vertical">높낮이</button><button type="button" data-lesson="speed">속도 차</button><button type="button" data-lesson="tunnel">터널링</button><button type="button" data-lesson="eye-level">눈높이</button></div></div>
+          <div class="education-topic-group"><button type="button" class="education-group-toggle" aria-expanded="false"><span><strong>카운트·심리</strong><small>같은 공·카운트 설계·타자 반응</small></span><b>열기</b></button><div class="education-topic-row" hidden><button type="button" data-lesson="double-up">같은 공 반복</button><button type="button" data-lesson="count-plan">카운트 설계</button><button type="button" data-lesson="reaction">타자 반응 읽기</button><button type="button" data-lesson="handedness">좌우 상성</button></div></div>
+          <div class="education-topic-group"><button type="button" class="education-group-toggle" aria-expanded="false"><span><strong>주자·규칙</strong><small>주루·포스·태그·특별 규칙</small></span><b>열기</b></button><div class="education-topic-row" hidden><button type="button" data-lesson="runner-third">3루 주자</button><button type="button" data-lesson="open-first">1루가 비었을 때</button><button type="button" data-lesson="force-tag">포스·태그</button><button type="button" data-lesson="special-rules">특별 규칙</button></div></div>
         </div>
 
-        <article class="panel lesson-stage" aria-live="polite">
-          <header class="lesson-heading"><div><span id="lesson-category">볼배합 기본</span><h2 id="lesson-title">좌우를 바꿔 배트 길을 흔든다</h2></div><b id="lesson-principle">시각 위치 대비</b></header>
+        <article class="panel lesson-stage" aria-live="polite" hidden>
+          <header class="lesson-heading"><div><span id="lesson-category">볼배합 기본</span><h2 id="lesson-title">좌우를 바꿔 배트 길을 흔든다</h2></div><div class="lesson-heading-actions"><b id="lesson-principle">시각 위치 대비</b><button type="button" id="lesson-close">수업 닫기</button></div></header>
           <p class="lesson-core" id="lesson-core">한쪽 공을 본 타자는 그 방향과 궤도에 시선을 맞춥니다. 다음 공을 반대쪽에 던지면 시선과 배트가 더 멀리 이동해야 합니다.</p>
 
           <div class="lesson-sequence" aria-label="두 공의 위치와 순서">
@@ -476,11 +520,11 @@ footer{border-top-color:rgba(31,93,80,.12)}
         </article>
 
         <article class="panel education-foundation">
-          <div><span class="eyebrow-small">두 책을 함께 쓰는 방식</span><h2>규칙이 장면을 만들고, 볼배합이 승부를 만든다</h2></div>
+          <div><span class="eyebrow-small">교육판의 볼배합 기준</span><h2>《타자를 몰아붙이는 야구 볼 배합 A to Z》의 관점으로 읽습니다</h2></div>
           <div class="foundation-grid">
-            <div><strong>규칙 수업</strong><p>아웃과 주자 상태에 따라 가능한 플레이, 포스와 태그, 태그업, 낫아웃과 인필드플라이를 구분합니다.</p></div>
-            <div><strong>볼배합 수업</strong><p>좌우·높낮이·속도·궤도·카운트·타자 반응을 연결해 다음 승부의 목적을 이해합니다.</p></div>
-            <div><strong>기본 원칙</strong><p>어떤 조합도 무조건 정답은 아닙니다. 제구, 구종의 완성도, 타자의 반응과 경기 상황이 먼저입니다.</p></div>
+            <div><strong>투수의 강점</strong><p>먼저 투수가 가장 잘 던지고 제구할 수 있는 공을 기준으로 승부를 시작합니다.</p></div>
+            <div><strong>타자의 반응</strong><p>구종 이름만 보지 않고 시선, 타이밍, 배트 궤도와 직전 결과를 다음 공에 연결합니다.</p></div>
+            <div><strong>경기 상황</strong><p>카운트·주자·아웃·점수에 따라 같은 구종도 목적과 좋은 코스가 달라집니다.</p></div>
           </div>
         </article>
       </section>
@@ -638,9 +682,35 @@ window.CONTEXT_DATA = {"meta":{"seasons":"2022–2026","years":[2022,2023,2024,2
     document.querySelectorAll("[data-lesson]").forEach((button) => button.classList.toggle("active", button.dataset.lesson === key));
   }
 
-  document.querySelectorAll("[data-lesson]").forEach((button) => button.addEventListener("click", () => renderEducation(button.dataset.lesson)));
+  document.querySelectorAll("[data-lesson]").forEach((button) => button.addEventListener("click", () => {
+    renderEducation(button.dataset.lesson);
+    document.querySelector(".lesson-stage").hidden = false;
+  }));
+  document.querySelectorAll(".education-group-toggle").forEach((button) => button.addEventListener("click", () => {
+    const topics = button.parentElement.querySelector(".education-topic-row");
+    const opening = button.getAttribute("aria-expanded") !== "true";
+    button.setAttribute("aria-expanded", String(opening));
+    button.querySelector("b").textContent = opening ? "닫기" : "열기";
+    topics.hidden = !opening;
+  }));
+  $("lesson-close").addEventListener("click", () => { document.querySelector(".lesson-stage").hidden = true; });
 
   const educationBaseNames = { "000": "주자 없음", "100": "1루", "010": "2루", "001": "3루", "110": "1·2루", "101": "1·3루", "011": "2·3루", "111": "만루" };
+
+  const educationCountPlans = {
+    "0-0": { first: "주무기로 가장자리 스트라이크", firstNote: "첫 공은 구종을 숨기기보다 투수가 가장 자신 있게 제구할 수 있는 공으로 주도권을 잡습니다.", second: "루킹·스윙 반응을 다음 공에 연결", secondNote: "타자가 늦었는지, 앞섰는지, 처음부터 버렸는지를 보고 위치·속도·궤도 중 하나를 바꿉니다.", danger: "완벽하게 속이려다 먼저 볼이 되는 공", dangerNote: "첫 공부터 너무 먼 유인구는 타자에게 편한 1-0을 줍니다.", focus: "첫 공은 투수의 강점과 제구를 우선합니다. 스트라이크를 잡으면서 타자가 빠른 공·변화구 중 무엇을 기다렸는지 반응을 읽습니다." },
+    "0-1": { first: "같은 출발 궤도에서 다른 끝", firstNote: "한 스트라이크를 얻었으므로 빠른 공처럼 보이다가 꺾이거나, 변화구처럼 시작해 높은 빠른 공으로 눈높이를 바꿉니다.", second: "직전 반응이 약한 축을 한 번 더 공격", secondNote: "배트가 늦으면 속도, 앞서면 오프스피드, 멀리 따라가면 같은 터널의 반복을 봅니다.", danger: "유리함을 버리는 의미 없는 볼", dangerNote: "0-2를 만들 기회를 놓칠 만큼 멀리 빼는 공은 피합니다.", focus: "0-1은 타자의 판단 범위를 넓힐 기회입니다. 직전 공과 비슷하게 출발한 뒤 높이·방향·속도 중 하나를 분명히 바꿉니다." },
+    "0-2": { first: "존처럼 보이는 결정구", firstNote: "낮은 변화구, 바깥쪽 슬라이더, 높은 빠른 공처럼 타자가 스트라이크라고 판단할 출발점이 중요합니다.", second: "참아냈다면 다시 존 가까이", secondNote: "첫 유인구를 참았다면 똑같이 더 멀리 버리지 말고 가장자리로 조금 돌아옵니다.", danger: "두 공 연속 너무 먼 유인구", dangerNote: "0-2의 이점을 공짜 볼 두 개로 지우지 않습니다.", focus: "0-2에서는 스트라이크처럼 출발해 끝에서 벗어나는 공이 좋습니다. 헛스윙만 노리기보다 약한 타구도 같은 성공으로 봅니다." },
+    "1-0": { first: "제구 가능한 두 번째 구종", firstNote: "타자는 빠른 공 쪽으로 좁혀 기다리기 시작합니다. 스트라이크를 만들 수 있는 변화구가 있으면 타이밍을 흔듭니다.", second: "스트라이크 뒤 반대 속도 준비", secondNote: "카운트를 맞춘 뒤에는 같은 위치보다 빠름과 느림의 대비를 준비합니다.", danger: "볼넷을 의식한 한가운데 빠른 공", dangerNote: "스트라이크가 필요해도 타자가 기다리는 높이와 한가운데는 피합니다.", focus: "1-0은 타자가 조금 유리합니다. 투수는 믿을 수 있는 두 번째 구종으로 스트라이크를 만들 수 있는지 판단합니다." },
+    "1-1": { first: "다음 두 공의 길을 만드는 공", firstNote: "한 공으로 끝내려 하지 말고 1-2 결정구 또는 2-1 스트라이크 승부까지 이어질 공을 선택합니다.", second: "좌우·높낮이·속도 중 한 축 대비", secondNote: "첫 공과 둘째 공의 차이가 분명해야 타자의 판단 시간이 줄어듭니다.", danger: "목적 없이 구종만 바꾸는 공", dangerNote: "코스와 궤도가 같으면 다른 구종도 타자에게 비슷한 공이 됩니다.", focus: "1-1은 타석의 갈림길입니다. 다음 공 하나보다 그 뒤 카운트까지 연결되는 구종과 코스를 고릅니다." },
+    "1-2": { first: "약점 쪽 결정구", firstNote: "직전 두 공에서 드러난 늦은 배트, 앞선 중심, 바깥쪽 추격 중 가장 분명한 반응을 다시 공격합니다.", second: "참아내면 반대 축으로 전환", secondNote: "같은 유인구를 고집하지 말고 높이 또는 속도를 바꿔 스트라이크처럼 보이게 합니다.", danger: "한 가지 결정구만 반복", dangerNote: "타자가 이미 본 궤도를 세 번째에도 그대로 보여주지 않습니다.", focus: "1-2에서는 타자의 직전 반응이 구종 이름보다 중요합니다. 가장 약하게 반응한 위치·속도·궤도를 결정구에 연결합니다." },
+    "2-0": { first: "스트라이크를 넣을 수 있는 주무기", firstNote: "타자는 한 구역과 빠른 공을 강하게 노립니다. 투수는 가장 자신 있는 공을 가장자리로 던집니다.", second: "루킹이면 같은 시작, 다른 끝", secondNote: "타자가 노림수를 고정했다면 같은 터널에서 속도나 움직임을 바꿉니다.", danger: "카운트를 의식한 가운데 실투", dangerNote: "볼 하나를 줄이려다 장타 한 개를 주지 않습니다.", focus: "2-0은 타자가 기다릴 공을 좁히는 카운트입니다. 투수의 강점으로 스트라이크를 만들되 타자의 노림수 한가운데는 피합니다." },
+    "2-1": { first: "제구되는 공으로 카운트 회복", firstNote: "3-1을 피하면서도 타자가 강하게 기다리는 가운데 빠른 공은 피해야 합니다.", second: "스트라이크 뒤 결정구 터널 준비", secondNote: "2-2가 되면 같은 출발 궤도의 변화구나 높은 빠른 공으로 이어갑니다.", danger: "볼이 될 가능성이 큰 실험구", dangerNote: "다음 공이 3-1이 되는 위험까지 계산합니다.", focus: "2-1에서는 결과보다 다음 카운트가 중요합니다. 제구되는 공으로 2-2를 만들면서 결정구가 살아나는 코스를 택합니다." },
+    "2-2": { first: "스트라이크와 유인구의 경계", firstNote: "타자는 존을 보호합니다. 끝에서만 벗어나는 변화구나 존 위쪽 빠른 공으로 늦은 결정을 강요합니다.", second: "파울이면 궤도 또는 속도 변경", secondNote: "타이밍을 맞춘 파울인지 겨우 걷어낸 파울인지 보고 같은 공 반복 여부를 정합니다.", danger: "3-2를 공짜로 주는 먼 공", dangerNote: "포수가 잡자마자 볼인 공은 타자의 판단을 어렵게 하지 못합니다.", focus: "2-2는 약한 타구와 헛스윙을 함께 노립니다. 스트라이크처럼 보이는 길을 유지하면서 마지막 움직임만 존 밖으로 보냅니다." },
+    "3-0": { first: "가장 믿을 수 있는 스트라이크", firstNote: "포심만이 아니라 투수가 실제로 가장 잘 제구하는 구종을 택합니다.", second: "타자가 지켜봤다면 가장자리 반복", secondNote: "한 스트라이크를 얻어도 곧바로 어려운 공으로 바꾸기보다 3-2까지 가지 않을 선택을 봅니다.", danger: "멋을 부린 변화구와 한가운데 실투", dangerNote: "볼넷과 장타를 동시에 키우는 선택을 피합니다.", focus: "3-0에서는 스트라이크가 먼저입니다. ‘무조건 직구’가 아니라 투수가 가장 믿는 구종과 코스로 승부합니다." },
+    "3-1": { first: "스트라이크가 되는 두 번째 구종", firstNote: "타자는 빠른 공을 기다리기 쉽습니다. 제구되는 체인지업·커터·브레이킹 공이 있으면 속도 차를 만듭니다.", second: "파울·루킹이면 같은 터널 유지", secondNote: "타자가 완전히 잡지 못했다면 3-2에서도 시작 궤도를 재활용할 수 있습니다.", danger: "볼넷이 두려운 가운데 빠른 공", dangerNote: "타자가 가장 강하게 기다리는 공을 정확히 주지 않습니다.", focus: "3-1은 타자의 노림수가 가장 선명한 카운트입니다. 빠른 공을 기다리는 심리를 제구 가능한 두 번째 구종으로 흔듭니다." },
+    "3-2": { first: "존에서 시작해 끝에서 움직이는 공", firstNote: "너무 멀리 버리기보다 스트라이크처럼 보이는 커터·체인지업·슬라이더 또는 가장자리 빠른 공을 택합니다.", second: "계속 파울이면 속도보다 위치 변경", secondNote: "타자가 타이밍을 맞추고 있다면 같은 속도 반복보다 눈높이와 방향을 바꿉니다.", danger: "포수가 막기 어려운 공과 명백한 볼", dangerNote: "볼넷, 폭투, 자동 스타트까지 한 번에 계산합니다.", focus: "3-2에서는 볼넷과 장타를 함께 막아야 합니다. 스트라이크처럼 출발하면서 끝에서만 빗나가는 공이 좋습니다." },
+  };
 
   function renderGameClassroom() {
     const inningValue = Number($("edu-inning").value);
@@ -691,15 +761,42 @@ window.CONTEXT_DATA = {"meta":{"seasons":"2022–2026","years":[2022,2023,2024,2
     else if (bases === "000") ruleLesson = "주자가 없으므로 포스·태그와 주자 귀루보다 타자주자가 1루에 먼저 도착하는지와 타구의 페어·파울을 봅니다.";
     else ruleLesson = "현재 주자는 포스 상태가 아닙니다. 수비는 주자를 직접 태그해야 하며, 타구가 잡혔을 때의 귀루 의무를 따로 확인합니다.";
 
-    let pitchLesson;
-    if (count === "3-0") pitchLesson = "볼넷을 피할 스트라이크가 먼저지만 ‘무조건 직구 한가운데’는 아닙니다. 제구가 가장 좋은 구종과 코스로 스트라이크를 만들고 타자의 노림수를 확인합니다.";
-    else if (count === "3-1") pitchLesson = "타자는 빠른 공과 가운데 코스를 강하게 기다리기 쉽습니다. 스트라이크를 던질 수 있는 두 번째 구종이 있다면 타이밍 차를 만들되 볼넷 위험을 잊지 않습니다.";
-    else if (count === "3-2") pitchLesson = "타자는 존을 넓혀 보호하고 주자는 자동 스타트를 준비합니다. 너무 멀리 버리는 공보다 스트라이크처럼 보이다가 끝에서 벗어나는 공이 좋습니다.";
-    else if (strikes === 2) pitchLesson = "투수 유리 카운트에서는 존 가장자리와 헛스윙 구역을 이용합니다. 그러나 의미 없이 너무 먼 유인구를 반복해 카운트 이점을 버리지 않습니다.";
-    else if (balls > strikes) pitchLesson = "타자 유리 카운트에서는 타자가 한 구역을 노립니다. 투수는 볼넷과 가운데 실투 사이에서 제구 가능한 공을 고르고, 타자는 원하는 공이 아니면 참습니다.";
-    else if (strikes > balls) pitchLesson = "투수가 먼저 앞섰습니다. 좌우·높낮이·속도 중 하나를 바꿔 타자의 판단 범위를 넓히고 다음 결정구를 준비합니다.";
-    else pitchLesson = "서로 유리하지 않은 카운트입니다. 직전 공과 같은 시작 궤도를 보여준 뒤 다른 위치나 속도로 끝내는 식으로 타석의 길을 설계합니다.";
+    const countPlan = educationCountPlans[count];
+    let pitchLesson = countPlan.focus;
     if (hasThird && outs < 2) pitchLesson += " 3루 주자가 있으므로 포수가 막기 어려운 낮은 변화구와 폭투 가능성도 함께 계산합니다.";
+
+    const phaseTag = inningValue <= 3 ? "초반" : inningValue <= 6 ? "중반" : inningValue <= 8 ? "후반" : "9회·연장";
+    const scoreTag = diff === 0 ? "동점" : diff > 0 ? `${diff}점 리드` : `${Math.abs(diff)}점 열세`;
+    const countTag = strikes === 2 ? "결정구 카운트" : balls === 3 ? "볼넷 경계" : balls > strikes ? "타자 유리" : strikes > balls ? "투수 유리" : "균형 카운트";
+    const playTags = [phaseTag, scoreTag, `${outs}아웃`, educationBaseNames[bases], countTag];
+    if (hasFirst && outs < 2) playTags.push("병살·도루 확인");
+    if (hasThird && outs < 2) playTags.push("태그업·폭투 확인");
+    if ((bases === "110" || bases === "111") && outs < 2) playTags.push("인필드플라이 가능");
+
+    let firstPlan = countPlan.first;
+    let firstPlanNote = countPlan.firstNote;
+    let secondPlan = countPlan.second;
+    let secondPlanNote = countPlan.secondNote;
+    let dangerPlan = countPlan.danger;
+    let dangerPlanNote = countPlan.dangerNote;
+    if (bases === "111") {
+      firstPlan = `볼넷을 피할 ${countPlan.first}`;
+      dangerPlan = "낮게 막기 어려운 공과 몸에 맞는 공";
+      dangerPlanNote = "만루에서는 볼넷·사구가 곧 실점입니다. 움직임보다 포수가 확실히 받을 수 있는 제구를 먼저 봅니다.";
+    } else if (hasThird && outs < 2) {
+      secondPlan = "헛스윙과 얕은 타구를 함께 만드는 공";
+      secondPlanNote = "삼진만 고집하지 말고 높은 빠른 공, 손잡이 쪽 공처럼 강한 외야 타구를 줄이는 선택도 봅니다.";
+      dangerPlan = "포수가 막기 어려운 낮은 원바운드 공";
+      dangerPlanNote = "3루 주자가 있을 때는 좋은 유인구도 폭투가 되면 나쁜 선택입니다.";
+    } else if (hasFirst && outs < 2) {
+      firstPlanNote += " 1루 주자의 스타트와 병살 타구 가능성도 함께 확인합니다.";
+      secondPlan = "주자의 움직임 뒤 타자 약점 재공략";
+      secondPlanNote = "도루나 히트앤드런이 보이면 포수 송구와 땅볼 유도를 함께 생각합니다.";
+    }
+    if (outs === 2) {
+      secondPlan = "주자보다 타자 승부에 집중";
+      secondPlanNote = "확실한 아웃 하나면 이닝이 끝나므로 복잡한 작전보다 타자의 가장 약한 반응을 다시 공격합니다.";
+    }
 
     $("edu-situation-title").textContent = `${inningLabel} ${half} · ${offenseScore}대${defenseScore} · ${outs}아웃 · ${educationBaseNames[bases]} · ${count}`;
     $("edu-situation-priority").textContent = priority;
@@ -707,6 +804,13 @@ window.CONTEXT_DATA = {"meta":{"seasons":"2022–2026","years":[2022,2023,2024,2
     $("edu-defense-lesson").textContent = defenseLesson;
     $("edu-rule-lesson").textContent = ruleLesson;
     $("edu-pitch-lesson").textContent = pitchLesson;
+    $("edu-situation-tags").innerHTML = playTags.map((tag) => `<span>${tag}</span>`).join("");
+    $("edu-plan-first").textContent = firstPlan;
+    $("edu-plan-first-note").textContent = firstPlanNote;
+    $("edu-plan-second").textContent = secondPlan;
+    $("edu-plan-second-note").textContent = secondPlanNote;
+    $("edu-plan-danger").textContent = dangerPlan;
+    $("edu-plan-danger-note").textContent = dangerPlanNote;
   }
 
   const educationZoneNames = {
@@ -714,6 +818,13 @@ window.CONTEXT_DATA = {"meta":{"seasons":"2022–2026","years":[2022,2023,2024,2
     7: "낮은 왼쪽", 8: "낮은 가운데", 9: "낮은 오른쪽", 11: "높은 왼쪽 바깥", 12: "높은 오른쪽 바깥",
     13: "낮은 왼쪽 바깥", 14: "낮은 오른쪽 바깥",
   };
+
+  const highLowOpposite = { 1: 7, 2: 8, 3: 9, 4: 1, 5: 8, 6: 3, 7: 1, 8: 2, 9: 3, 11: 13, 12: 14, 13: 11, 14: 12 };
+  const horizontalOpposite = { 1: 3, 2: 2, 3: 1, 4: 6, 5: 5, 6: 4, 7: 9, 8: 8, 9: 7, 11: 12, 12: 11, 13: 14, 14: 13 };
+  const lowSameColumn = { 1: 7, 2: 8, 3: 9, 4: 7, 5: 8, 6: 9, 7: 7, 8: 8, 9: 9, 11: 13, 12: 14, 13: 13, 14: 14 };
+  const highSameColumn = { 1: 1, 2: 2, 3: 3, 4: 1, 5: 2, 6: 3, 7: 1, 8: 2, 9: 3, 11: 11, 12: 12, 13: 11, 14: 12 };
+  const chaseExtension = { 1: 11, 2: 1, 3: 12, 4: 11, 5: 8, 6: 12, 7: 13, 8: 8, 9: 14, 11: 11, 12: 12, 13: 13, 14: 14 };
+  const strikeEdge = { 1: 1, 2: 2, 3: 3, 4: 4, 5: 4, 6: 6, 7: 7, 8: 8, 9: 9, 11: 1, 12: 3, 13: 7, 14: 9 };
 
   function renderEduPitchReader() {
     const family = $("edu-prev-family").value;
@@ -728,20 +839,31 @@ window.CONTEXT_DATA = {"meta":{"seasons":"2022–2026","years":[2022,2023,2024,2
     let guess;
     let reason;
     let alternative;
+    let nextPitch;
+    let nextZone;
     if (family === "breaking") {
-      guess = result === "whiff" ? `${low ? "낮은 " : ""}브레이킹 반복 또는 높은 빠른 공` : "반대 높이의 빠른 공 또는 제구된 브레이킹";
+      nextPitch = result === "whiff" ? "슬라이더" : "포심";
+      nextZone = result === "whiff" ? chaseExtension[zone] : highLowOpposite[zone];
       reason = `${educationZoneNames[zone]}의 브레이킹에 ${resultName}했다면 타자가 꺾임과 속도에 보인 반응이 단서입니다. ${result === "whiff" ? "배터리는 같은 궤도를 조금 더 멀리 반복하거나" : "같은 공을 무조건 반복하기보다"} 눈높이를 바꾸는 빠른 공을 연결해 볼 수 있습니다.`;
       alternative = `슬라이더·스위퍼처럼 옆으로 움직였으면 반대쪽 빠른 공, 커브·KC처럼 아래로 떨어졌으면 위쪽 빠른 공을 먼저 함께 봅니다.`;
     } else if (family === "fast") {
-      guess = high ? "낮은 브레이킹 또는 오프스피드" : "반대쪽 빠른 공 또는 브레이킹";
+      nextPitch = result === "looking" ? "포심" : result === "ball" ? "커터" : "체인지업";
+      nextZone = result === "looking" ? horizontalOpposite[zone] : result === "ball" ? strikeEdge[zone] : lowSameColumn[zone];
       reason = `${educationZoneNames[zone]}의 빠른 공에 ${resultName}한 뒤에는 같은 반응 시간을 주지 않는 선택이 자연스럽습니다. 빠른 공과 비슷하게 출발해 늦게 갈라지는 공을 살핍니다.`;
       alternative = result === "looking" ? "타자가 빠른 공을 지켜봤다면 같은 공 반복도 살아 있습니다. 다만 가운데보다 가장자리 제구가 먼저입니다." : "타자가 빠른 공을 따라갔다면 체인지업·스플리터로 타이밍을 늦추는 길도 있습니다.";
     } else {
-      guess = result === "whiff" ? "오프스피드 반복 또는 높은 빠른 공" : "빠른 공으로 속도 회복";
+      nextPitch = result === "whiff" ? "체인지업" : "포심";
+      nextZone = result === "whiff" ? chaseExtension[zone] : highSameColumn[zone];
       reason = `${educationZoneNames[zone]}의 오프스피드에 ${resultName}했다면 타자의 중심이 앞에 남았는지 봅니다. 앞에 쏠렸다면 한 번 더 느리게, 기다렸다면 빠른 공으로 반응 시간을 줄일 수 있습니다.`;
       alternative = "체인지업 뒤 싱커, 스플리터 뒤 포심처럼 비슷한 출발 궤도와 다른 끝 움직임을 연결하는 선택을 봅니다.";
     }
 
+    if (balls === 3) {
+      nextPitch = "포심";
+      nextZone = strikeEdge[zone];
+      alternative = "3볼에서는 변화가 큰 공보다 실제로 스트라이크를 만들 수 있는 주무기와 가장자리 제구를 먼저 봅니다.";
+    }
+    guess = `${nextPitch} · ${nextZone}번 ${educationZoneNames[nextZone]}`;
     if (result === "ball") reason += " 직전 공이 볼이었으므로 다음 공은 구종보다 스트라이크를 만들 수 있는 제구가 우선입니다.";
     if (outside) reason += " 존 밖 공이므로 타자가 실제로 속았는지, 처음부터 버렸는지를 구분해야 합니다.";
     let countNote = "서로 유리하지 않은 카운트라면 위치·높이·속도 중 한 축을 바꾸는 공이 좋습니다.";
@@ -751,10 +873,29 @@ window.CONTEXT_DATA = {"meta":{"seasons":"2022–2026","years":[2022,2023,2024,2
     else if (balls > strikes) countNote = "타자가 앞선 카운트라 한가운데 실투를 피하면서도 스트라이크를 만들 수 있어야 합니다.";
 
     $("edu-next-guess").textContent = guess;
+    $("edu-next-target").textContent = `${nextPitch} · ${nextZone}번 ${educationZoneNames[nextZone]}`;
     $("edu-next-reason").textContent = reason;
     $("edu-next-alternative").textContent = alternative;
     $("edu-good-pitch").textContent = `${countNote} 같은 팔 스피드와 출발 궤도를 유지하고 가운데에 남지 않아야 합니다.`;
-    document.querySelectorAll("[data-edu-zone]").forEach((cell) => cell.classList.toggle("active", Number(cell.dataset.eduZone) === zone));
+    const zoneCells = document.querySelectorAll("[data-edu-zone]");
+    zoneCells.forEach((cell) => {
+      cell.classList.remove("active", "previous-zone", "next-zone");
+      cell.querySelectorAll(".pitch-zone-marker").forEach((marker) => marker.remove());
+      cell.setAttribute("aria-label", `${cell.dataset.eduZone}번 ${educationZoneNames[Number(cell.dataset.eduZone)]}`);
+    });
+    const addZoneMarker = (targetZone, type, label) => {
+      const cell = document.querySelector(`[data-edu-zone="${targetZone}"]`);
+      if (!cell) return;
+      cell.classList.add(`${type}-zone`);
+      const marker = document.createElement("i");
+      marker.className = `pitch-zone-marker ${type}-marker`;
+      marker.textContent = type === "previous" ? "직전" : "다음";
+      marker.title = label;
+      cell.appendChild(marker);
+      cell.setAttribute("aria-label", `${cell.getAttribute("aria-label")} · ${label}`);
+    };
+    addZoneMarker(zone, "previous", `${resultName}한 직전 ${family === "fast" ? "빠른 공" : family === "breaking" ? "브레이킹" : "오프스피드"}`);
+    addZoneMarker(nextZone, "next", `예상 다음 공 ${nextPitch}`);
   }
 
   const renderEducationSituation = () => { renderGameClassroom(); renderEduPitchReader(); };
