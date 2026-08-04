@@ -193,6 +193,18 @@ footer{border-top-color:rgba(31,93,80,.12)}
 @media(max-width:820px){.education-hero{grid-template-columns:1fr}.education-hero>p{max-width:640px}.education-menu{grid-template-columns:1fr}.lesson-explain-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:640px) and (orientation:portrait){.board-nav button{min-width:0}.education-board{width:100%}.education-hero{display:block;margin:3px 3px 10px}.education-hero h1{font-size:24px}.education-hero>p{margin-top:7px;font-size:10px}.education-menu{padding:8px;gap:6px}.education-menu>div{padding:9px}.education-topic-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}.education-topic-row button{min-width:0;padding:7px 3px;font-size:9px}.lesson-stage{padding:14px}.lesson-heading{display:block}.lesson-heading h2{font-size:23px}.lesson-heading>b{display:inline-block;margin-top:8px}.lesson-core{font-size:12px;margin-bottom:14px}.lesson-sequence{grid-template-columns:1fr}.lesson-arrow{height:24px;line-height:24px;transform:rotate(90deg)}.lesson-pitch{padding:12px}.lesson-zone{width:min(210px,72%)}.lesson-explain-grid{grid-template-columns:1fr;margin-top:26px}.lesson-explain-grid p{font-size:11px}.education-foundation{padding:14px}.foundation-grid{grid-template-columns:1fr}.foundation-grid p{font-size:11px}}
 
+/* Clear next-pitch hierarchy and full game classroom */
+.next-answer-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin-top:10px}.next-answer-grid .answer-card{min-height:142px}.elevated-zone-slot{margin-top:14px}.elevated-zone-slot .location-module{margin-bottom:14px}.sequence-change-row{grid-template-columns:110px 76px minmax(100px,1fr) 66px 150px}.sequence-after{display:grid;gap:1px;text-align:right}.sequence-after small{color:var(--muted);font-size:7px}.sequence-after b{font-size:12px}
+.game-classroom{margin-bottom:12px;padding:20px;background:linear-gradient(135deg,#fff 0%,#edf9f6 100%)}.game-classroom-heading{display:flex;align-items:flex-end;justify-content:space-between;gap:20px}.game-classroom-heading h2{margin:4px 0 0;font-size:24px;letter-spacing:-.045em}.game-classroom-heading>p{max-width:480px;margin:0;color:var(--muted);font-size:10px;text-align:right}.education-situation-controls{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:7px;margin-top:14px}.education-situation-controls label{display:grid;gap:5px;color:#54766e;font-size:9px;font-weight:900}.education-situation-controls select,.education-situation-controls input{width:100%;height:43px;padding:0 9px;border:1px solid rgba(31,93,80,.13);border-radius:10px;background:#fff;color:#173a33;font:800 11px/1 inherit;outline:none}.education-situation-controls select:focus,.education-situation-controls input:focus{border-color:#10afa4;box-shadow:0 0 0 3px rgba(16,175,164,.12)}.situation-lesson-summary{margin-top:12px;padding:14px 16px;border-left:4px solid #10afa4;border-radius:12px;background:#fff}.situation-lesson-summary>span{color:#087f77;font-size:9px;font-weight:950}.situation-lesson-summary h3{margin:3px 0 5px;font-size:17px}.situation-lesson-summary p{margin:0;color:#456a61;font-size:11px;line-height:1.55}.situation-lesson-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:8px}.situation-lesson-grid>div{padding:14px;border:1px solid rgba(31,93,80,.09);border-radius:12px;background:rgba(255,255,255,.9)}.situation-lesson-grid span{color:#087f77;font-size:9px;font-weight:950}.situation-lesson-grid p{margin:5px 0 0;color:#456a61;font-size:11px;line-height:1.6}
+
+@media(max-width:980px){.education-situation-controls{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media(max-width:640px) and (orientation:portrait){
+  .next-answer-grid,.answer-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}.next-answer-grid .answer-card{min-height:132px;padding:12px}.next-answer-grid .answer-card strong{font-size:14px}.next-answer-grid .answer-card b{font-size:21px}.next-answer-grid .answer-card p{font-size:8px}
+  .quick-result{padding:9px 10px}.quick-context{margin-bottom:4px}.quick-effects{margin-top:4px}
+  .sequence-change-row{grid-template-columns:minmax(0,1fr) 72px 55px;gap:6px}.sequence-change-row .change-track{grid-column:1/-1}.sequence-change-row>small{grid-column:1/-1;padding-left:0;text-align:left}.sequence-after{text-align:right}
+  .game-classroom{padding:12px}.game-classroom-heading{display:block}.game-classroom-heading h2{font-size:21px}.game-classroom-heading>p{margin-top:5px;text-align:left}.education-situation-controls{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}.education-situation-controls label:last-child{grid-column:1/-1}.situation-lesson-summary{padding:12px}.situation-lesson-summary h3{font-size:15px}.situation-lesson-grid{grid-template-columns:1fr}.situation-lesson-grid>div{padding:12px}
+}
+
 </style>
   </head>
   <body>
@@ -244,14 +256,26 @@ footer{border-top-color:rgba(31,93,80,.12)}
         <div class="board-heading"><div><span class="step">다음 공</span><h2 id="answer-title">지금 가장 가능성 높은 다음 공</h2></div><p>상황 보정과 직전 공 설정을 반영한 계산판입니다.</p></div>
         <aside class="quick-result" aria-live="polite" aria-label="다음 공 빠른 결과">
           <div class="quick-context"><div><span>⚡ 다음 공 요약</span><strong id="quick-state">—</strong><small id="quick-sample">—</small></div></div>
-          <div class="quick-grid">
-            <div><span>많은 공</span><strong id="quick-most">—</strong></div>
-            <div><span>적은 공</span><strong id="quick-least">—</strong></div>
-            <div><span>좋은 공</span><strong id="quick-best">—</strong></div>
-            <div><span>나쁜 공</span><strong id="quick-worst">—</strong></div>
-          </div>
           <div class="quick-effects" id="quick-effects">이닝·주자·아웃·투구수를 고르면 가장 크게 달라지는 공을 바로 보여줍니다.</div>
         </aside>
+        <div class="answer-grid next-answer-grid">
+          <article class="answer-card cyan"><span>가장 많이 나온 공</span><strong id="most-pitch">—</strong><b id="most-value">—</b><p id="most-note">현재 조건에서의 다음 구종 점유율</p></article>
+          <article class="answer-card lime"><span>가장 적게 나온 공</span><strong id="least-pitch">—</strong><b id="least-value">—</b><p id="least-note">현재 조건에서의 다음 구종 점유율</p></article>
+          <article class="answer-card amber"><span>상성이 좋은 공</span><strong id="best-pitch">—</strong><b id="best-value">—</b><p id="best-note">투수 관점에서 관측 득점가치가 가장 낮은 공</p></article>
+          <article class="answer-card red"><span>상성이 나쁜 공</span><strong id="worst-pitch">—</strong><b id="worst-value">—</b><p id="worst-note">투수 관점에서 관측 득점가치가 가장 높은 공</p></article>
+          <article class="answer-card coral"><span>직전 결과 영향 최대</span><strong id="impact-pitch">—</strong><b id="impact-value">—</b><p>같은 직전 구종 평균보다 가장 크게 올라간 공</p></article>
+          <article class="answer-card ice"><span>현재 신뢰도</span><strong id="confidence-label">—</strong><b id="confidence-value">—</b><p id="confidence-note">표본과 자동 복귀 단계를 함께 봅니다.</p></article>
+        </div>
+
+        <div class="zone-slot elevated-zone-slot" data-zone-slot="next">
+          <section class="location-module" id="location-module" aria-labelledby="location-title">
+            <div class="board-heading compact"><div><span class="step">구종 위치</span><h2 id="location-title">선택한 구종은 어디로 오는가</h2></div><div class="pitch-tabs" id="zone-pitch"></div></div>
+            <div class="location-layout location-only">
+              <article class="panel zone-panel"><div class="zone-caption"><span>포수 시점 · 13개 구역</span><strong id="zone-title">—</strong></div><div class="zone-wrap" id="zone-grid"></div><p id="zone-detail">구역을 누르면 확률과 표본을 보여줍니다.</p></article>
+            </div>
+          </section>
+        </div>
+
         <article class="panel pitch-reading-panel" aria-labelledby="pitch-reading-title">
           <div class="pitch-reading-heading">
             <div><span class="eyebrow-small">카운트·결과·위기 상황을 함께 읽기</span><h3 id="pitch-reading-title">볼배합 수읽기</h3></div>
@@ -270,26 +294,17 @@ footer{border-top-color:rgba(31,93,80,.12)}
         </div>
         <article class="evidence-card" aria-live="polite">
           <div><span class="eyebrow-small">현재 계산</span><h3 id="state-title">우투수·우타자 0-1 · 체인지업 헛스윙 이후</h3><p id="state-note">기본확률과 직전 공을 비교합니다.</p></div>
-          <div class="evidence-metrics"><div><span id="base-sample-label">현재 카운트 기본 표본</span><strong id="base-sample">—</strong></div><div><span>정확한 직전 결과</span><strong id="sequence-sample">—</strong></div><div><span>계산에 사용한 직전 표본</span><strong id="sequence-used-sample">—</strong></div><div><span>적용 단계</span><strong id="applied-level">—</strong></div></div>
+          <div class="evidence-metrics"><div><span id="base-sample-label">현재 카운트 기본 표본</span><strong id="base-sample">—</strong></div><div><span>같은 직전 구종 전체</span><strong id="sequence-reference-sample">—</strong></div><div><span>정확한 직전 결과</span><strong id="sequence-sample">—</strong></div><div><span>계산에 사용한 직전 표본</span><strong id="sequence-used-sample">—</strong></div><div><span>적용 단계</span><strong id="applied-level">—</strong></div></div>
         </article>
         <article class="panel sequence-change-panel">
-          <div class="pitch-card-heading"><div><span class="eyebrow-small">직전 공 변화</span><h3>기본확률과 비교</h3></div><p>직전 공을 반영한 뒤 증가·감소한 구종입니다.</p></div>
+          <div class="pitch-card-heading"><div><span class="eyebrow-small">직전 결과의 영향</span><h3>같은 직전 구종의 전체 평균과 비교</h3></div><p>구종을 던질 수 있는 투수의 성향을 먼저 맞춘 뒤 결과가 만든 변화만 봅니다. 증가한 공부터 표시합니다.</p></div>
           <div class="sequence-change-list" id="sequence-change-list"></div>
         </article>
         <div class="zone-slot" data-zone-slot="sequence"></div>
       </section>
 
       <section class="board-view active" id="answer" data-board="next" aria-labelledby="next-detail-title">
-        <div class="board-heading compact"><div><span class="step">다음 공 세부</span><h2 id="next-detail-title">많고 적은 공, 좋고 나쁜 공</h2></div><p>선택한 상황의 구종 빈도와 관측 득점가치를 표시합니다.</p></div>
-        <div class="answer-grid">
-          <article class="answer-card cyan"><span>가장 많이 나온 공</span><strong id="most-pitch">—</strong><b id="most-value">—</b><p id="most-note">현재 조건에서의 다음 구종 점유율</p></article>
-          <article class="answer-card lime"><span>가장 적게 나온 공</span><strong id="least-pitch">—</strong><b id="least-value">—</b><p id="least-note">현재 조건에서의 다음 구종 점유율</p></article>
-          <article class="answer-card amber"><span>상성이 좋은 공</span><strong id="best-pitch">—</strong><b id="best-value">—</b><p id="best-note">투수 관점에서 관측 득점가치가 가장 낮은 공</p></article>
-          <article class="answer-card red"><span>상성이 나쁜 공</span><strong id="worst-pitch">—</strong><b id="worst-value">—</b><p id="worst-note">투수 관점에서 관측 득점가치가 가장 높은 공</p></article>
-          <article class="answer-card coral"><span>직전 공 영향 최대</span><strong id="impact-pitch">—</strong><b id="impact-value">—</b><p>기본확률보다 가장 크게 올라간 공</p></article>
-          <article class="answer-card ice"><span>현재 신뢰도</span><strong id="confidence-label">—</strong><b id="confidence-value">—</b><p id="confidence-note">표본과 자동 복귀 단계를 함께 봅니다.</p></article>
-        </div>
-
+        <div class="board-heading compact"><div><span class="step">구종별 세부</span><h2 id="next-detail-title">현재 상황의 모든 구종</h2></div><p>위에서 답을 먼저 보고, 아래에서 각 구종의 근거를 확인합니다.</p></div>
         <article class="panel pitch-card-panel" aria-labelledby="pitch-card-title">
           <div class="pitch-card-heading"><div><span class="eyebrow-small">빠른 구종 카드</span><h3 id="pitch-card-title">현재 상황의 모든 구종</h3></div><p>CSW는 루킹+헛스윙 비율, 상황 RV는 투수 관점의 관측 득점가치입니다.</p></div>
           <div class="pitch-card-grid" id="pitch-card-grid"></div>
@@ -307,15 +322,6 @@ footer{border-top-color:rgba(31,93,80,.12)}
         </div>
         <p class="disclaimer">확률과 상성은 관측 자료의 비교이며, 인과관계나 특정 선수의 최적 선택을 뜻하지 않습니다.</p>
       </section>
-
-      <div class="zone-slot" data-zone-slot="next">
-        <section class="location-module" id="location-module" aria-labelledby="location-title">
-          <div class="board-heading compact"><div><span class="step">구종 위치</span><h2 id="location-title">선택한 구종은 어디로 오는가</h2></div><div class="pitch-tabs" id="zone-pitch"></div></div>
-          <div class="location-layout location-only">
-            <article class="panel zone-panel"><div class="zone-caption"><span>포수 시점 · 13개 구역</span><strong id="zone-title">—</strong></div><div class="zone-wrap" id="zone-grid"></div><p id="zone-detail">구역을 누르면 확률과 표본을 보여줍니다.</p></article>
-          </div>
-        </section>
-      </div>
 
       <section class="board-view stats-board" id="stats" data-board="stats" aria-labelledby="stats-title" hidden>
         <div class="board-heading"><div><span class="step">통계</span><h2 id="stats-title">추측하지 않은 실제 관측 통계</h2></div><p>자동 확장이나 상황 보정 없이 자료에 기록된 값만 표시합니다.</p></div>
@@ -347,6 +353,26 @@ footer{border-top-color:rgba(31,93,80,.12)}
           <div><span class="step">4 · 교육</span><h1 id="education-title">숫자 없이 배우는 야구의 기본 원리</h1></div>
           <p>통계로 다음 공을 맞히는 판이 아닙니다. 규칙, 타자의 시선, 반응 시간, 배트 궤도와 경기 상황을 이해하는 수업입니다.</p>
         </div>
+
+        <article class="panel game-classroom" aria-labelledby="game-classroom-title">
+          <div class="game-classroom-heading"><div><span class="eyebrow-small">1회부터 9회까지</span><h2 id="game-classroom-title">경기 상황 수업</h2></div><p>선택한 장면에서 먼저 생각해야 할 교과서적 판단 순서를 보여줍니다.</p></div>
+          <div class="education-situation-controls">
+            <label>이닝<select id="edu-inning"><option value="1">1회</option><option value="2">2회</option><option value="3">3회</option><option value="4">4회</option><option value="5">5회</option><option value="6">6회</option><option value="7">7회</option><option value="8">8회</option><option value="9">9회</option><option value="10">연장</option></select></label>
+            <label>초·말<select id="edu-half"><option value="초">초</option><option value="말">말</option></select></label>
+            <label>공격팀 점수<input id="edu-offense-score" type="number" inputmode="numeric" min="0" max="30" value="0" /></label>
+            <label>수비팀 점수<input id="edu-defense-score" type="number" inputmode="numeric" min="0" max="30" value="0" /></label>
+            <label>아웃<select id="edu-outs"><option value="0">0아웃</option><option value="1">1아웃</option><option value="2">2아웃</option></select></label>
+            <label>주자<select id="edu-bases"><option value="000">주자 없음</option><option value="100">1루</option><option value="010">2루</option><option value="001">3루</option><option value="110">1·2루</option><option value="101">1·3루</option><option value="011">2·3루</option><option value="111">만루</option></select></label>
+            <label>카운트<select id="edu-count"><option>0-0</option><option>0-1</option><option>0-2</option><option>1-0</option><option>1-1</option><option>1-2</option><option>2-0</option><option>2-1</option><option>2-2</option><option>3-0</option><option>3-1</option><option>3-2</option></select></label>
+          </div>
+          <div class="situation-lesson-summary"><span>현재 수업</span><h3 id="edu-situation-title">1회 초 · 0대0 · 0아웃 · 주자 없음 · 0-0</h3><p id="edu-situation-priority">초반에는 한 타석에 과하게 반응하기보다 스트라이크와 출루의 기본을 지킵니다.</p></div>
+          <div class="situation-lesson-grid">
+            <div><span>공격의 생각</span><p id="edu-offense-lesson">출루와 좋은 타구를 우선하며 불필요하게 아웃을 소비하지 않습니다.</p></div>
+            <div><span>수비·배터리의 생각</span><p id="edu-defense-lesson">선두타자 출루를 막고 공격적인 스트라이크로 타석의 주도권을 잡습니다.</p></div>
+            <div><span>규칙 확인</span><p id="edu-rule-lesson">현재는 포스·태그나 특별 주루 규칙보다 타자와 투수의 기본 승부가 먼저입니다.</p></div>
+            <div><span>볼배합 초점</span><p id="edu-pitch-lesson">첫 공은 스트라이크를 잡을 수 있는 주무기로 시작하되 한가운데 실투는 피합니다.</p></div>
+          </div>
+        </article>
 
         <div class="panel education-menu" aria-label="교육 주제 선택">
           <div><strong>볼배합 기본</strong><div class="education-topic-row"><button type="button" data-lesson="horizontal" class="active">좌우 대비</button><button type="button" data-lesson="vertical">높낮이</button><button type="button" data-lesson="speed">속도 차</button><button type="button" data-lesson="tunnel">터널링</button><button type="button" data-lesson="eye-level">눈높이</button></div></div>
@@ -537,6 +563,78 @@ window.CONTEXT_DATA = {"meta":{"seasons":"2022–2026","years":[2022,2023,2024,2
 
   document.querySelectorAll("[data-lesson]").forEach((button) => button.addEventListener("click", () => renderEducation(button.dataset.lesson)));
 
+  const educationBaseNames = { "000": "주자 없음", "100": "1루", "010": "2루", "001": "3루", "110": "1·2루", "101": "1·3루", "011": "2·3루", "111": "만루" };
+
+  function renderGameClassroom() {
+    const inningValue = Number($("edu-inning").value);
+    const inningLabel = inningValue >= 10 ? "연장" : `${inningValue}회`;
+    const half = $("edu-half").value;
+    const offenseScore = Math.max(0, Math.min(30, Number($("edu-offense-score").value) || 0));
+    const defenseScore = Math.max(0, Math.min(30, Number($("edu-defense-score").value) || 0));
+    const outs = Number($("edu-outs").value);
+    const bases = $("edu-bases").value;
+    const count = $("edu-count").value;
+    const [balls, strikes] = count.split("-").map(Number);
+    const hasFirst = bases[0] === "1";
+    const hasSecond = bases[1] === "1";
+    const hasThird = bases[2] === "1";
+    const diff = offenseScore - defenseScore;
+    const early = inningValue <= 3;
+    const late = inningValue >= 7;
+    const finalStage = inningValue >= 9;
+    const close = Math.abs(diff) <= 1;
+
+    let priority;
+    if (finalStage && half === "말" && diff === 0) priority = "끝내기 주자가 되는 출루와 한 베이스의 가치가 가장 큰 장면입니다. 공격은 결승점을, 수비는 어떤 방식의 출루도 먼저 막습니다.";
+    else if (finalStage && diff < 0) priority = `공격팀이 ${Math.abs(diff)}점 뒤진 경기 후반입니다. 필요한 주자 수를 계산하고 마지막 아웃을 값싸게 쓰지 않습니다.`;
+    else if (finalStage && diff > 0) priority = `공격팀이 ${diff}점 앞선 경기 후반입니다. 공격은 추가점보다 아웃 관리도 생각하고, 수비는 선두타자 출루를 막아 추격 기회를 줄입니다.`;
+    else if (late && close) priority = "경기 후반 한 점 차 안쪽입니다. 한 베이스와 한 아웃의 가치가 커져 작전, 대주자, 수비 위치를 함께 생각합니다.";
+    else if (early) priority = "경기 초반입니다. 한 점만을 위해 지나치게 아웃을 소비하기보다 출루와 강한 타구를 쌓는 기본을 우선합니다.";
+    else priority = "경기 중반입니다. 현재 한 점과 남은 공격 기회를 함께 비교하며 다음 이닝까지 이어질 선택을 합니다.";
+
+    let offenseLesson = "출루와 좋은 타구를 우선하고, 카운트가 유리해질수록 자신이 강하게 칠 수 있는 공을 좁혀 기다립니다.";
+    if (hasThird && outs < 2) offenseLesson = "3루 주자는 안타 없이도 득점할 수 있습니다. 깊은 외야 뜬공, 전진수비 사이 땅볼과 폭투 가능성을 보되 무리한 나쁜 공 스윙은 피합니다.";
+    else if (hasSecond && !hasThird && outs < 2) offenseLesson = "2루 주자는 단타 하나로 득점을 노릴 수 있습니다. 우측 방향 진루타나 번트는 타자·수비 위치·이닝을 보고 선택하며 자동으로 아웃을 내주지 않습니다.";
+    else if (hasFirst && outs < 2) offenseLesson = "1루 주자는 도루·히트앤드런·번트 가능성을 보여 수비를 움직일 수 있습니다. 다만 병살을 피하려다 타석의 장점을 버리지 않습니다.";
+    else if (outs === 2 && bases !== "000") offenseLesson = "2아웃에서는 희생플라이와 진루타만으로 득점할 수 없습니다. 주자는 타구와 동시에 움직이고 타자는 출루 또는 안타를 만들어야 합니다.";
+    if (finalStage && diff < 0 && Math.abs(diff) > 1) offenseLesson += " 한 점짜리 작전보다 동점에 필요한 여러 주자를 남기는 것이 우선입니다.";
+
+    let defenseLesson = "선두타자 출루를 막고, 타구 방향과 주자의 속도를 확인해 가장 확실한 아웃 하나를 먼저 잡습니다.";
+    if (bases === "111") defenseLesson = "만루는 모든 베이스가 포스 상황입니다. 0·1아웃이면 홈 포스와 병살을 준비하되 볼넷·몸에 맞는 공은 곧 실점이므로 제구 가능한 공으로 승부합니다.";
+    else if (hasThird && outs < 2) defenseLesson = "3루 득점을 막으려면 삼진과 얕은 타구가 좋지만 그것만 고집해 볼넷·폭투 위험을 키우지 않습니다. 내야 전진 여부와 외야 송구 위치도 함께 정합니다.";
+    else if (hasFirst && outs < 2) defenseLesson = "1루 주자의 스타트와 번트 자세를 확인하고 병살 깊이를 준비합니다. 투수는 타자 승부와 견제 사이에서 투구 리듬을 잃지 않습니다.";
+    else if (outs === 2) defenseLesson = "아웃 하나면 이닝이 끝납니다. 앞선 주자를 무리하게 잡기보다 타자주자나 가장 확실한 베이스에서 아웃을 완성합니다.";
+    if (finalStage && half === "말" && diff === 0) defenseLesson += " 끝내기 주자는 홈에 가까운 주자이므로 외야는 얕아지고 강한 타자라면 1루가 비었는지도 봅니다.";
+
+    let ruleLesson;
+    if ((bases === "110" || bases === "111") && outs < 2) ruleLesson = "1·2루 또는 만루에서 2아웃 미만이면 평범한 내야 뜬공에 인필드플라이가 선언될 수 있습니다. 선언돼도 공은 살아 있어 주자는 위험을 감수하고 진루할 수 있습니다.";
+    else if (hasThird && outs < 2) ruleLesson = "뜬공이 잡히면 3루 주자는 포구 뒤에 베이스를 밟고 출발해야 합니다. 포구 전 출발하면 수비의 어필로 아웃될 수 있습니다.";
+    else if (strikes === 2) ruleLesson = `세 번째 스트라이크를 포수가 놓쳤을 때 ${!hasFirst || outs === 2 ? "1루가 비었거나 2아웃이므로 타자주자가 1루로 뛸 수 있습니다" : "1루가 차 있고 2아웃 미만이므로 타자는 바로 아웃입니다"}.`;
+    else if (hasFirst) ruleLesson = "뒤 주자 때문에 앞 주자가 다음 베이스로 갈 의무가 있으면 포스 아웃입니다. 타자주자가 먼저 아웃되면 포스가 풀리는지 다시 확인합니다.";
+    else if (bases === "000") ruleLesson = "주자가 없으므로 포스·태그와 주자 귀루보다 타자주자가 1루에 먼저 도착하는지와 타구의 페어·파울을 봅니다.";
+    else ruleLesson = "현재 주자는 포스 상태가 아닙니다. 수비는 주자를 직접 태그해야 하며, 타구가 잡혔을 때의 귀루 의무를 따로 확인합니다.";
+
+    let pitchLesson;
+    if (count === "3-0") pitchLesson = "볼넷을 피할 스트라이크가 먼저지만 ‘무조건 직구 한가운데’는 아닙니다. 제구가 가장 좋은 구종과 코스로 스트라이크를 만들고 타자의 노림수를 확인합니다.";
+    else if (count === "3-1") pitchLesson = "타자는 빠른 공과 가운데 코스를 강하게 기다리기 쉽습니다. 스트라이크를 던질 수 있는 두 번째 구종이 있다면 타이밍 차를 만들되 볼넷 위험을 잊지 않습니다.";
+    else if (count === "3-2") pitchLesson = "타자는 존을 넓혀 보호하고 주자는 자동 스타트를 준비합니다. 너무 멀리 버리는 공보다 스트라이크처럼 보이다가 끝에서 벗어나는 공이 좋습니다.";
+    else if (strikes === 2) pitchLesson = "투수 유리 카운트에서는 존 가장자리와 헛스윙 구역을 이용합니다. 그러나 의미 없이 너무 먼 유인구를 반복해 카운트 이점을 버리지 않습니다.";
+    else if (balls > strikes) pitchLesson = "타자 유리 카운트에서는 타자가 한 구역을 노립니다. 투수는 볼넷과 가운데 실투 사이에서 제구 가능한 공을 고르고, 타자는 원하는 공이 아니면 참습니다.";
+    else if (strikes > balls) pitchLesson = "투수가 먼저 앞섰습니다. 좌우·높낮이·속도 중 하나를 바꿔 타자의 판단 범위를 넓히고 다음 결정구를 준비합니다.";
+    else pitchLesson = "서로 유리하지 않은 카운트입니다. 직전 공과 같은 시작 궤도를 보여준 뒤 다른 위치나 속도로 끝내는 식으로 타석의 길을 설계합니다.";
+    if (hasThird && outs < 2) pitchLesson += " 3루 주자가 있으므로 포수가 막기 어려운 낮은 변화구와 폭투 가능성도 함께 계산합니다.";
+
+    $("edu-situation-title").textContent = `${inningLabel} ${half} · ${offenseScore}대${defenseScore} · ${outs}아웃 · ${educationBaseNames[bases]} · ${count}`;
+    $("edu-situation-priority").textContent = priority;
+    $("edu-offense-lesson").textContent = offenseLesson;
+    $("edu-defense-lesson").textContent = defenseLesson;
+    $("edu-rule-lesson").textContent = ruleLesson;
+    $("edu-pitch-lesson").textContent = pitchLesson;
+  }
+
+  ["edu-inning", "edu-half", "edu-outs", "edu-bases", "edu-count"].forEach((id) => $(id).addEventListener("change", renderGameClassroom));
+  ["edu-offense-score", "edu-defense-score"].forEach((id) => $(id).addEventListener("input", renderGameClassroom));
+
   function syncControls() {
     [["pitcher-hand", state.p_throws], ["batter-hand", state.stand], ["pitcher-role", state.role], ["previous-outcome", state.prevOutcome], ["outcome-tabs", state.outcome]].forEach(([id, value]) => {
       $(id).querySelectorAll("button[data-value]").forEach((button) => button.classList.toggle("active", button.dataset.value === String(value)));
@@ -672,6 +770,15 @@ window.CONTEXT_DATA = {"meta":{"seasons":"2022–2026","years":[2022,2023,2024,2
     return { ...selected, exactRows: exact.rows, exactN: exact.n };
   }
 
+  function chooseSequenceReference() {
+    const roles = state.role === "ALL" ? ["ALL"] : [state.role, "ALL"];
+    const candidates = roles.map((role) => {
+      const rows = aggregatePitchRows(data.sequence.filter((row) => coreMatch(row, role) && row.prev_pitch === state.prevPitch));
+      return { rows, n: rows[0]?.state_n || 0, roleFallback: role !== state.role };
+    });
+    return candidates.find((candidate) => candidate.n >= 250) || candidates.find((candidate) => candidate.n > 0) || { rows: [], n: 0, roleFallback: false };
+  }
+
   function calculation() {
     const baseResult = rowsFor(data.baseline);
     const baseRows = baseResult.rows;
@@ -681,6 +788,9 @@ window.CONTEXT_DATA = {"meta":{"seasons":"2022–2026","years":[2022,2023,2024,2
     let sequenceRows = [];
     let sequenceExactRows = [];
     let sequenceExactN = 0;
+    let sequenceReference = { ...base };
+    let sequenceReferenceRows = [];
+    let sequenceReferenceN = 0;
     let sequenceN = 0;
     let sequenceFallback = false;
     let sequenceLevel = "미적용";
@@ -688,6 +798,16 @@ window.CONTEXT_DATA = {"meta":{"seasons":"2022–2026","years":[2022,2023,2024,2
     const notes = [];
 
     if (state.useSequence) {
+      const referenceResult = chooseSequenceReference();
+      sequenceReferenceRows = referenceResult.rows;
+      sequenceReferenceN = referenceResult.n;
+      if (sequenceReferenceN) {
+        const referenceRaw = normalize(mapProb(sequenceReferenceRows));
+        const referenceWeight = sequenceReferenceN >= 5000 ? 1 : sequenceReferenceN / (sequenceReferenceN + 750);
+        sequenceReference = normalize(Object.fromEntries(data.pitchOrder.map((code) => [
+          code, referenceRaw[code] * referenceWeight + base[code] * (1 - referenceWeight),
+        ])));
+      }
       const result = chooseSequenceEvidence();
       sequenceRows = result.rows;
       sequenceExactRows = result.exactRows;
@@ -699,9 +819,9 @@ window.CONTEXT_DATA = {"meta":{"seasons":"2022–2026","years":[2022,2023,2024,2
         const raw = normalize(mapProb(sequenceRows));
         sequenceWeight = sequenceN >= 5000 ? 1 : sequenceN / (sequenceN + 750);
         sequence = normalize(Object.fromEntries(data.pitchOrder.map((code) => [
-          code, raw[code] * sequenceWeight + base[code] * (1 - sequenceWeight),
+          code, raw[code] * sequenceWeight + sequenceReference[code] * (1 - sequenceWeight),
         ])));
-        if (sequenceN < 5000) notes.push("직전 공 확률을 기본확률로 보정");
+        if (sequenceN < 5000) notes.push("직전 결과를 같은 직전 구종 전체 평균으로 보정");
         if (result.mode !== "exact") notes.push(`정확 ${fmt.format(sequenceExactN)}구 → ${result.label} ${fmt.format(sequenceN)}구로 확장`);
         if (result.roleFallback) notes.push("선발·불펜 구분을 전체 역할로 확대");
       } else {
@@ -800,7 +920,7 @@ window.CONTEXT_DATA = {"meta":{"seasons":"2022–2026","years":[2022,2023,2024,2
     const evidenceLevels = [state.useSequence && sequenceN ? sequenceN : baseN, ...situationFactors.map((factor) => factor.n)].filter((value) => value > 0);
     const analysisN = evidenceLevels.length ? Math.min(...evidenceLevels) : 0;
 
-    return { baseRows, base, baseN, sequenceRows, sequenceExactRows, sequenceExactN, sequence, sequenceN, sequenceFallback, sequenceLevel, sequenceWeight, current, applied, notes, situationFactors, situationInsights, metrics, analysisN, baseFallback: baseResult.fallback };
+    return { baseRows, base, baseN, sequenceRows, sequenceExactRows, sequenceExactN, sequenceReference, sequenceReferenceRows, sequenceReferenceN, sequence, sequenceN, sequenceFallback, sequenceLevel, sequenceWeight, current, applied, notes, situationFactors, situationInsights, metrics, analysisN, baseFallback: baseResult.fallback };
   }
 
   function renderPitchReading(calc, ranked) {
@@ -828,7 +948,7 @@ window.CONTEXT_DATA = {"meta":{"seasons":"2022–2026","years":[2022,2023,2024,2
 
     if (state.useSequence) {
       const response = data.pitchOrder
-        .map((code) => ({ code, delta: calc.sequence[code] - calc.base[code] }))
+        .map((code) => ({ code, delta: calc.sequence[code] - calc.sequenceReference[code] }))
         .sort((a, b) => b.delta - a.delta)[0];
       cards.push({ label: "직전 공 반응", code: response.code, value: pp(response.delta), note: `${pitchName(state.prevPitch)} ${state.prevOutcome} 뒤 가장 많이 증가`, n: calc.sequenceN });
     }
@@ -859,6 +979,7 @@ window.CONTEXT_DATA = {"meta":{"seasons":"2022–2026","years":[2022,2023,2024,2
     $("state-title").textContent = `${hand} · ${role} · ${sequenceText}`;
     $("base-sample-label").textContent = "현재 카운트 기본 표본";
     $("base-sample").textContent = `${fmt.format(calc.baseN)}구`;
+    $("sequence-reference-sample").textContent = state.useSequence ? `${fmt.format(calc.sequenceReferenceN)}구` : "미적용";
     $("sequence-sample").textContent = state.useSequence ? `${fmt.format(calc.sequenceExactN)}구` : "미적용";
     $("sequence-used-sample").textContent = state.useSequence && calc.sequenceN ? `${fmt.format(calc.sequenceN)}구` : "미적용";
     $("applied-level").textContent = state.useSequence ? `${calc.sequenceN ? calc.sequenceLevel : "기본확률"}${calc.applied.length ? ` + 상황 ${calc.applied.length}` : ""}` : calc.applied.length ? `${calc.applied.length}단계 상황 보정` : "기본확률";
@@ -898,16 +1019,12 @@ window.CONTEXT_DATA = {"meta":{"seasons":"2022–2026","years":[2022,2023,2024,2
         ? `정확 ${fmt.format(calc.sequenceExactN)}구 · 계산 ${fmt.format(calc.sequenceN)}구 (${calc.sequenceLevel})`
         : `직전 공 표본 없음 · 기본 ${fmt.format(calc.baseN)}구`
       : `판단 표본 ${fmt.format(calc.analysisN)}구`;
-    $("quick-most").textContent = `${most.code} ${pct(most.p)}`;
-    $("quick-least").textContent = `${least.code} ${pct(least.p)}`;
-    $("quick-best").textContent = best ? `${best.code} ${Number(best.rv).toFixed(4)}` : "표본 부족";
-    $("quick-worst").textContent = worst ? `${worst.code} ${Number(worst.rv).toFixed(4)}` : "표본 부족";
     $("quick-effects").innerHTML = calc.situationInsights.length
       ? calc.situationInsights.map((item) => `<span><b>${item.label}</b> ${item.code} ${pp(item.delta)} <small>${fmt.format(item.n)}구</small></span>`).join("")
       : "이닝·주자·아웃·투구수를 고르면 가장 크게 달라지는 공을 바로 보여줍니다.";
     renderPitchReading(calc, ranked);
 
-    const impact = data.pitchOrder.map((code) => ({ code, delta: calc.sequence[code] - calc.base[code] })).sort((a, b) => b.delta - a.delta)[0];
+    const impact = data.pitchOrder.map((code) => ({ code, delta: calc.sequence[code] - calc.sequenceReference[code] })).sort((a, b) => b.delta - a.delta)[0];
     $("impact-pitch").textContent = state.useSequence ? `${pitchName(impact.code)} · ${impact.code}` : "직전 공 미선택";
     $("impact-value").textContent = state.useSequence ? pp(impact.delta) : "상황만 계산";
 
@@ -924,12 +1041,14 @@ window.CONTEXT_DATA = {"meta":{"seasons":"2022–2026","years":[2022,2023,2024,2
     renderOutcome();
     renderRawStats();
     renderEducation(document.querySelector("[data-lesson].active")?.dataset.lesson || "horizontal");
+    renderGameClassroom();
   }
 
   function renderProbability(calc) {
     const rows = data.pitchOrder.map((code) => {
       const metric = calc.metrics.find((row) => row.code === code);
-      return { code, base: calc.base[code], sequence: calc.sequence[code], current: calc.current[code], delta: calc.current[code] - calc.base[code], csw: metric?.csw, hit: metric?.hit, rv: metric?.rv, mph: metric?.mph, n: metric?.n || 0 };
+      const comparison = state.useSequence ? calc.sequenceReference[code] : calc.base[code];
+      return { code, base: calc.base[code], sequence: calc.sequence[code], current: calc.current[code], delta: calc.current[code] - comparison, csw: metric?.csw, hit: metric?.hit, rv: metric?.rv, mph: metric?.mph, n: metric?.n || 0 };
     }).sort((a, b) => b.current - a.current);
     const max = Math.max(...rows.map((row) => row.current), 0.01);
     const standout = standalonePitchExtremes(rows, (row) => row.current);
@@ -943,7 +1062,8 @@ window.CONTEXT_DATA = {"meta":{"seasons":"2022–2026","years":[2022,2023,2024,2
   function renderPitchCards(calc) {
     const rows = data.pitchOrder.map((code) => {
       const metric = calc.metrics.find((row) => row.code === code);
-      return { code, p: calc.current[code], delta: calc.current[code] - calc.base[code], ...metric };
+      const comparison = state.useSequence ? calc.sequenceReference[code] : calc.base[code];
+      return { code, p: calc.current[code], delta: calc.current[code] - comparison, ...metric };
     }).sort((a, b) => b.p - a.p);
     const standout = standalonePitchExtremes(rows, (row) => row.p);
     $("pitch-card-grid").innerHTML = rows.map((row) => {
@@ -961,10 +1081,10 @@ window.CONTEXT_DATA = {"meta":{"seasons":"2022–2026","years":[2022,2023,2024,2
     const rows = data.pitchOrder.map((code) => {
       const exact = calc.sequenceExactRows.find((row) => row.pitch === code);
       const used = calc.sequenceRows.find((row) => row.pitch === code);
-      return { code, base: calc.base[code], after: calc.sequence[code], delta: calc.sequence[code] - calc.base[code], exactN: Number(exact?.n || 0), usedN: Number(used?.n || 0) };
-    }).sort((a, b) => Math.abs(b.delta) - Math.abs(a.delta));
+      return { code, base: calc.sequenceReference[code], after: calc.sequence[code], delta: calc.sequence[code] - calc.sequenceReference[code], exactN: Number(exact?.n || 0), usedN: Number(used?.n || 0) };
+    }).sort((a, b) => b.delta - a.delta);
     const max = Math.max(...rows.map((row) => Math.abs(row.delta)), 0.01);
-    $("sequence-change-list").innerHTML = rows.map((row) => `<div class="sequence-change-row"><div><strong>${row.code} · ${pitchName(row.code)}</strong></div><div class="change-track"><i class="${row.delta >= 0 ? "up" : "down"}" style="width:${Math.max(3, Math.abs(row.delta) / max * 100)}%"></i></div><b class="${row.delta > 0 ? "positive" : row.delta < 0 ? "negative" : ""}">${pp(row.delta)}</b><small>정확 ${fmt.format(row.exactN)} · 계산 ${fmt.format(row.usedN)}</small></div>`).join("");
+    $("sequence-change-list").innerHTML = rows.map((row) => `<div class="sequence-change-row"><div><strong>${row.code} · ${pitchName(row.code)}</strong></div><span class="sequence-after"><small>이후 확률</small><b>${pct(row.after)}</b></span><div class="change-track"><i class="${row.delta >= 0 ? "up" : "down"}" style="width:${Math.max(3, Math.abs(row.delta) / max * 100)}%"></i></div><b class="${row.delta > 0 ? "positive" : row.delta < 0 ? "negative" : ""}">${pp(row.delta)}</b><small>정확 ${fmt.format(row.exactN)} · 계산 ${fmt.format(row.usedN)}</small></div>`).join("");
   }
 
   function renderRawStats() {
