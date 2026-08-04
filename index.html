@@ -135,6 +135,58 @@ footer{border-top-color:rgba(31,93,80,.12)}
 
 @media(max-width:640px){.zone-number{font-size:13px}.zone-out{min-width:58px;min-height:38px;padding:4px 6px}.zone-out .zone-number{font-size:10px}.prob-number{font-size:10px}}
 
+/* Statcast-based pitch-reading summary */
+.pitch-reading-panel{margin-top:12px;padding:18px;background:linear-gradient(135deg,#ffffff 0%,#eefaf7 55%,#fff5e2 100%)}
+.pitch-reading-heading{display:flex;align-items:flex-end;justify-content:space-between;gap:18px;margin-bottom:12px}
+.pitch-reading-heading h3{margin:3px 0 0;font-size:20px;letter-spacing:-.04em}
+.pitch-reading-heading>p{max-width:500px;margin:0;color:var(--muted);font-size:10px;text-align:right}
+.pitch-reading-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.pitch-reading-card{min-width:0;padding:13px;border:1px solid rgba(22,119,105,.12);border-radius:13px;background:rgba(255,255,255,.9);box-shadow:0 7px 18px rgba(31,78,67,.06)}
+.pitch-reading-card>span{display:block;color:#087f77;font-size:9px;font-weight:950}
+.pitch-reading-card>div{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-top:5px}
+.pitch-reading-card strong{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:13px}
+.pitch-reading-card b{flex:0 0 auto;color:#e45443;font-size:17px}
+.pitch-reading-card p{min-height:26px;margin:7px 0 3px;color:#456a61;font-size:9px;line-height:1.4}
+.pitch-reading-card small{color:#78918b;font-size:8px;font-weight:800}
+
+@media(max-width:980px){.pitch-reading-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* iPhone portrait is the primary mobile layout. */
+@media(max-width:640px) and (orientation:portrait){
+  html,body{overflow-x:hidden}
+  main{width:calc(100% - 14px);padding-top:9px}
+  .topbar{min-height:86px;padding:calc(10px + env(safe-area-inset-top)) 12px 10px}
+  .brand-mark{width:40px;height:40px}.brand-name{font-size:23px}.brand-subtitle{font-size:9px}
+  .board-nav{width:calc(100% - 14px);margin-top:7px;padding:5px;gap:4px}
+  .board-nav button{min-height:50px;padding:5px 2px}.board-nav button strong{font-size:12px}.board-nav button small{display:none}
+  .condition-heading h1,.board-heading h2{font-size:21px}
+  .controls-panel{padding:8px;gap:6px}.selector-section{padding:9px}.selector-title{margin-bottom:7px}
+  .choice-row,select{height:44px}.choice-row button{min-height:36px;font-size:12px}.lamp-row{height:44px}.lamp-row button{width:40px;height:40px}
+  .quick-result{position:static;padding:10px}.quick-grid strong{font-size:14px;overflow:visible;white-space:normal}
+  .pitch-reading-panel{padding:12px;margin-top:9px}.pitch-reading-heading{display:block;margin-bottom:9px}.pitch-reading-heading h3{font-size:18px}.pitch-reading-heading>p{margin-top:4px;text-align:left;font-size:9px}
+  .pitch-reading-grid{grid-template-columns:1fr}.pitch-reading-card{padding:11px 12px}.pitch-reading-card>div{margin-top:3px}.pitch-reading-card strong{font-size:14px}.pitch-reading-card b{font-size:18px}.pitch-reading-card p{min-height:0;margin:4px 0 2px}
+  .answer-grid,.pitch-card-grid{grid-template-columns:1fr}.answer-card{min-height:116px}.pitch-card{padding:13px}.pitch-card header strong{font-size:15px}.pitch-card header>b{font-size:20px}.pitch-card-stats span,.pitch-card-stats b{font-size:10px}
+  .pitch-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.pitch-grid button{min-height:52px}.pitch-grid button small{font-size:9px}
+  .zone-wrap{width:100%;max-width:360px;margin-inline:auto;padding:20px 22px}.zone-panel{padding:12px}
+  .stats-overview{gap:5px}.stats-overview div{padding:10px 6px;text-align:center}.stats-overview strong{font-size:16px}.stats-overview span{font-size:8px}
+
+  .probability-table-panel,.raw-stat-panel{overflow:visible}
+  .probability-table-panel .table-wrap,.raw-stat-panel .table-wrap{overflow:visible}
+  .probability-table-panel table,.probability-table-panel tbody,.raw-stat-panel table,.raw-stat-panel tbody{display:block;min-width:0;width:100%}
+  .probability-table-panel thead,.raw-stat-panel thead{display:none}
+  .probability-table-panel tr,.raw-stat-panel tr{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;padding:11px;margin:0 8px 8px;border:1px solid rgba(31,93,80,.11);border-radius:12px;background:#f8fcfb;box-shadow:0 4px 12px rgba(31,78,67,.05)}
+  .probability-table-panel td,.raw-stat-panel td{display:flex;min-width:0;flex-direction:column;gap:2px;padding:0;border:0!important;color:#173a33;font-size:11px;white-space:normal}
+  .probability-table-panel td::before,.raw-stat-panel td::before{color:#78918b;font-size:7px;font-weight:850}
+  .probability-table-panel td:first-child,.raw-stat-panel td:first-child{grid-column:1/-1;display:block;padding-bottom:6px;border-bottom:1px solid rgba(31,93,80,.10)!important;font-size:15px;font-weight:950}
+  .probability-table-panel td:nth-child(2)::before{content:"기본확률"}.probability-table-panel td:nth-child(3)::before{content:"직전 공"}.probability-table-panel td:nth-child(4)::before{content:"현재 확률"}.probability-table-panel td:nth-child(5)::before{content:"변화"}.probability-table-panel td:nth-child(6)::before{content:"CSW"}.probability-table-panel td:nth-child(7)::before{content:"안타"}.probability-table-panel td:nth-child(8)::before{content:"상황 RV"}.probability-table-panel td:nth-child(9)::before{content:"평균 구속"}.probability-table-panel td:nth-child(10)::before{content:"표본"}
+  .raw-stat-panel td:nth-child(2)::before{content:"구수"}.raw-stat-panel td:nth-child(3)::before{content:"비율"}.raw-stat-panel td:nth-child(4)::before{content:"CSW"}.raw-stat-panel td:nth-child(5)::before{content:"안타"}.raw-stat-panel td:nth-child(6)::before{content:"RV"}.raw-stat-panel td:nth-child(7)::before{content:"구속"}
+}
+
+@media(max-width:390px) and (orientation:portrait){
+  .brand-name{font-size:21px}.condition-heading h1,.board-heading h2{font-size:20px}
+  .probability-table-panel tr,.raw-stat-panel tr{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+
 </style>
   </head>
   <body>
@@ -193,6 +245,13 @@ footer{border-top-color:rgba(31,93,80,.12)}
           </div>
           <div class="quick-effects" id="quick-effects">이닝·주자·아웃·투구수를 고르면 가장 크게 달라지는 공을 바로 보여줍니다.</div>
         </aside>
+        <article class="panel pitch-reading-panel" aria-labelledby="pitch-reading-title">
+          <div class="pitch-reading-heading">
+            <div><span class="eyebrow-small">카운트·결과·위기 상황을 함께 읽기</span><h3 id="pitch-reading-title">볼배합 수읽기</h3></div>
+            <p>판단 기준은 야구의 기본 원리에서 가져오고, 숫자는 2022–2026 MLB Statcast 실제 표본으로 계산합니다.</p>
+          </div>
+          <div class="pitch-reading-grid" id="pitch-reading-grid" aria-live="polite"></div>
+        </article>
       </section>
 
       <section class="board-view" id="sequence" data-board="sequence" aria-labelledby="sequence-title" hidden>
@@ -658,6 +717,52 @@ window.CONTEXT_DATA = {"meta":{"seasons":"2022–2026","years":[2022,2023,2024,2
     return { baseRows, base, baseN, sequenceRows, sequenceExactRows, sequenceExactN, sequence, sequenceN, sequenceFallback, sequenceLevel, sequenceWeight, current, applied, notes, situationFactors, situationInsights, metrics, analysisN, baseFallback: baseResult.fallback };
   }
 
+  function renderPitchReading(calc, ranked) {
+    let usable = calc.metrics.filter((row) => row.n >= 100);
+    if (!usable.length) usable = calc.metrics.filter((row) => row.n >= 30);
+    if (!usable.length) usable = calc.metrics.filter((row) => row.n > 0);
+
+    const most = ranked[0];
+    const csw = [...usable].filter((row) => row.csw != null).sort((a, b) => b.csw - a.csw)[0];
+    const hit = [...usable].filter((row) => row.hit != null).sort((a, b) => a.hit - b.hit)[0];
+    const rv = [...usable].filter((row) => row.rv != null).sort((a, b) => a.rv - b.rv)[0];
+    const countLabel = state.strikes === 2
+      ? "2스트라이크 승부"
+      : state.balls > state.strikes
+        ? "타자 유리 카운트"
+        : state.strikes > state.balls
+          ? "투수 유리 카운트"
+          : "평행 카운트";
+    const cards = [
+      { label: countLabel, code: most.code, value: pct(most.p), note: "현재 카운트에서 가장 많이 선택된 공", n: most.metric?.n || calc.analysisN },
+      csw && { label: "루킹·헛스윙 유도", code: csw.code, value: pct(csw.csw), note: "CSW가 가장 높은 공", n: csw.n },
+      hit && { label: "안타 억제", code: hit.code, value: pct(hit.hit), note: "안타 관측 비율이 가장 낮은 공", n: hit.n },
+      rv && { label: "실점 억제", code: rv.code, value: Number(rv.rv).toFixed(4), note: "투수 관점 상황 RV가 가장 낮은 공", n: rv.n },
+    ].filter(Boolean);
+
+    if (state.useSequence) {
+      const response = data.pitchOrder
+        .map((code) => ({ code, delta: calc.sequence[code] - calc.base[code] }))
+        .sort((a, b) => b.delta - a.delta)[0];
+      cards.push({ label: "직전 공 반응", code: response.code, value: pp(response.delta), note: `${pitchName(state.prevPitch)} ${state.prevOutcome} 뒤 가장 많이 증가`, n: calc.sequenceN });
+    }
+
+    if (calc.applied.length) {
+      const situation = data.pitchOrder
+        .map((code) => ({ code, delta: calc.current[code] - calc.sequence[code] }))
+        .sort((a, b) => Math.abs(b.delta) - Math.abs(a.delta))[0];
+      cards.push({ label: "현재 상황 반응", code: situation.code, value: pp(situation.delta), note: "이닝·주자·아웃·투구수의 영향이 가장 큰 공", n: calc.analysisN });
+    }
+
+    $("pitch-reading-grid").innerHTML = cards.map((card) => `
+      <article class="pitch-reading-card">
+        <span>${card.label}</span>
+        <div><strong>${card.code} · ${pitchName(card.code)}</strong><b>${card.value}</b></div>
+        <p>${card.note}</p>
+        <small>${fmt.format(card.n || 0)}구 근거</small>
+      </article>`).join("");
+  }
+
   function render() {
     const calc = calculation();
     const hand = `${state.p_throws === "R" ? "우투" : "좌투"}수·${state.stand === "R" ? "우타" : "좌타"}자`;
@@ -714,6 +819,7 @@ window.CONTEXT_DATA = {"meta":{"seasons":"2022–2026","years":[2022,2023,2024,2
     $("quick-effects").innerHTML = calc.situationInsights.length
       ? calc.situationInsights.map((item) => `<span><b>${item.label}</b> ${item.code} ${pp(item.delta)} <small>${fmt.format(item.n)}구</small></span>`).join("")
       : "이닝·주자·아웃·투구수를 고르면 가장 크게 달라지는 공을 바로 보여줍니다.";
+    renderPitchReading(calc, ranked);
 
     const impact = data.pitchOrder.map((code) => ({ code, delta: calc.sequence[code] - calc.base[code] })).sort((a, b) => b.delta - a.delta)[0];
     $("impact-pitch").textContent = state.useSequence ? `${pitchName(impact.code)} · ${impact.code}` : "직전 공 미선택";
