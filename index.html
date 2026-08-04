@@ -51,7 +51,7 @@ body{background:radial-gradient(circle at 95% 2%,#d9f8f3 0,transparent 27%),radi
 .glow{opacity:.18;filter:blur(90px)}
 .topbar{background:linear-gradient(100deg,#ffffff 0%,#effbf7 55%,#fff7e8 100%);border-bottom-color:rgba(25,104,89,.12);box-shadow:0 5px 20px rgba(35,91,78,.07)}
 .brand-mark{display:block;object-fit:cover;padding:0;border-radius:13px;background:#fff0c9;border-color:#f0c65e;box-shadow:0 5px 14px rgba(233,165,42,.16)}
-.board-nav{grid-template-columns:repeat(3,1fr);background:rgba(255,255,255,.94);border-color:rgba(25,104,89,.13);box-shadow:0 10px 28px rgba(35,91,78,.08)}
+.board-nav{grid-template-columns:repeat(4,1fr);background:rgba(255,255,255,.94);border-color:rgba(25,104,89,.13);box-shadow:0 10px 28px rgba(35,91,78,.08)}
 .board-nav button{color:#648079}
 .board-nav button.active{color:#fff;background:linear-gradient(135deg,#08b5aa,#27c7b4);box-shadow:0 7px 18px rgba(16,175,164,.24)}
 main{padding-top:13px}.condition-deck{margin-bottom:14px}.board-view{margin-bottom:18px}.board-heading{padding:0 3px}.board-heading h2{color:#173a33}.step,.eyebrow-small{color:#0c988f}
@@ -187,6 +187,12 @@ footer{border-top-color:rgba(31,93,80,.12)}
   .probability-table-panel tr,.raw-stat-panel tr{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 
+/* Education board: book-style principles without app statistics */
+.education-board{max-width:1180px;margin-inline:auto}.education-hero{display:grid;grid-template-columns:1fr minmax(280px,.7fr);align-items:end;gap:24px;margin-bottom:14px}.education-hero h1{margin:4px 0 0;font-size:clamp(25px,3.2vw,38px);letter-spacing:-.05em;line-height:1.08}.education-hero>p{margin:0;color:var(--muted);font-size:11px;line-height:1.65}.education-menu{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:10px;padding:13px;margin-bottom:12px}.education-menu>div{padding:11px;border-radius:12px;background:#f5fbf9}.education-menu strong{display:block;margin-bottom:8px;color:#087f77;font-size:10px}.education-topic-row{display:flex;flex-wrap:wrap;gap:5px}.education-topic-row button{min-height:35px;padding:7px 10px;border:1px solid rgba(31,93,80,.12);border-radius:9px;background:#fff;color:#456a61;font-size:10px;font-weight:900;cursor:pointer}.education-topic-row button.active{border-color:transparent;background:#10afa4;color:#fff;box-shadow:0 5px 13px rgba(16,175,164,.2)}.lesson-stage{padding:22px;background:linear-gradient(135deg,#fff 0%,#effbf8 56%,#fff5df 100%)}.lesson-heading{display:flex;justify-content:space-between;align-items:flex-start;gap:18px}.lesson-heading span{color:#087f77;font-size:10px;font-weight:950}.lesson-heading h2{margin:4px 0 0;font-size:clamp(23px,3vw,34px);letter-spacing:-.05em}.lesson-heading>b{padding:8px 11px;border-radius:999px;background:#fff0cf;color:#9b6512;font-size:10px}.lesson-core{max-width:820px;margin:10px 0 18px;color:#365f56;font-size:13px;line-height:1.7}.lesson-sequence{display:grid;grid-template-columns:1fr 44px 1fr;align-items:center;gap:10px}.lesson-pitch{padding:14px;border:1px solid rgba(31,93,80,.11);border-radius:15px;background:rgba(255,255,255,.92)}.lesson-pitch>span{display:block;color:#78918b;font-size:9px;font-weight:900}.lesson-pitch>strong{display:block;margin:3px 0 10px;font-size:15px}.lesson-arrow{text-align:center;color:#e76752;font-size:28px;font-weight:950}.lesson-zone{position:relative;width:min(230px,82%);aspect-ratio:1;margin:0 auto;border:2px solid #6e8e86;border-radius:5px;background:linear-gradient(to right,transparent 32%,rgba(31,93,80,.10) 33%,rgba(31,93,80,.10) 34%,transparent 35%,transparent 65%,rgba(31,93,80,.10) 66%,rgba(31,93,80,.10) 67%,transparent 68%),linear-gradient(to bottom,transparent 32%,rgba(31,93,80,.10) 33%,rgba(31,93,80,.10) 34%,transparent 35%,transparent 65%,rgba(31,93,80,.10) 66%,rgba(31,93,80,.10) 67%,transparent 68%),#f7fbfa}.lesson-zone i{position:absolute;width:24px;height:24px;border:5px solid #fff;border-radius:50%;background:#e76752;box-shadow:0 3px 11px rgba(109,44,32,.25);transform:translate(-50%,-50%)}.lesson-zone em{position:absolute;left:50%;bottom:-18px;transform:translateX(-50%);color:#8aa099;font-size:8px;font-style:normal;white-space:nowrap}.lesson-explain-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:28px}.lesson-explain-grid>div{padding:13px;border:1px solid rgba(31,93,80,.09);border-radius:12px;background:rgba(255,255,255,.86)}.lesson-explain-grid span{color:#087f77;font-size:9px;font-weight:950}.lesson-explain-grid p{margin:5px 0 0;color:#456a61;font-size:10px;line-height:1.55}.education-foundation{margin-top:12px;padding:20px}.education-foundation h2{margin:4px 0 12px;font-size:20px}.foundation-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.foundation-grid>div{padding:14px;border-radius:12px;background:#f5faf8}.foundation-grid strong{color:#173a33;font-size:12px}.foundation-grid p{margin:6px 0 0;color:#5e7c74;font-size:10px;line-height:1.55}
+
+@media(max-width:820px){.education-hero{grid-template-columns:1fr}.education-hero>p{max-width:640px}.education-menu{grid-template-columns:1fr}.lesson-explain-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px) and (orientation:portrait){.board-nav button{min-width:0}.education-board{width:100%}.education-hero{display:block;margin:3px 3px 10px}.education-hero h1{font-size:24px}.education-hero>p{margin-top:7px;font-size:10px}.education-menu{padding:8px;gap:6px}.education-menu>div{padding:9px}.education-topic-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}.education-topic-row button{min-width:0;padding:7px 3px;font-size:9px}.lesson-stage{padding:14px}.lesson-heading{display:block}.lesson-heading h2{font-size:23px}.lesson-heading>b{display:inline-block;margin-top:8px}.lesson-core{font-size:12px;margin-bottom:14px}.lesson-sequence{grid-template-columns:1fr}.lesson-arrow{height:24px;line-height:24px;transform:rotate(90deg)}.lesson-pitch{padding:12px}.lesson-zone{width:min(210px,72%)}.lesson-explain-grid{grid-template-columns:1fr;margin-top:26px}.lesson-explain-grid p{font-size:11px}.education-foundation{padding:14px}.foundation-grid{grid-template-columns:1fr}.foundation-grid p{font-size:11px}}
+
 </style>
   </head>
   <body>
@@ -200,6 +206,7 @@ footer{border-top-color:rgba(31,93,80,.12)}
       <button type="button" data-board-target="next" class="active"><strong>다음 공</strong><small>많은 공 · 상성 · 13개 위치</small></button>
       <button type="button" data-board-target="sequence"><strong>직전 공</strong><small>직전 결과 · 확률 변화 · 위치</small></button>
       <button type="button" data-board-target="stats"><strong>통계</strong><small>보정 없는 실제 표본</small></button>
+      <button type="button" data-board-target="education"><strong>교육</strong><small>규칙 · 볼배합 · 상황 판단</small></button>
     </nav>
 
     <main id="top">
@@ -334,6 +341,46 @@ footer{border-top-color:rgba(31,93,80,.12)}
           <p>통계판은 이 보정을 적용하지 않습니다. 점수 차와 승리확률에 따른 ‘이미 기운 경기 제외’는 현재 저장 자료에 점수 열이 없어 다음 자료 갱신에서 추가합니다.</p>
         </div>
       </section>
+
+      <section class="board-view education-board" id="education" data-board="education" aria-labelledby="education-title" hidden>
+        <div class="education-hero">
+          <div><span class="step">4 · 교육</span><h1 id="education-title">숫자 없이 배우는 야구의 기본 원리</h1></div>
+          <p>통계로 다음 공을 맞히는 판이 아닙니다. 규칙, 타자의 시선, 반응 시간, 배트 궤도와 경기 상황을 이해하는 수업입니다.</p>
+        </div>
+
+        <div class="panel education-menu" aria-label="교육 주제 선택">
+          <div><strong>볼배합 기본</strong><div class="education-topic-row"><button type="button" data-lesson="horizontal" class="active">좌우 대비</button><button type="button" data-lesson="vertical">높낮이</button><button type="button" data-lesson="speed">속도 차</button><button type="button" data-lesson="tunnel">터널링</button><button type="button" data-lesson="eye-level">눈높이</button></div></div>
+          <div><strong>카운트·심리</strong><div class="education-topic-row"><button type="button" data-lesson="double-up">같은 공 반복</button><button type="button" data-lesson="count-plan">카운트 설계</button><button type="button" data-lesson="reaction">타자 반응 읽기</button><button type="button" data-lesson="handedness">좌우 상성</button></div></div>
+          <div><strong>주자·규칙</strong><div class="education-topic-row"><button type="button" data-lesson="runner-third">3루 주자</button><button type="button" data-lesson="open-first">1루가 비었을 때</button><button type="button" data-lesson="force-tag">포스·태그</button><button type="button" data-lesson="special-rules">특별 규칙</button></div></div>
+        </div>
+
+        <article class="panel lesson-stage" aria-live="polite">
+          <header class="lesson-heading"><div><span id="lesson-category">볼배합 기본</span><h2 id="lesson-title">좌우를 바꿔 배트 길을 흔든다</h2></div><b id="lesson-principle">시각 위치 대비</b></header>
+          <p class="lesson-core" id="lesson-core">한쪽 공을 본 타자는 그 방향과 궤도에 시선을 맞춥니다. 다음 공을 반대쪽에 던지면 시선과 배트가 더 멀리 이동해야 합니다.</p>
+
+          <div class="lesson-sequence" aria-label="두 공의 위치와 순서">
+            <div class="lesson-pitch"><span>첫 공</span><strong id="lesson-first-name">포수 시점 오른쪽 직구</strong><div class="lesson-zone"><i id="lesson-first-dot"></i><em>포수 시점</em></div></div>
+            <div class="lesson-arrow" aria-hidden="true">→</div>
+            <div class="lesson-pitch"><span>다음 공</span><strong id="lesson-next-name">포수 시점 왼쪽 슬라이더</strong><div class="lesson-zone"><i id="lesson-next-dot"></i><em>포수 시점</em></div></div>
+          </div>
+
+          <div class="lesson-explain-grid">
+            <div><span>왜 통하나</span><p id="lesson-why">타자는 공의 속도뿐 아니라 나타나는 위치와 배트가 지나갈 길도 다시 계산해야 합니다.</p></div>
+            <div><span>언제 쓰나</span><p id="lesson-when">타자가 직전 공이 온 쪽으로 몸과 시선을 기울였을 때 반대쪽을 보여주는 기본 조합입니다.</p></div>
+            <div><span>조심할 점</span><p id="lesson-caution">반대쪽을 노리다가 가운데로 몰리면 오히려 치기 쉬운 공이 됩니다. 제구가 먼저입니다.</p></div>
+            <div><span>기억할 한마디</span><p id="lesson-memory">같은 곳을 보게 한 뒤, 반대쪽을 보게 한다.</p></div>
+          </div>
+        </article>
+
+        <article class="panel education-foundation">
+          <div><span class="eyebrow-small">두 책을 함께 쓰는 방식</span><h2>규칙이 장면을 만들고, 볼배합이 승부를 만든다</h2></div>
+          <div class="foundation-grid">
+            <div><strong>규칙 수업</strong><p>아웃과 주자 상태에 따라 가능한 플레이, 포스와 태그, 태그업, 낫아웃과 인필드플라이를 구분합니다.</p></div>
+            <div><strong>볼배합 수업</strong><p>좌우·높낮이·속도·궤도·카운트·타자 반응을 연결해 다음 승부의 목적을 이해합니다.</p></div>
+            <div><strong>기본 원칙</strong><p>어떤 조합도 무조건 정답은 아닙니다. 제구, 구종의 완성도, 타자의 반응과 경기 상황이 먼저입니다.</p></div>
+          </div>
+        </article>
+      </section>
     </main>
 
     <footer><span>피치 리더</span><span>2022–2026.07.31 MLB Statcast · 2026 시즌 진행 중</span></footer>
@@ -357,6 +404,22 @@ window.CONTEXT_DATA = {"meta":{"seasons":"2022–2026","years":[2022,2023,2024,2
   const pp = (value) => value == null || Number.isNaN(value) ? "—" : `${value >= 0 ? "+" : ""}${(value * 100).toFixed(1)}%p`;
   const pitchName = (code) => data.pitchNames[code] || code;
   const cnt = () => `${state.balls}-${state.strikes}`;
+
+  const educationLessons = {
+    horizontal: { category: "볼배합 기본", title: "좌우를 바꿔 배트 길을 흔든다", principle: "시각 위치 대비", first: "포수 시점 오른쪽 직구", next: "포수 시점 왼쪽 슬라이더", firstPos: [73, 44], nextPos: [24, 56], core: "한쪽 공을 본 타자는 그 방향과 궤도에 시선을 맞춥니다. 다음 공을 반대쪽에 던지면 시선과 배트가 더 멀리 이동해야 합니다.", why: "타자는 공의 속도뿐 아니라 나타나는 위치와 배트가 지나갈 길도 다시 계산해야 합니다.", when: "타자가 직전 공이 온 쪽으로 몸과 시선을 기울였을 때 반대쪽을 보여주는 기본 조합입니다.", caution: "반대쪽을 노리다가 가운데로 몰리면 오히려 치기 쉬운 공이 됩니다. 제구가 먼저입니다.", memory: "같은 곳을 보게 한 뒤, 반대쪽을 보게 한다." },
+    vertical: { category: "볼배합 기본", title: "높은 공과 낮은 공으로 스윙 높이를 바꾼다", principle: "수직 시선 대비", first: "높은 빠른 공", next: "낮게 떨어지는 변화구", firstPos: [50, 18], nextPos: [50, 82], core: "타자의 눈과 배트가 높은 공에 맞춰진 뒤 낮은 공을 보면 같은 스윙 높이를 유지하기 어렵습니다.", why: "빠른 공의 위쪽 궤도와 변화구의 아래쪽 궤도를 연속해서 판단해야 하므로 높이 착각이 생길 수 있습니다.", when: "타자의 배트가 높은 빠른 공을 따라 올라왔거나 높은 공에 늦었을 때 사용할 수 있습니다.", caution: "낮은 변화구가 덜 떨어져 가운데에 남거나 높은 빠른 공이 너무 낮으면 두 공의 차이가 사라집니다.", memory: "눈을 올린 뒤, 배트를 아래로 끌어낸다." },
+    speed: { category: "볼배합 기본", title: "빠른 공 뒤 느린 공으로 타이밍을 흔든다", principle: "반응 시간 대비", first: "빠른 직구", next: "느린 체인지업", firstPos: [54, 45], nextPos: [48, 66], core: "첫 공의 속도에 몸이 맞춰지면 다음 느린 공에도 같은 순간에 스윙을 시작하기 쉽습니다.", why: "타자는 공이 도착하는 시간을 예측해 몸을 움직이므로 속도 차가 크면 중심이 앞서거나 배트가 먼저 나옵니다.", when: "타자가 빠른 공에 타이밍을 빠르게 맞추거나 몸이 앞으로 나오는 장면에서 효과를 노립니다.", caution: "느린 공이 높게 몰리면 기다렸다가 강하게 칠 수 있습니다. 낮은 코스와 팔 스피드 유지가 중요합니다.", memory: "같은 동작으로 다른 도착 시간을 만든다." },
+    tunnel: { category: "볼배합 기본", title: "처음은 같게, 끝은 다르게 보이게 한다", principle: "피치 터널", first: "같은 출발점의 빠른 공", next: "늦게 갈라지는 변화구", firstPos: [49, 43], nextPos: [68, 72], core: "두 공이 타자 가까이까지 비슷한 길로 오다가 늦게 갈라지면 구종을 구별할 시간이 줄어듭니다.", why: "타자는 공을 끝까지 기다릴 수 없어서 초반 궤적으로 구종을 예상합니다. 초반 모습이 같을수록 판단이 늦어집니다.", when: "투수가 직구와 변화구를 비슷한 릴리스와 팔 스피드로 던질 수 있을 때 가치가 큽니다.", caution: "릴리스 높이와 팔 스피드가 다르면 타자가 일찍 구분합니다. 이름보다 실제 궤도 궁합이 중요합니다.", memory: "한 길로 출발해, 늦게 갈라진다." },
+    "eye-level": { category: "볼배합 기본", title: "낮은 공 뒤 높은 공으로 눈높이를 빼앗는다", principle: "주의 이동", first: "낮은 변화구", next: "존 위쪽 빠른 공", firstPos: [46, 79], nextPos: [53, 14], core: "낮은 변화구를 오래 본 타자는 시선과 배트 시작점이 아래로 향하기 쉽습니다. 다음 높은 빠른 공은 예상보다 더 빨리 지나갑니다.", why: "시선을 위로 되돌리는 시간과 빠른 공에 반응하는 시간이 동시에 필요해집니다.", when: "낮은 변화구에 헛스윙하거나 파울로 따라간 뒤 높은 빠른 공을 보여주는 식으로 사용합니다.", caution: "높은 공이 스트라이크존 가운데로 내려오면 장타 위험이 커집니다. 확실한 높이 구분이 필요합니다.", memory: "아래를 보게 한 뒤, 위를 지나간다." },
+    "double-up": { category: "카운트·심리", title: "같은 공을 다시 던지는 것도 변화다", principle: "기대 역이용", first: "잘 제구된 변화구", next: "같은 구종·같은 코스", firstPos: [28, 70], nextPos: [25, 67], core: "타자는 보통 다음에는 다른 공이 올 것이라 생각합니다. 그 기대를 이용해 좋은 공을 한 번 더 던질 수 있습니다.", why: "구종을 바꾸는 것만이 볼배합은 아닙니다. 타자의 예상과 실제 선택이 다르면 같은 공도 새롭게 느껴집니다.", when: "첫 공의 반응이 나빴고 투수가 그 공을 다시 정확히 던질 자신이 있을 때 고려합니다.", caution: "첫 공을 타자가 정확히 봤거나 타이밍을 맞춘 파울이었다면 반복은 위험할 수 있습니다.", memory: "타자가 변화를 기다릴 때, 같은 공이 변화가 된다." },
+    "count-plan": { category: "카운트·심리", title: "카운트마다 공의 목적이 달라진다", principle: "승부 단계 설계", first: "초구·유리한 카운트의 목적구", next: "결정구 또는 다음 카운트 준비", firstPos: [45, 45], nextPos: [70, 72], core: "모든 공이 삼진을 잡는 공일 필요는 없습니다. 스트라이크를 잡는 공, 시선을 옮기는 공, 헛스윙을 노리는 공의 역할을 나눕니다.", why: "볼과 스트라이크가 바뀔 때 타자가 감수할 수 있는 위험도 달라지고 공격 범위도 달라집니다.", when: "투수 유리 카운트에서는 경계를 넓히고, 타자 유리 카운트에서는 볼넷 위험과 가운데 실투를 함께 관리합니다.", caution: "카운트만 보고 기계적으로 던지면 타자가 쉽게 예측합니다. 그날 제구와 타자의 반응을 함께 봐야 합니다.", memory: "공 하나가 아니라, 타석 전체의 길을 설계한다." },
+    reaction: { category: "카운트·심리", title: "결과보다 타자의 반응을 읽는다", principle: "행동 단서", first: "루킹·헛스윙·파울", next: "반응의 원인을 찌르는 공", firstPos: [36, 42], nextPos: [66, 64], core: "같은 스트라이크라도 타자가 못 본 것인지, 속았는지, 늦었는지에 따라 다음 선택은 달라집니다.", why: "루킹은 예상 밖 위치일 수 있고, 헛스윙은 타이밍이나 궤도 문제일 수 있으며, 파울은 타이밍이 가까워졌다는 신호일 수 있습니다.", when: "포수는 스윙 시작, 배트가 지나간 높이, 몸이 앞으로 쏠렸는지와 파울 방향을 함께 봅니다.", caution: "결과 하나만으로 단정하지 않습니다. 타자가 노리고도 놓쳤을 수 있고 단순 실수일 수도 있습니다.", memory: "무슨 결과였나보다, 왜 그런 결과였나를 본다." },
+    handedness: { category: "카운트·심리", title: "좌우는 구종 이름보다 들어오는 각도를 바꾼다", principle: "접근 각도", first: "몸쪽을 의식시키는 공", next: "바깥쪽으로 멀어지는 공", firstPos: [28, 50], nextPos: [76, 58], core: "투수와 타자의 손 조합에 따라 같은 구종도 몸쪽으로 파고들거나 바깥쪽으로 멀어지는 느낌이 달라집니다.", why: "타자는 공이 몸에 가까워지는지 멀어지는지를 보고 배트 궤도와 시점을 정합니다.", when: "같은 손끼리는 바깥쪽으로 멀어지는 변화, 반대 손은 몸쪽에 들어오는 공과 바깥쪽 체인지업 같은 대비를 생각합니다.", caution: "좌우만으로 답을 정하지 않습니다. 실제 구종의 움직임, 릴리스 위치와 타자의 약점이 더 중요할 수 있습니다.", memory: "손잡이는 방향을 알려주고, 실제 궤도가 답을 정한다." },
+    "runner-third": { category: "주자·규칙", title: "3루 주자가 있으면 아웃 수가 먼저다", principle: "득점 방식 구분", first: "0·1아웃: 뜬공과 인플레이 경계", next: "2아웃: 타자를 잡는 데 집중", firstPos: [50, 34], nextPos: [48, 64], core: "3루 주자는 안타가 없어도 희생플라이, 땅볼, 폭투와 포일로 득점할 수 있습니다. 그러나 2아웃이면 아웃 하나로 이닝이 끝납니다.", why: "같은 3루 상황이어도 남은 아웃이 득점 가능한 플레이와 배터리의 목표를 완전히 바꿉니다.", when: "0·1아웃에는 깊은 뜬공과 포수가 막기 어려운 공을 특히 경계하고, 2아웃에는 타자와의 승부에 집중합니다.", caution: "삼진만 고집해 볼넷과 폭투 위험을 키우지 않습니다. 투수의 제구 가능한 공으로 목표를 세웁니다.", memory: "주자를 보기 전에 아웃 수부터 본다." },
+    "open-first": { category: "주자·규칙", title: "1루가 비면 승부 방법이 하나 늘어난다", principle: "다음 타자까지 계산", first: "강한 타자와 무리한 정면승부", next: "피해 가거나 1루를 채워 포스 만들기", firstPos: [49, 45], nextPos: [78, 70], core: "1루가 비어 있으면 볼넷이 곧바로 주자를 밀어 득점시키지 않는 경우가 있어 타자를 선택해 승부할 여지가 생깁니다.", why: "1루를 채우면 여러 베이스에 포스 플레이가 생길 수 있고 다음 타자와 병살 가능성까지 계산할 수 있습니다.", when: "강한 타자 뒤에 상대적으로 상대하기 좋은 타자가 있거나 끝내기 주자를 추가해도 위험이 크게 늘지 않을 때 검토합니다.", caution: "공짜 주자는 항상 위험입니다. 다음 타자, 아웃 수, 점수 차와 밀어내기 가능성을 함께 봅니다.", memory: "현재 타자만이 아니라 다음 타자까지 상대한다." },
+    "force-tag": { category: "주자·규칙", title: "포스 아웃과 태그 아웃을 구분한다", principle: "주자의 의무 진루", first: "뒤 주자 때문에 반드시 진루", next: "포스가 풀리면 주자를 직접 태그", firstPos: [34, 52], nextPos: [66, 52], core: "뒤에서 오는 주자 때문에 베이스를 비워야 하면 수비는 베이스만 밟아 아웃시킬 수 있습니다. 그 의무가 사라지면 주자를 태그해야 합니다.", why: "앞선 주자가 아웃되거나 타자주자가 먼저 아웃되면 포스 상태가 풀릴 수 있어 수비 방법과 득점 인정이 달라집니다.", when: "병살 시도, 만루 홈 승부와 2아웃 득점 장면에서 반드시 먼저 확인할 규칙입니다.", caution: "베이스를 밟았다는 이유만으로 항상 아웃이 아닙니다. 그 순간 주자에게 진루 의무가 있었는지를 봅니다.", memory: "베이스를 밟기 전에, 포스가 살아 있는지 본다." },
+    "special-rules": { category: "주자·규칙", title: "특별 규칙은 적용 조건부터 확인한다", principle: "조건 확인", first: "낫아웃·인필드플라이·태그업", next: "아웃 수와 주자 배치 확인", firstPos: [42, 38], nextPos: [58, 65], core: "특별 규칙은 이름을 아는 것보다 언제 적용되는지를 아는 것이 중요합니다.", why: "낫아웃은 1루 점유와 2아웃 여부, 인필드플라이는 1·2루 또는 만루와 2아웃 미만, 태그업은 뜬공 포구 시점을 확인합니다.", when: "포수가 공을 놓친 삼진, 내야 뜬공, 외야 플라이 뒤 주자 진루 장면에서 조건을 하나씩 확인합니다.", caution: "비슷해 보이는 장면에 규칙을 자동 적용하지 않습니다. 아웃 수, 주자 배치와 포구 여부가 먼저입니다.", memory: "규칙 이름보다 적용 조건이 먼저다." },
+  };
 
   function standalonePitchExtremes(rows, valueOf) {
     const ranked = rows
@@ -437,8 +500,10 @@ window.CONTEXT_DATA = {"meta":{"seasons":"2022–2026","years":[2022,2023,2024,2
       panel.classList.toggle("active", active);
     });
     document.querySelectorAll(".board-nav button").forEach((button) => button.classList.toggle("active", button.dataset.boardTarget === view));
+    const situation = $("situation");
+    situation.hidden = view === "education";
     const firstPanel = document.querySelector(`[data-board="${view}"]`);
-    if (firstPanel) firstPanel.before($("situation"));
+    if (firstPanel && view !== "education") firstPanel.before(situation);
     const locationModule = $("location-module");
     const zoneSlot = document.querySelector(`[data-zone-slot="${view}"]`);
     if (zoneSlot) {
@@ -450,6 +515,27 @@ window.CONTEXT_DATA = {"meta":{"seasons":"2022–2026","years":[2022,2023,2024,2
     window.scrollTo({ left: scrollLeft, top: scrollTop, behavior: "auto" });
   }
   document.querySelectorAll(".board-nav button").forEach((button) => button.addEventListener("click", () => switchBoard(button.dataset.boardTarget)));
+
+  function renderEducation(key = "horizontal") {
+    const lesson = educationLessons[key] || educationLessons.horizontal;
+    $("lesson-category").textContent = lesson.category;
+    $("lesson-title").textContent = lesson.title;
+    $("lesson-principle").textContent = lesson.principle;
+    $("lesson-core").textContent = lesson.core;
+    $("lesson-first-name").textContent = lesson.first;
+    $("lesson-next-name").textContent = lesson.next;
+    $("lesson-why").textContent = lesson.why;
+    $("lesson-when").textContent = lesson.when;
+    $("lesson-caution").textContent = lesson.caution;
+    $("lesson-memory").textContent = lesson.memory;
+    $("lesson-first-dot").style.left = `${lesson.firstPos[0]}%`;
+    $("lesson-first-dot").style.top = `${lesson.firstPos[1]}%`;
+    $("lesson-next-dot").style.left = `${lesson.nextPos[0]}%`;
+    $("lesson-next-dot").style.top = `${lesson.nextPos[1]}%`;
+    document.querySelectorAll("[data-lesson]").forEach((button) => button.classList.toggle("active", button.dataset.lesson === key));
+  }
+
+  document.querySelectorAll("[data-lesson]").forEach((button) => button.addEventListener("click", () => renderEducation(button.dataset.lesson)));
 
   function syncControls() {
     [["pitcher-hand", state.p_throws], ["batter-hand", state.stand], ["pitcher-role", state.role], ["previous-outcome", state.prevOutcome], ["outcome-tabs", state.outcome]].forEach(([id, value]) => {
@@ -837,6 +923,7 @@ window.CONTEXT_DATA = {"meta":{"seasons":"2022–2026","years":[2022,2023,2024,2
     renderZone();
     renderOutcome();
     renderRawStats();
+    renderEducation(document.querySelector("[data-lesson].active")?.dataset.lesson || "horizontal");
   }
 
   function renderProbability(calc) {
