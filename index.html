@@ -646,6 +646,7 @@ window.CONTEXT_DATA = {"meta":{"seasons":"2022–2026","years":[2022,2023,2024,2
       state[key] = button.dataset.value;
       if (key === "prevOutcome") {
         state.useSequence = true;
+        ensureStrikeForSequence();
         $("sequence-toggle").checked = true;
         $("previous-outcome").closest(".sequence-panel").classList.remove("sequence-off");
       }
@@ -660,6 +661,13 @@ window.CONTEXT_DATA = {"meta":{"seasons":"2022–2026","years":[2022,2023,2024,2
   bindChoice("pitcher-role", "role");
   bindChoice("previous-outcome", "prevOutcome");
   bindChoice("outcome-tabs", "outcome");
+
+  function ensureStrikeForSequence() {
+    if (state.strikes > 0) return;
+    state.strikes = 1;
+    $("strikes").querySelectorAll("button").forEach((item) => item.classList.toggle("active", item.textContent === "1"));
+    state.zoneSelected = null;
+  }
 
   function makeCountButtons(id, max, key) {
     const root = $(id);
@@ -686,6 +694,7 @@ window.CONTEXT_DATA = {"meta":{"seasons":"2022–2026","years":[2022,2023,2024,2
   });
   $("sequence-toggle").addEventListener("change", (event) => {
     state.useSequence = event.target.checked;
+    if (state.useSequence) ensureStrikeForSequence();
     $("previous-outcome").closest(".sequence-panel").classList.toggle("sequence-off", !state.useSequence);
     render();
   });
@@ -1039,6 +1048,7 @@ window.CONTEXT_DATA = {"meta":{"seasons":"2022–2026","years":[2022,2023,2024,2
     previousButton.addEventListener("click", () => {
       state.prevPitch = code;
       state.useSequence = true;
+      ensureStrikeForSequence();
       $("sequence-toggle").checked = true;
       $("previous-outcome").closest(".sequence-panel").classList.remove("sequence-off");
       previousPitch.querySelectorAll("button").forEach((item) => item.classList.toggle("active", item === previousButton));
@@ -1444,7 +1454,9 @@ window.CONTEXT_DATA = {"meta":{"seasons":"2022–2026","years":[2022,2023,2024,2
     if (!state.useSequence || !calc.sequenceN) {
       $("sequence-family-summary").innerHTML = ["같은 공 반복", "빠른 공", "브레이킹", "오프스피드"]
         .map((label) => `<article class="sequence-family-card empty"><small>${label}</small><strong>—</strong><span>직전 공을 고르세요</span></article>`).join("");
-      $("sequence-change-list").innerHTML = '<div class="empty-board">직전 구종이나 결과를 누르면 자동으로 반영됩니다.</div>';
+      $("sequence-change-list").innerHTML = state.useSequence
+        ? `<div class="empty-board">${cnt()} 카운트에서 ${pitchName(state.prevPitch)} ${state.prevOutcome} 뒤 표본이 없습니다. 카운트를 바꿔 보세요.</div>`
+        : '<div class="empty-board">직전 구종이나 결과를 누르면 자동으로 반영됩니다.</div>';
       return;
     }
     const familyTotal = (codes) => codes.reduce((sum, code) => sum + Number(calc.current[code] || 0), 0);
