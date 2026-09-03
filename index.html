@@ -328,6 +328,14 @@ footer{border-top-color:rgba(31,93,80,.12)}
 .simple-rank{color:#c9563c;font-size:10px;font-style:normal;font-weight:950;text-align:right}
 .simple-foot{margin:12px 2px 0;color:#8aa19b;font-size:8px;line-height:1.45}
 @media(max-width:640px){.simple-pitch-grid{grid-template-columns:repeat(4,minmax(0,1fr))}.simple-row{grid-template-columns:72px 46px 44px 1fr 30px;gap:6px;padding:8px 9px}.simple-p{font-size:12px}}
+.simple-hands{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-bottom:14px}
+.simple-hands>div{display:grid;gap:5px}
+.simple-hands span{color:#54766e;font-size:9px;font-weight:950}
+.simple-toggle{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:5px}
+.simple-toggle button{padding:9px 4px;border:1px solid rgba(31,93,80,.13);border-radius:10px;background:#fff;color:#173a33;font-size:11px;font-weight:900;cursor:pointer}
+.simple-toggle button.active{border-color:#0aa093;background:#0aa093;color:#fff}
+.simple-freq{display:block;margin-top:4px;color:#c9563c;font-size:9px;font-style:normal;font-weight:950}
+.simple-outcome button.active .simple-freq{color:#fff}
 </style>
   </head>
   <body>
@@ -466,16 +474,20 @@ footer{border-top-color:rgba(31,93,80,.12)}
         <div class="board-heading">
           <span class="eyebrow-small">빠른 읽기</span>
           <h2 id="simple-title">방금 던진 공만 누르세요</h2>
-          <p>좌우·역할·카운트·경기 상황을 보지 않고 직전 공 하나로만 계산합니다. 경기를 보면서 두 번만 눌러 다음 공을 읽기 위한 화면입니다.</p>
+          <p>투수·타자 좌우와 직전 공만 봅니다. 역할·카운트·경기 상황은 모두 합쳐 평균냈습니다. 좌우는 타석마다 한 번, 구종과 결과는 공마다 두 번 누르면 됩니다.</p>
         </div>
         <div class="panel simple-panel">
+          <div class="simple-hands">
+            <div><span>투수</span><div class="simple-toggle" id="simple-throws"><button type="button" data-value="R">우투</button><button type="button" data-value="L">좌투</button></div></div>
+            <div><span>타자</span><div class="simple-toggle" id="simple-stand"><button type="button" data-value="R">우타</button><button type="button" data-value="L">좌타</button></div></div>
+          </div>
           <label class="simple-label">방금 던진 구종</label>
           <div class="simple-pitch-grid" id="simple-pitch"></div>
           <label class="simple-label">그 공의 결과</label>
           <div class="simple-outcome" id="simple-outcome">
-            <button type="button" data-value="루킹"><strong>루킹</strong><small>안 휘둘렀는데 스트라이크</small></button>
-            <button type="button" data-value="헛스윙"><strong>헛스윙</strong><small>휘둘렀는데 헛침</small></button>
-            <button type="button" data-value="파울"><strong>파울</strong><small>맞혔지만 파울</small></button>
+            <button type="button" data-value="루킹"><strong>루킹</strong><small>안 휘둘렀는데 스트라이크</small><em class="simple-freq"></em></button>
+            <button type="button" data-value="헛스윙"><strong>헛스윙</strong><small>휘둘렀는데 헛침</small><em class="simple-freq"></em></button>
+            <button type="button" data-value="파울"><strong>파울</strong><small>맞혔지만 파울</small><em class="simple-freq"></em></button>
           </div>
         </div>
         <article class="panel simple-result">
@@ -483,7 +495,7 @@ footer{border-top-color:rgba(31,93,80,.12)}
           <p id="simple-result-note">위에서 구종과 결과를 하나씩 누르면 바로 계산합니다.</p>
           <div id="simple-list"></div>
           <p class="simple-foot">2022–2026 MLB Statcast · <b id="stat-pitches">—</b> 투구 · <b id="stat-pairs">—</b> 연속 쌍 · <b id="stat-games">—</b> 경기에서 집계했습니다.</p>
-          <p class="simple-foot">좌우·카운트·경기 상황까지 반영하려면 <b>다음 공</b>이나 <b>직전 공</b> 화면을 쓰세요. 이 화면은 그 조건들을 모두 합쳐 평균낸 값입니다.</p>
+          <p class="simple-foot">카운트와 경기 상황까지 반영하려면 <b>다음 공</b>이나 <b>직전 공</b> 화면을 쓰세요. 이 화면은 그 조건들을 합쳐 평균낸 값입니다.</p>
         </article>
       </section>
       <section class="board-view education-board" id="education" data-board="education" aria-labelledby="education-title" hidden>
@@ -744,9 +756,9 @@ window.CONTEXT_DATA = {"meta":{"seasons":"2022–2026","years":[2022,2023,2024,2
     });
     document.querySelectorAll(".board-nav button").forEach((button) => button.classList.toggle("active", button.dataset.boardTarget === view));
     const situation = $("situation");
-    situation.hidden = view === "education";
+    situation.hidden = view === "education" || view === "simple";
     const firstPanel = document.querySelector(`[data-board="${view}"]`);
-    if (firstPanel && view !== "education") firstPanel.before(situation);
+    if (firstPanel && view !== "education" && view !== "simple") firstPanel.before(situation);
     const locationModule = $("location-module");
     const zoneSlot = document.querySelector(`[data-zone-slot="${view}"]`);
     if (zoneSlot) {
@@ -1483,21 +1495,39 @@ window.CONTEXT_DATA = {"meta":{"seasons":"2022–2026","years":[2022,2023,2024,2
     }).join("");
   }
 
+  function simplePool(rows) {
+    const counts = new Map();
+    let total = 0;
+    rows.forEach((row) => {
+      const n = Number(row.n || 0);
+      if (!row.pitch || n <= 0) return;
+      counts.set(row.pitch, (counts.get(row.pitch) || 0) + n);
+      total += n;
+    });
+    return { counts, total };
+  }
+
+  function simpleFamily(prevPitch) {
+    return data.sequence.filter((row) => row.role === "ALL" && row.p_throws === state.p_throws && row.stand === state.stand && row.prev_pitch === prevPitch);
+  }
+
+  function outcomeMix(prevPitch) {
+    const mix = {};
+    let total = 0;
+    simpleFamily(prevPitch).forEach((row) => {
+      const n = Number(row.n || 0);
+      mix[row.prev_outcome] = (mix[row.prev_outcome] || 0) + n;
+      total += n;
+    });
+    if (!total) return null;
+    ["루킹", "헛스윙", "파울"].forEach((key) => { mix[key] = (mix[key] || 0) / total; });
+    return mix;
+  }
+
   function simpleDistribution(prevPitch, prevOutcome) {
-    const pool = (rows) => {
-      const counts = new Map();
-      let total = 0;
-      rows.forEach((row) => {
-        const n = Number(row.n || 0);
-        if (!row.pitch || n <= 0) return;
-        counts.set(row.pitch, (counts.get(row.pitch) || 0) + n);
-        total += n;
-      });
-      return { counts, total };
-    };
-    const family = data.sequence.filter((row) => row.role === "ALL" && row.prev_pitch === prevPitch);
-    const now = pool(family.filter((row) => row.prev_outcome === prevOutcome));
-    const reference = pool(family);
+    const family = simpleFamily(prevPitch);
+    const now = simplePool(family.filter((row) => row.prev_outcome === prevOutcome));
+    const reference = simplePool(family);
     if (!now.total || !reference.total) return null;
     const rows = data.pitchOrder.map((code) => {
       const p = (now.counts.get(code) || 0) / now.total;
@@ -1507,6 +1537,14 @@ window.CONTEXT_DATA = {"meta":{"seasons":"2022–2026","years":[2022,2023,2024,2
   }
 
   function renderSimpleBoard() {
+    $("simple-throws").querySelectorAll("button").forEach((item) => item.classList.toggle("active", item.dataset.value === state.p_throws));
+    $("simple-stand").querySelectorAll("button").forEach((item) => item.classList.toggle("active", item.dataset.value === state.stand));
+    const mix = outcomeMix(state.prevPitch);
+    $("simple-outcome").querySelectorAll("button").forEach((item) => {
+      const slot = item.querySelector(".simple-freq");
+      if (!slot) return;
+      slot.textContent = mix ? `이 공의 ${pct(mix[item.dataset.value] || 0, 0)}` : "";
+    });
     $("simple-pitch").querySelectorAll("button").forEach((item) => item.classList.toggle("active", item.dataset.value === state.prevPitch));
     $("simple-outcome").querySelectorAll("button").forEach((item) => item.classList.toggle("active", item.dataset.value === state.prevOutcome));
     const result = simpleDistribution(state.prevPitch, state.prevOutcome);
@@ -1616,6 +1654,15 @@ window.CONTEXT_DATA = {"meta":{"seasons":"2022–2026","years":[2022,2023,2024,2
     button.innerHTML = `<strong>${pitchName(code)}</strong><small>${code}</small>`;
     button.addEventListener("click", () => { state.prevPitch = code; render(); });
     simplePitch.appendChild(button);
+  });
+  [["simple-throws", "p_throws"], ["simple-stand", "stand"]].forEach(([id, key]) => {
+    $(id).addEventListener("click", (event) => {
+      const button = event.target.closest("button[data-value]");
+      if (!button) return;
+      state[key] = button.dataset.value;
+      state.zoneSelected = null;
+      render();
+    });
   });
   $("simple-outcome").addEventListener("click", (event) => {
     const button = event.target.closest("button[data-value]");
