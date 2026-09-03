@@ -297,6 +297,13 @@ footer{border-top-color:rgba(31,93,80,.12)}
 .seq-delta{font-size:9px;font-style:normal;font-weight:700}
 .seq-delta.plus{color:var(--coral)}
 .seq-delta.minus{color:var(--ice)}
+.sequence-family-card span{white-space:normal;overflow:visible;text-overflow:clip}
+.family-guide{display:grid;gap:7px;margin:0 2px 12px}
+.family-guide>div{padding:9px 11px;border:1px solid rgba(31,93,80,.10);border-radius:10px;background:rgba(255,255,255,.6)}
+.family-guide strong{display:inline-block;margin-right:6px;color:#087f77;font-size:10px;font-weight:950}
+.family-guide b{color:#54766e;font-size:8px;font-weight:800}
+.family-guide span{display:block;margin-top:4px;color:#78918b;font-size:9px;font-weight:600;line-height:1.55}
+.family-guide>p{margin:1px 2px 0;color:#8aa19b;font-size:8px;line-height:1.45}
 </style>
   </head>
   <body>
@@ -390,7 +397,12 @@ footer{border-top-color:rgba(31,93,80,.12)}
         <article class="panel sequence-change-panel">
           <div class="pitch-card-heading"><div><span class="eyebrow-small">다음 공 확률</span><h3>직전 공 다음에 던진 구종 10개</h3></div><p>바로 다음 투구로 실제 선택된 비율이 높은 순서입니다. 전체 합계는 100%입니다.</p></div>
           <div class="sequence-family-summary" id="sequence-family-summary" aria-label="직전 공 뒤 네 가지 묶음"></div>
-          <p class="sequence-family-note">같은 공 반복은 아래 세 계열 중 하나에도 포함됩니다. 빠른 공·브레이킹·오프스피드 세 계열의 합은 100%입니다.</p>
+          <div class="family-guide">
+            <div><strong>빠른 공</strong><b>포심 · 싱커 · 커터</b><span>구속으로 밀어붙이는 공입니다. 타자의 반응이 늦으면 헛스윙이나 빗맞은 파울이 됩니다. 싱커는 아래로 가라앉아 땅볼을, 커터는 손잡이 쪽으로 살짝 휘어 빗맞은 타구를 노립니다.</span></div>
+            <div><strong>브레이킹</strong><b>슬라이더 · 스위퍼 · 커브 · 너클커브 · 슬러브</b><span>강한 회전을 걸어 좌우나 아래로 꺾는 공입니다. 배트가 지나갈 자리를 비껴가게 만듭니다. 슬라이더·스위퍼는 옆으로, 커브·너클커브는 위에서 아래로 크게 떨어집니다.</span></div>
+            <div><strong>오프스피드</strong><b>체인지업 · 스플리터</b><span>빠른 공과 똑같은 팔 스윙으로 느리게 던지는 공입니다. 꺾이는 정도보다 구속 차이로 승부합니다. 타자가 빠른 공 타이밍에 스윙을 시작하게 만든 뒤 늦게 도착합니다.</span></div>
+            <p>같은 공 반복은 위 세 계열 중 하나에도 포함됩니다. 빠른 공·브레이킹·오프스피드 세 계열의 합이 100%입니다.</p>
+          </div>
           <div class="sequence-change-list" id="sequence-change-list"></div>
         </article>
         <div class="zone-slot" data-zone-slot="sequence"></div>
@@ -1462,9 +1474,9 @@ window.CONTEXT_DATA = {"meta":{"seasons":"2022–2026","years":[2022,2023,2024,2
     const familyTotal = (codes) => codes.reduce((sum, code) => sum + Number(calc.current[code] || 0), 0);
     const familyRows = [
       ["같은 공 반복", Number(calc.current[state.prevPitch] || 0), `${state.prevPitch} · ${pitchName(state.prevPitch)}`],
-      ["빠른 공", familyTotal(["FF", "SI", "FC"]), "포심·싱커·커터"],
-      ["브레이킹", familyTotal(["SL", "ST", "CU", "KC", "SV"]), "좌우·아래로 꺾이는 공"],
-      ["오프스피드", familyTotal(["CH", "FS"]), "타이밍을 늦추는 공"],
+      ["빠른 공", familyTotal(["FF", "SI", "FC"]), "포심 · 싱커 · 커터"],
+      ["브레이킹", familyTotal(["SL", "ST", "CU", "KC", "SV"]), "슬라이더 · 스위퍼 · 커브 · 너클커브 · 슬러브"],
+      ["오프스피드", familyTotal(["CH", "FS"]), "체인지업 · 스플리터"],
     ];
     $("sequence-family-summary").innerHTML = familyRows.map(([label, value, detail], index) => `<article class="sequence-family-card family-${index}"><small>${label}</small><strong>${pct(value)}</strong><span>${detail}</span></article>`).join("");
     const rows = data.pitchOrder.map((code) => {
