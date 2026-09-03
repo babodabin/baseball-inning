@@ -289,6 +289,14 @@ footer{border-top-color:rgba(31,93,80,.12)}
 @media(max-width:640px){.condition-actions{align-items:flex-end;flex-direction:column;gap:4px}.condition-actions button{min-height:38px;padding:0 13px}.condition-actions small{font-size:7px}.back-to-top{right:12px;bottom:calc(72px + env(safe-area-inset-bottom));width:54px;min-width:54px;height:48px;padding:0 7px;border-radius:15px}}
 @media(prefers-reduced-motion:reduce){.back-to-top{transition:none}}
 
+.sequence-signal{padding:10px 12px;border-radius:10px;margin-bottom:8px;display:grid;gap:3px}
+.sequence-signal strong{font-size:11px;line-height:1.4}
+.sequence-signal span{font-size:9px;color:var(--muted);line-height:1.55}
+.sequence-signal.on{background:rgba(233,110,86,.10);border:1px solid rgba(233,110,86,.28)}
+.sequence-signal.off{background:rgba(31,93,80,.07);border:1px solid rgba(31,93,80,.18)}
+.seq-delta{font-size:9px;font-style:normal;font-weight:700}
+.seq-delta.plus{color:var(--coral)}
+.seq-delta.minus{color:var(--ice)}
 </style>
   </head>
   <body>
@@ -593,6 +601,7 @@ window.CONTEXT_DATA = {"meta":{"seasons":"2022–2026","years":[2022,2023,2024,2
   const fmt = new Intl.NumberFormat("ko-KR");
   const pct = (value, digits = 1) => value == null || Number.isNaN(value) ? "—" : `${(value * 100).toFixed(digits)}%`;
   const pp = (value) => value == null || Number.isNaN(value) ? "—" : `${value >= 0 ? "+" : ""}${(value * 100).toFixed(1)}%p`;
+  const SEQUENCE_SIGNAL_MIN = 0.03;
   const pitchName = (code) => data.pitchNames[code] || code;
   const cnt = () => `${state.balls}-${state.strikes}`;
 
@@ -1449,10 +1458,30 @@ window.CONTEXT_DATA = {"meta":{"seasons":"2022–2026","years":[2022,2023,2024,2
     const rows = data.pitchOrder.map((code) => {
       const exact = calc.sequenceExactRows.find((row) => row.pitch === code);
       const used = calc.sequenceRows.find((row) => row.pitch === code);
-      return { code, after: calc.current[code], exactN: Number(exact?.n || 0), usedN: Number(used?.n || 0) };
-    }).sort((a, b) => b.after - a.after);
+      return {
+        code,
+        after: calc.current[code],
+        delta: calc.sequence[code] - calc.sequenceReference[code],
+        exactN: Number(exact?.n || 0),
+        usedN: Number(used?.n || 0),
+      };
+    });
+    const strongest = Math.max(...rows.map((row) => Math.abs(row.delta)), 0);
+    const hasSignal = strongest >= SEQUENCE_SIGNAL_MIN;
+    rows.sort((a, b) => (hasSignal ? b.delta - a.delta : b.after - a.after));
     const max = Math.max(...rows.map((row) => row.after), 0.01);
-    $("sequence-change-list").innerHTML = rows.map((row, index) => `<div class="sequence-change-row"><div><strong>${row.code} · ${pitchName(row.code)}</strong></div><span class="sequence-after"><small>다음 공 확률</small><b>${pct(row.after)}</b></span><div class="change-track"><i class="up" style="width:${Math.max(3, row.after / max * 100)}%"></i></div><b class="sequence-rank">${index + 1}위</b><small>정확 ${fmt.format(row.exactN)} · 계산 ${fmt.format(row.usedN)}</small></div>`).join("");
+    const maxDelta = Math.max(strongest, 0.001);
+    const prevLabel = `${pitchName(state.prevPitch)} ${state.prevOutcome}`;
+    const notice = hasSignal
+      ? `<div class="sequence-signal on"><strong>${prevLabel} 뒤 달라진 순서</strong><span>같은 ${pitchName(state.prevPitch)} 뒤 평균과 비교해 가장 많이 바뀐 공부터 보여줍니다. 가장 큰 변화 ${pp(strongest)}.</span></div>`
+      : `<div class="sequence-signal off"><strong>${prevLabel}은 다음 공을 거의 바꾸지 않습니다</strong><span>가장 큰 변화가 ${pp(strongest)}뿐이라 순위를 매기지 않습니다. 아래는 평소 확률 그대로입니다.</span></div>`;
+    let rankNo = 0;
+    $("sequence-change-list").innerHTML = notice + rows.map((row) => {
+      const width = hasSignal ? Math.abs(row.delta) / maxDelta * 100 : row.after / max * 100;
+      const dir = hasSignal && row.delta < 0 ? "down" : "up";
+      const rank = hasSignal && row.delta >= SEQUENCE_SIGNAL_MIN ? `${++rankNo}위` : "—";
+      return `<div class="sequence-change-row"><div><strong>${row.code} · ${pitchName(row.code)}</strong></div><span class="sequence-after"><small>다음 공 확률</small><b>${pct(row.after)}</b><em class="seq-delta ${row.delta >= 0 ? "plus" : "minus"}">${pp(row.delta)}</em></span><div class="change-track"><i class="${dir}" style="width:${Math.max(3, width)}%"></i></div><b class="sequence-rank">${rank}</b><small>정확 ${fmt.format(row.exactN)} · 계산 ${fmt.format(row.usedN)}</small></div>`;
+    }).join("");
   }
 
   function renderRawStats() {
